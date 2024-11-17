@@ -10,7 +10,7 @@
   },
   "servers": [
     {
-      "url": "http://sandbox.mintlify.com"
+      "url": "000000000000000"
     }
   ],
   "security": [
@@ -24,7 +24,7 @@
         "description": "Returns all plants from the system that the user has access to",
         "parameters": [
           {
-            "name": "limit",
+            "nome": "limit",
             "in": "query",
             "description": "The maximum number of results to return",
             "schema": {
