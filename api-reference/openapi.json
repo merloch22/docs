@@ -21,12 +21,12 @@
   "paths": {
     "/plants": {
       "get": {
-        "description": "Returns all plants from the system that the user has access to",
+        "description": "gdgfd Returns all plants from the system that the user has access to",
         "parameters": [
           {
             "nome": "limit",
             "in": "query",
-            "description": "The maximum number of results to return",
+            "description": "The2 maximum number of results to return",
             "schema": {
               "type": "integer",
               "format": "int32"
