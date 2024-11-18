@@ -1,0 +1,31 @@
+---
+title: 'Verificar OTP'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite verificar um código OTP (One-Time Password) previamente enviado para um número de telefone.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone no formato internacional para o qual o OTP foi enviado.
+
+\* `message`: Deve ser `"false"` para indicar que não será enviado um novo OTP.
+
+\* `verificarOTP`: Código OTP que será verificado.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+558189769960",
+  "message": "false",
+  "verificarOTP": "225614"
+}

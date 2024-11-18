@@ -1,0 +1,32 @@
+---
+title: 'Criar OTP'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite criar e enviar um código OTP (One-Time Password) para um número de telefone, com uma mensagem personalizada.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone no formato internacional para o qual o OTP será enviado.
+
+\* `message`: Mensagem personalizada que acompanha o código OTP.
+
+\* `criarOTP`: Valor fixo `"true"` para indicar que esta operação é a criação de um OTP.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+558189769960",
+  "message": "Seu código OTP é:",
+  "criarOTP": "true"
+}
+```

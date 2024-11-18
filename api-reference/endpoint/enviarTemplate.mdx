@@ -1,0 +1,34 @@
+---
+title: 'Envio de Template'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar mensagens usando templates pré-definidos com variáveis personalizadas, para um número ou grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `template_id`: Identificador único do template a ser utilizado.
+
+\* `variables`: Chave-valor para substituir as variáveis do template.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "template_id": "TEMPLATE_ID",
+  "variables": {
+    "variableKey1": "jhone",
+    "variableKey2": "replaceable value"
+  }
+}

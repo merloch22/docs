@@ -1,0 +1,31 @@
+---
+title: 'Fixar e Desfixar Chats'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite fixar ou desfixar um chat específico de um número ou grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Deve ser `"false"` para indicar que não será enviado texto no chat.
+
+\* `fixChat`: Define a ação de fixar (`"true"`) ou desfixar (`"false"`) o chat.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+558189769960",
+  "message": "false",
+  "fixChat": "true"
+}

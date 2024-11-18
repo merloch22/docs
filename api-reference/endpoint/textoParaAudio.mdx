@@ -1,0 +1,31 @@
+---
+title: 'Conversão de Texto para Áudio'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite converter um texto em áudio, com a opção de escolher o tipo de voz (masculina ou feminina), e enviá-lo para um número ou grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Texto que será convertido em áudio.
+
+\* `TextoParaAudio`: Tipo de voz para o áudio gerado (`"feminina"` ou `"masculina"`).
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "Olá, esta é uma mensagem de teste.",
+  "TextoParaAudio": "feminina"
+}

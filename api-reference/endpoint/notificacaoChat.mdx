@@ -1,0 +1,31 @@
+---
+title: 'Ativar Notificações'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite ativar ou desativar notificações de um chat específico (número ou grupo).
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Deve ser `"false"` para indicar que não será enviado texto no chat.
+
+\* `removeSilencio`: Define a ação de ativar notificações (`"true"`) ou desativá-las (`"false"`).
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "false",
+  "removeSilencio": "true"
+}

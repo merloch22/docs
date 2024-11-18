@@ -1,0 +1,32 @@
+---
+title: 'Arquivar Chat'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite arquivar ou desarquivar um chat de um número ou grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Deve ser `"false"` para indicar que não será enviado texto no chat.
+
+\* `arquivarChat`: Define a ação de arquivar (`"true"`) ou desarquivar (`"false"`) o chat.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "false",
+  "arquivarChat": "true"
+}
+```
