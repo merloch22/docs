@@ -2,10 +2,10 @@
   "$schema": "https://mintlify.com/schema.json",
   "name": "Menuia",
   "logo": {
-    "dark": "https://chatbot.menuia.com/uploads/23/06/1686025726Jmh1ULzLJ9rq1IUhByem.png",
-    "light": "https://chatbot.menuia.com/uploads/23/06/1686025726jWJDAMCm2dJrxAb4XNNX.png"
+    "dark": "/logo/dark.png",
+    "light": "/logo/light.png"
   },
-  "favicon": "https://chatbot.menuia.com/uploads/23/06/1686025726qFnzFpZIZdKeI4y1DmP1.png",
+  "favicon": "/favicon.png",
   "colors": {
     "primary": "#580662",
     "light": "#c204ef",
