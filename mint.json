@@ -84,7 +84,7 @@
     {
       "group": "Whatsapp (Globais)",
       "pages": [
-        "api-reference/endpoint/create-message/mensagem de texto"
+        "api-reference/endpoint/mensagemTexto"
       ]
     }
   ],
