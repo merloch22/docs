@@ -19,7 +19,7 @@ Este endpoint permite o envio de um arquivo multimídia para um número de telef
 
 \* `descricao`: Descrição opcional do arquivo a ser enviado.
 
-\* `file`: URL do arquivo multimídia a ser enviado.
+\* `file`: URL ou BASE64 do arquivo multimídia a ser enviado.
 
 \* `format`: Formato opcional, utilizado para forçar o envio do arquivo em um formato específico.
 
@@ -32,6 +32,7 @@ Este endpoint permite o envio de um arquivo multimídia para um número de telef
   "to": "+5581989769960",
   "message": "Nome do arquivo",
   "descricao": "Descrição opcional",
-  "file": "URL_do_arquivo_multimidia",
-  "format": "formato_opcional"
+  "file": "https://example.com/file.mp3",
+  "format": "mp3"
 }
+```
