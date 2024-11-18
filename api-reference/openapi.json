@@ -67,7 +67,7 @@
             }
           },
           "403": {
-            "description": "Appkey inválida.",
+            "description": "string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -79,7 +79,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Appkey Invalida"
+                      "example": "string"
                     }
                   }
                 }
