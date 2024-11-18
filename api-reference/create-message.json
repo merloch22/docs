@@ -1,0 +1,98 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Chatbot API - Criar Mensagem",
+    "description": "API para enviar mensagens para um número ou grupo no chatbot.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://chatbot.menuia.com/api"
+    }
+  ],
+  "paths": {
+    "/create-message": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação ou nome do dispositivo."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "messageId": {
+                      "type": "string",
+                      "description": "ID único da mensagem enviada."
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time",
+                      "description": "Horário em que a mensagem foi enviada."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Erro nos parâmetros enviados.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "error"
+                    },
+                    "error": {
+                      "type": "string",
+                      "description": "Descrição do erro."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
