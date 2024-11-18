@@ -7,11 +7,11 @@
   },
   "servers": [
     {
-      "url": "https://chatbot.menuia.com/api"
+      "url": "https://chatbot.menuia.com"
     }
   ],
   "paths": {
-    "/create-message": {
+    "/api/create-message": {
       "post": {
         "summary": "Enviar mensagem",
         "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
