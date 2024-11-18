@@ -71,20 +71,20 @@
               }
             }
           },
-          "400": {
-            "description": "Erro nos parâmetros enviados.",
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": {
-                      "type": "string",
-                      "example": "error"
+                      "type": "integer",
+                      "example": 404
                     },
-                    "error": {
+                    "message": {
                       "type": "string",
-                      "description": "Descrição do erro."
+                      "example": "Nenhum dispositivo encontrado."
                     }
                   }
                 }
