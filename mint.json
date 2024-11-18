@@ -8,17 +8,18 @@
   "favicon": "https://chatbot.menuia.com/uploads/23/06/1686025726qFnzFpZIZdKeI4y1DmP1.png",
   "colors": {
     "primary": "#580662",
-    "light": "#7c0399",
+    "light": "#c204ef",
     "dark": "#580662",
     "anchors": {
       "from": "#580662",
-      "to": "#7c0399"
+      "to": "#c204ef"
     }
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Whatsapp",
+      "icon": "whatsapp",
+      "url": "https://wa.me/558189769960"
     }
   ],
   "topbarCtaButton": {
