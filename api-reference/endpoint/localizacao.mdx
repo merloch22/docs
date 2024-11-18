@@ -1,0 +1,35 @@
+---
+title: 'Localização Fixa'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar uma localização fixa (latitude e longitude) para um número ou grupo. A localização pode ser compartilhada para facilitar o envio de coordenadas geográficas.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Texto opcional da mensagem a ser enviada junto com a localização.
+
+\* `longitude`: A longitude da localização (em formato decimal).
+
+\* `latitude`: A latitude da localização (em formato decimal).
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "Aqui está a localização fixa:",
+  "longitude": "25.14",
+  "latitude": "52.41"
+}
+```

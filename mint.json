@@ -79,7 +79,24 @@
       "pages": [
         "api-reference/endpoint/mensagemTexto",
         "api-reference/endpoint/reagir",
-        "api-reference/endpoint/contato"
+        "api-reference/endpoint/contato",
+        "api-reference/endpoint/apagar",
+        "api-reference/endpoint/apagarChat",
+        "api-reference/endpoint/arquivarChat",
+        "api-reference/endpoint/cancelarMensagemAgendada",
+        "api-reference/endpoint/contato",
+        "api-reference/endpoint/criarOTP",
+        "api-reference/endpoint/enviarTemplate",
+        "api-reference/endpoint/fixarChats",
+        "api-reference/endpoint/ListarMensagensAgendadas",
+        "api-reference/endpoint/localizacao",
+        "api-reference/endpoint/enviarMensagemAgendada",
+        "api-reference/endpoint/notificaoChat",
+        "api-reference/endpoint/reagir",
+        "api-reference/endpoint/responder",
+        "api-reference/endpoint/textoParaAudio",
+        "api-reference/endpoint/verificarOTP",
+        "api-reference/endpoint/localizacao"
       ]
     }
   ],

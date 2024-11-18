@@ -1,0 +1,28 @@
+---
+title: 'Lista de Mensagens Agendadas'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite listar todas as mensagens agendadas, exibindo informações como o ID, o número de telefone, a mensagem e o horário do agendamento.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `listaAgendamento`: Valor obrigatório, deve ser "true" para obter a lista de mensagens agendadas.
+
+\* `message`: Usado para indicar se deve ou não incluir a mensagem. Para este caso, deve ser "false".
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "listaAgendamento": "true",
+  "message": "false"
+}

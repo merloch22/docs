@@ -1,0 +1,38 @@
+---
+title: 'Enviar Mensagem Agendada (Texto, Multimídia)'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar uma mensagem agendada, seja de texto ou multimídia, para um número ou grupo em um horário específico. A mensagem pode incluir um arquivo de mídia opcional, como imagem ou vídeo.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo. Também pode ser um array codificado em JSON.
+
+\* `agendamento`: Data e hora para envio da mensagem (formato: `YYYY-MM-DD HH:MM:SS`).
+
+\* `file`: URL do arquivo multimídia (opcional, caso a mensagem seja multimídia).
+
+\* `nomearquivo`: Nome do arquivo multimídia (opcional).
+
+\* `message`: Texto da mensagem a ser enviada.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "agendamento": "2023-09-24 23:00:00",
+  "file": "https://example.com/imagem.jpg",
+  "nomearquivo": "imagem.jpg",
+  "message": "Esta é uma mensagem agendada com imagem!"
+}
+```

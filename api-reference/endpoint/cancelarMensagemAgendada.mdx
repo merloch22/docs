@@ -1,0 +1,28 @@
+---
+title: 'Cancelar Mensagem Agendada'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite cancelar uma mensagem agendada com base no ID do agendamento.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `cancelarAgendamento`: Valor obrigatório, deve ser "true" para cancelar o agendamento.
+
+\* `message`: ID do agendamento que deve ser cancelado.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "cancelarAgendamento": "true",
+  "message": "12345"
+}
