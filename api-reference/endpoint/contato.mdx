@@ -1,3 +1,4 @@
+---
 title: 'Enviar contatos'
 openapi: 'POST /api/create-message'
 ---
@@ -8,11 +9,15 @@ Este endpoint permite enviar um contato, incluindo o nome e número de telefone,
 
 ### Parâmetros
 
-* `appkey`: Chave de aplicação.
-* `authkey`: Chave de autenticação do usuário.
-* `to`: Número de telefone ou ID do grupo.
-* `message`: Texto opcional da mensagem que acompanha o envio do contato.
-* `contact`: Nome do contato a ser enviado.
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo.
+
+\* `message`: Texto opcional da mensagem que acompanha o envio do contato.
+
+\* `contact`: Nome do contato a ser enviado.
 
 ### Exemplo de requisição:
 
@@ -24,3 +29,4 @@ Este endpoint permite enviar um contato, incluindo o nome e número de telefone,
   "message": "Aqui está o contato",
   "contact": "Nome do Contato"
 }
+```
