@@ -1,4 +1,31 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: 'Apagar Mensagem'
+openapi: 'POST /api/create-message'
 ---
+
+## Descrição
+
+Este endpoint permite apagar uma mensagem específica, utilizando o ID da mensagem a ser apagada.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `message`: Valor obrigatório para indicar o conteúdo da mensagem. Para apagar, deve ser "false".
+
+\* `to`: Número de telefone ou ID do grupo do destinatário da mensagem.
+
+\* `deleteID`: ID único da mensagem a ser apagada.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "to": "+558189769960",
+  "deleteID": "3F49AC7097B295B8FC09"
+}

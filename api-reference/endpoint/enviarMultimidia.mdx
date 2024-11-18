@@ -1,0 +1,37 @@
+---
+title: 'Envio de Multimídia'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite o envio de um arquivo multimídia para um número de telefone ou grupo, junto com uma mensagem opcional e uma descrição.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `to`: Número de telefone ou ID do grupo do destinatário.
+
+\* `message`: Nome do arquivo a ser enviado.
+
+\* `descricao`: Descrição opcional do arquivo a ser enviado.
+
+\* `file`: URL do arquivo multimídia a ser enviado.
+
+\* `format`: Formato opcional, utilizado para forçar o envio do arquivo em um formato específico.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "Nome do arquivo",
+  "descricao": "Descrição opcional",
+  "file": "URL_do_arquivo_multimidia",
+  "format": "formato_opcional"
+}
