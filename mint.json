@@ -23,17 +23,17 @@
   ],
   "topbarCtaButton": {
     "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "url": "https://chatbot.menuia.com/login"
   },
   "tabs": [
     {
-      "name": "API Reference",
+      "name": "Referência da API",
       "url": "api-reference"
     }
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Documentação",
       "icon": "book-open-cover",
       "url": "https://mintlify.com/docs"
     },

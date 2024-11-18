@@ -79,7 +79,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "string"
+                      "example": "<string>"
                     }
                   }
                 }
