@@ -4,14 +4,18 @@ openapi: 'POST /api/create-message'
 ---
 
 ## Descrição
+
 Este endpoint permite enviar uma mensagem para um número ou grupo de forma simples.
 
 ### Parâmetros
 
-- `appkey`: Chave de aplicação.
-- `authkey`: Chave de autenticação do usuário.
-- `to`: Número de telefone ou ID do grupo.
-- `message`: Conteúdo da mensagem.
+* `appkey`: Chave de aplicação.
+
+* `authkey`: Chave de autenticação do usuário.
+
+* `to`: Número de telefone ou ID do grupo.
+
+* `message`: Conteúdo da mensagem.
 
 ### Exemplo de requisição:
 
@@ -22,3 +26,4 @@ Este endpoint permite enviar uma mensagem para um número ou grupo de forma simp
   "to": "+5511999999999",
   "message": "Olá, esta é uma mensagem!"
 }
+```

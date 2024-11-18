@@ -1,0 +1,26 @@
+title: 'Enviar contatos'
+openapi: 'POST /api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar um contato, incluindo o nome e número de telefone, para um número ou grupo.
+
+### Parâmetros
+
+* `appkey`: Chave de aplicação.
+* `authkey`: Chave de autenticação do usuário.
+* `to`: Número de telefone ou ID do grupo.
+* `message`: Texto opcional da mensagem que acompanha o envio do contato.
+* `contact`: Nome do contato a ser enviado.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "Aqui está o contato",
+  "contact": "Nome do Contato"
+}

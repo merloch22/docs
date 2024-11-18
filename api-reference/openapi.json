@@ -66,6 +66,26 @@
               }
             }
           },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
           "403": {
             "description": "string.",
             "content": {

@@ -1,0 +1,34 @@
+title: 'Reagir à mensagem'
+openapi: 'POST /api/create-message'
+-----------------------------------
+
+## Descrição
+
+Este endpoint permite reagir a uma mensagem enviada, especificando o ID da mensagem e a reação desejada.
+
+### Parâmetros
+
+* `appkey`: Chave de aplicação.
+
+* `authkey`: Chave de autenticação do usuário.
+
+* `to`: Número de telefone ou ID do grupo.
+
+* `message`: Conteúdo da mensagem (opcional para reações).
+
+* `id`: ID da mensagem à qual a reação será adicionada.
+
+* `reactionMessage`: Define se a operação é uma reação (valor fixo `true`).
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "sua-appkey",
+  "authkey": "sua-authkey",
+  "to": "+558189769960",
+  "message": "🧡 ou remove",
+  "id": "F6FDB3FBB46DF8ABD6CB98C95F6251A",
+  "reactionMessage": "true"
+}
+```
