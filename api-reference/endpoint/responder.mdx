@@ -1,4 +1,41 @@
 ---
-title: 'New file'
-description: 'Description of your new file.'
+title: 'Responder Mensagens'
+openapi: 'POST /api/create-message'
 ---
+
+## Descrição
+
+Este endpoint permite responder a mensagenm de texto, multimídia, contato ou enquete, diretamente para um número ou grupo.
+
+## Parâmetros
+
+### Comuns
+
+- **`appkey`**: Chave de aplicação.
+- **`authkey`**: Chave de autenticação do usuário.
+- **`to`**: Número de telefone ou ID do grupo.
+- **`message`**: Texto que será utilizado como resposta.
+- **`tipoMensagem`**: Tipo de mensagem enviada (ex.: `"extendedTextMessage"`, `"imageMessage"`, etc.).
+- **`tipo`**: Definir o remetente (ex.: `"me"` ou `"chat"`).
+- **`idMensagem`**: ID da mensagem recebida que está sendo respondida.
+
+### Específicos
+
+- **`respostaMensagem`** Conteúdo de texto para respostas do tipo texto.
+
+---
+
+## Exemplos de Requisição
+
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+558189769960",
+  "message": "Que bom que você está bem",
+  "tipoMensagem": "extendedTextMessage",
+  "tipo": "chat",
+  "respostaMensagem": "Tudo bem",
+  "idMensagem": "F8B848F533D8805D321D5E1A6EBED388"
+}
