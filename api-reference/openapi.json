@@ -25,7 +25,7 @@
                 "properties": {
                   "appkey": {
                     "type": "string",
-                    "description": "Chave de aplicação ou nome do dispositivo."
+                    "description": "Chave de aplicação."
                   },
                   "authkey": {
                     "type": "string",

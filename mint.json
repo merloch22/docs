@@ -1,18 +1,18 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Menuia",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "https://chatbot.menuia.com/uploads/23/06/1686025726Jmh1ULzLJ9rq1IUhByem.png",
+    "light": "https://chatbot.menuia.com/uploads/23/06/1686025726jWJDAMCm2dJrxAb4XNNX.png"
   },
-  "favicon": "/favicon.svg",
+  "favicon": "https://chatbot.menuia.com/uploads/23/06/1686025726qFnzFpZIZdKeI4y1DmP1.png",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#580662",
+    "light": "#7c0399",
+    "dark": "#580662",
     "anchors": {
-      "from": "#0D9373",
-      "to": "#07C983"
+      "from": "#580662",
+      "to": "#7c0399"
     }
   },
   "topbarLinks": [
