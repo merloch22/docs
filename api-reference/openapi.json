@@ -54,17 +54,12 @@
                   "type": "object",
                   "properties": {
                     "status": {
-                      "type": "string",
-                      "example": "success"
+                      "type": "integer",
+                      "example": 200
                     },
-                    "messageId": {
+                    "message": {
                       "type": "string",
-                      "description": "ID único da mensagem enviada."
-                    },
-                    "timestamp": {
-                      "type": "string",
-                      "format": "date-time",
-                      "description": "Horário em que a mensagem foi enviada."
+                      "example": "Mensagem enviada com sucesso."
                     }
                   }
                 }
