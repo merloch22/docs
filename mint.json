@@ -75,13 +75,6 @@
       ]
     },
     {
-      "group": "Endpoint Examples",
-      "pages": [
-        "api-reference/endpoint/get",
-        "api-reference/endpoint/delete"
-      ]
-    },
-    {
       "group": "Whatsapp (Globais)",
       "pages": [
         "api-reference/endpoint/mensagemTexto"
