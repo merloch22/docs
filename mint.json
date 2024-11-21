@@ -41,6 +41,7 @@
     {
       "group": "Whatsapp (Globais)",
       "pages": [
+        "api-reference/endpoint/enviarMensagemAgendada",
         "api-reference/endpoint/apagarChat",
         "api-reference/endpoint/apagar",
         "api-reference/endpoint/arquivarChat",
@@ -49,7 +50,7 @@
         "api-reference/endpoint/criarOTP",
         "api-reference/endpoint/contato",
         "api-reference/endpoint/mensagemTexto",
-        "api-reference/endpoint/enviarMensagemAgendada",
+        "api-reference/endpoint/enviarMultimidia",
         "api-reference/endpoint/enviarTemplate",
         "api-reference/endpoint/fixarChats",
         "api-reference/endpoint/listarMensagensAgendadas",
