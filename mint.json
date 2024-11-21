@@ -29,6 +29,10 @@
     {
       "name": "Referência da API",
       "url": "api-reference"
+    },
+    {
+      "name": "Webhook",
+      "url": "webhook-reference"
     }
   ],
   "navigation": [
@@ -59,6 +63,30 @@
         "api-reference/endpoint/reagir",
         "api-reference/endpoint/responder",
         "api-reference/endpoint/verificarOTP"
+      ]
+    },
+    {
+      "group": "Webhook",
+      "pages": [
+        "webhook-reference/introduction"
+      ]
+    },
+    {
+      "group": "Eventos",
+      "pages": [
+        "webhook-reference/events/audio",
+        "webhook-reference/events/contato",
+        "webhook-reference/events/deletado",
+        "webhook-reference/events/documento",
+        "webhook-reference/events/editado",
+        "webhook-reference/events/enquete",
+        "webhook-reference/events/imagem",
+        "webhook-reference/events/localizacao",
+        "webhook-reference/events/reacao",
+        "webhook-reference/events/responder",
+        "webhook-reference/events/sticker",
+        "webhook-reference/events/texto",
+        "webhook-reference/events/video"
       ]
     }
   ],

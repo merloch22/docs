@@ -1,0 +1,36 @@
+---
+title: 'Documento'
+---
+
+Este webhook é acionado quando um documento é enviado ou recebido. Ele fornece informações detalhadas sobre o documento, incluindo dados sobre o remetente, destinatário, tipo de mídia, formato e conteúdo do arquivo.
+
+### Parâmetros
+
+- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
+- **`nome`**: Nome do remetente da mensagem que contém o documento.
+- **`destinatario`**: Número de telefone do destinatário da mensagem, ou seja, para quem o documento foi enviado.
+- **`remetente`**: Número de telefone do remetente da mensagem, ou seja, de quem o documento foi enviado.
+- **`idMessagem`**: Identificador único da mensagem que contém o documento.
+- **`data`**: A data em que a mensagem foi enviada ou recebida.
+- **`horario`**: A hora exata em que a mensagem foi enviada ou recebida, no formato `HH:MM:SS`.
+- **`tipoMensagem`**: Tipo da mensagem. Para mensagens de documentos, o valor será `"documentMessage"`.
+- **`evento`**: Descrição do evento disparado. No caso de uma mensagem de documento, será `"multimidia"`.
+- **`formato`**: O formato do documento enviado. Para este exemplo, será `"application/pdf"`, mas pode variar dependendo do tipo de documento.
+- **`arquivo`**: O conteúdo do arquivo de documento, codificado em **BASE64**. Este campo contém o conteúdo do arquivo como uma string de caracteres codificados.
+
+## Exemplo de Corpo do Webhook
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "documentMessage",
+  "evento": "multimidia",
+  "formato": "application/pdf",
+  "arquivo": "BASE64"
+}

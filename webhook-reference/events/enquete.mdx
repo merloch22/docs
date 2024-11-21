@@ -1,0 +1,105 @@
+---
+title: 'Enquete'
+---
+
+Este webhook é acionado para gerenciar enquetes, incluindo a criação de novas enquetes, a votação e a remoção de enquetes.
+
+### Parâmetros
+
+Esses parâmetros são usados tanto na criação, votação e remoção de enquetes:
+
+- **`tipo`**: Indica o remetente ou destinatário da mensagem. `"Me"` se for o dispositivo configurado que enviou, `"Chat"` se for o destinatário.
+- **`nome`**: Nome do remetente.
+- **`destinatario`**: Número do destinatário da mensagem.
+- **`remetente`**: Número do remetente da mensagem.
+- **`idMessagem`**: Identificador único da mensagem.
+- **`data`**: Data do evento.
+- **`horario`**: Hora do evento.
+- **`evento`**: Descrição do evento, será `"enquete"`.
+- **`tipoMensagem`**: Tipo da mensagem, para criação de enquete será `"pollCreationMessage" e para eventos de votação será `"poll"`.
+- **`mensagem`**: Contém o título da enquete e as opções de votação.
+
+#### Exemplo de Criação de Enquete
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "pollCreationMessage",
+  "mensagem": {
+    "titulo": "Escolha a opção",
+    "option1": "1",
+    "option2": "2",
+    "option3": "3"
+  },
+  "evento": "enquete"
+}
+```
+
+---
+
+#### Exemplo de votação
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "poll",
+  "mensagem": {
+    "option1": "1"
+  },
+  "evento": "enquete"
+}
+```
+
+---
+
+#### Exemplo desmarcar votação
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "poll",
+  "mensagem": {
+    "option": "null
+  },
+  "evento": "enquete"
+}
+```
+
+---
+
+#### Exemplo votação com multiplas escolhas
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "poll",
+  "mensagem": {
+    "option1": "1",
+    "option2": "2"
+  },
+  "evento": "enquete"
+}

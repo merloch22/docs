@@ -1,0 +1,36 @@
+---
+title: 'Reagir'
+---
+
+Este webhook é acionado quando uma reação é adicionada a uma mensagem. Ele fornece informações detalhadas sobre a mensagem original, o remetente, o tipo de reação e a mensagem que foi reagida.
+
+### Parâmetros
+
+- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
+- **`nome`**: Nome do remetente que adicionou a reação.
+- **`destinatario`**: Número de telefone do destinatário da mensagem.
+- **`remetente`**: Número de telefone do remetente da mensagem.
+- **`idMessagem`**: Identificador único da mensagem de reação.
+- **`data`**: A data em que a reação foi enviada.
+- **`horario`**: A hora exata em que a reação foi enviada, no formato `HH:MM:SS`.
+- **`tipoMensagem`**: Tipo da mensagem. Para reações, o valor será `"reactionMessage"`.
+- **`idMessagemInteragida`**: Identificador único da mensagem que foi reagida. Esse campo serve para identificar qual mensagem recebeu a reação.
+- **`evento`**: Descrição do evento disparado. No caso de uma reação, será `"reagida"`.
+- **`emojiReacao`**: O emoji utilizado como reação (exemplo: `"👍"`, `"❤️"`, `"😂"`).
+
+## Exemplo de Corpo do Webhook
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "reactionMessage",
+  "idMessagemInteragida": "3FEBE5EA25F269129293",
+  "evento": "reagida",
+  "emojiReacao": "👍"
+}

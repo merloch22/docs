@@ -1,0 +1,42 @@
+---
+title: 'Localização'
+---
+
+Este webhook é acionado quando uma mensagem de localização é enviada ou recebida. Ele fornece informações detalhadas sobre a localização, incluindo dados sobre o remetente, destinatário, a latitude, longitude, e o mapa (URL) associado.
+
+### Parâmetros
+
+- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
+- **`nome`**: Nome do remetente da mensagem.
+- **`destinatario`**: Número de telefone do destinatário da mensagem.
+- **`remetente`**: Número de telefone do remetente da mensagem.
+- **`idMessagem`**: Identificador único da mensagem de localização.
+- **`data`**: A data em que a mensagem foi enviada ou recebida.
+- **`horario`**: A hora exata em que a mensagem foi enviada ou recebida, no formato `HH:MM:SS`.
+- **`tipoMensagem`**: Tipo da mensagem. Para mensagens de localização, o valor será `"liveLocationMessage"`.
+- **`latitude`**: A latitude da localização enviada.
+- **`longitude`**: A longitude da localização enviada.
+- **`urlMapa`**: URL do mapa com a localização (exemplo: `https://maps.google.com/?q=LATITUDE,LONGITUDE`).
+- **`evento`**: Descrição do evento disparado. No caso de uma mensagem de localização, será `"localizacao"`.
+- **`formato`**: O formato da imagem associada à localização (exemplo: `image/jpeg`, `image/png`).
+- **`arquivo`**: O arquivo da imagem em formato Base64.
+
+## Exemplo de Corpo do Webhook
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "liveLocationMessage",
+  "latitude": -22.5108638,
+  "longitude": -15.1208519,
+  "urlMapa": "https://maps.google.com/?q=-22.5108638,-15.1208519",
+  "evento": "localizacao",
+  "formato": "image/jpeg",
+  "arquivo": "BASE64"
+}

@@ -1,0 +1,34 @@
+---
+title: 'Deletado'
+---
+
+Este webhook é acionado quando uma mensagem é deletada. Ele fornece informações detalhadas sobre a mensagem que foi excluída, incluindo dados sobre o remetente, destinatário, a mensagem original e outros detalhes relevantes.
+
+### Parâmetros
+
+- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
+- **`nome`**: Nome do remetente da mensagem original.
+- **`destinatario`**: Número de telefone do destinatário da mensagem, ou seja, para quem a mensagem foi enviada antes de ser deletada.
+- **`remetente`**: Número de telefone do remetente da mensagem original, ou seja, de quem a mensagem foi enviada antes de ser deletada.
+- **`idMessagem`**: Identificador único da mensagem deletada.
+- **`data`**: A data em que a mensagem foi deletada.
+- **`horario`**: A hora exata em que a mensagem foi deletada, no formato `HH:MM:SS`.
+- **`tipoMensagem`**: Tipo da mensagem. Para mensagens deletadas, o valor será `"protocolMessage"`.
+- **`idMessagemInteragida`**: O identificador único da mensagem que foi deletada. Esse campo serve para identificar qual mensagem foi excluída.
+- **`evento`**: Descrição do evento disparado. No caso de uma mensagem deletada, será `"deletada"`.
+
+## Exemplo de Corpo do Webhook
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "protocolMessage",
+  "idMessagemInteragida": "3FDFC846DFAB35BA8488",
+  "evento": "deletada"
+}

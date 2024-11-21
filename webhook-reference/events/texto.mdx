@@ -1,0 +1,34 @@
+---
+title: 'Texto'
+---
+
+Este webhook é acionado quando uma mensagem de texto é enviada ou recebida. Ele fornece informações detalhadas sobre o texto enviado, incluindo dados sobre o remetente, destinatário, o conteúdo da mensagem e outros detalhes.
+
+### Parâmetros
+
+- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
+- **`nome`**: Nome do remetente da mensagem.
+- **`destinatario`**: Número de telefone do destinatário da mensagem.
+- **`remetente`**: Número de telefone do remetente da mensagem.
+- **`idMessagem`**: Identificador único da mensagem de texto.
+- **`data`**: A data em que a mensagem foi enviada ou recebida.
+- **`horario`**: A hora exata em que a mensagem foi enviada ou recebida, no formato `HH:MM:SS`.
+- **`tipoMensagem`**: Tipo da mensagem. Para mensagens de texto, o valor será `"extendedTextMessage"`.
+- **`mensagem`**: O conteúdo da mensagem de texto enviada.
+- **`evento`**: Descrição do evento disparado. No caso de uma mensagem de texto, será `"texto"`.
+
+## Exemplo de Corpo do Webhook
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "destinatario": "558189769960",
+  "remetente": "559999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "18/11/2024",
+  "horario": "18:00:00",
+  "tipoMensagem": "extendedTextMessage",
+  "mensagem": "Oi",
+  "evento": "texto"
+}
