@@ -31,18 +31,6 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentação",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Comunidade",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    }
-  ],
   "navigation": [
     {
       "group": "Get Started",
@@ -53,50 +41,30 @@
       ]
     },
     {
-      "group": "Essentials",
-      "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
-      ]
-    },
-    {
-      "group": "API Documentation",
-      "pages": [
-        "api-reference/introduction"
-      ]
-    },
-    {
       "group": "Whatsapp (Globais)",
       "pages": [
-        "api-reference/endpoint/mensagemTexto",
-        "api-reference/endpoint/reagir",
-        "api-reference/endpoint/contato",
-        "api-reference/endpoint/apagar",
         "api-reference/endpoint/apagarChat",
+        "api-reference/endpoint/apagar",
         "api-reference/endpoint/arquivarChat",
         "api-reference/endpoint/cancelarMensagemAgendada",
-        "api-reference/endpoint/contato",
+        "api-reference/endpoint/textoParaAudio",
         "api-reference/endpoint/criarOTP",
+        "api-reference/endpoint/contato",
+        "api-reference/endpoint/mensagemTexto",
+        "api-reference/endpoint/enviarMensagemAgendada",
         "api-reference/endpoint/enviarTemplate",
         "api-reference/endpoint/fixarChats",
-        "api-reference/endpoint/ListarMensagensAgendadas",
+        "api-reference/endpoint/listarMensagensAgendadas",
         "api-reference/endpoint/localizacao",
-        "api-reference/endpoint/enviarMensagemAgendada",
-        "api-reference/endpoint/notificaoChat",
+        "api-reference/endpoint/notificacaoChat",
         "api-reference/endpoint/reagir",
         "api-reference/endpoint/responder",
-        "api-reference/endpoint/textoParaAudio",
-        "api-reference/endpoint/verificarOTP",
-        "api-reference/endpoint/localizacao"
+        "api-reference/endpoint/verificarOTP"
       ]
     }
   ],
   "footerSocials": {
-    "youtube": "https://youtube.com/menuia",
+    "youtube": "https://youtube.com/@menuia",
     "facebook": "https://www.facebook.com/menuiabrasil",
     "instagram": "https://www.instagram.com/menuiabrasil"
   }
