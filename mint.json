@@ -22,7 +22,7 @@
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
+    "name": "Acessar Dashboard",
     "url": "https://chatbot.menuia.com/login"
   },
   "tabs": [
@@ -33,11 +33,9 @@
   ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "Início,
       "pages": [
-        "introduction",
-        "quickstart",
-        "development"
+        "introduction"
       ]
     },
     {
