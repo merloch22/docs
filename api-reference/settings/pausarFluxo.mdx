@@ -1,0 +1,27 @@
+---
+title: 'Pausar ou Iniciar Conversa Chatbot (Fluxo)'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite pausar ou iniciar fluxos de conversa no chatbot, com base no status informado no parâmetro `statusFluxo`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `to`: Número de telefone do destinatário.  
+\* `message`: Valor obrigatório para indicar o conteúdo da mensagem. Para essa operação, deve ser `"false"`.  
+\* `statusFluxo`: Define o status do fluxo. Use `"Ativar"` para iniciar o fluxo ou `"Desativar"` para pausá-lo.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "false",
+  "statusFluxo": "Ativar"
+}

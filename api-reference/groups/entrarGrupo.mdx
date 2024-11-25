@@ -1,0 +1,26 @@
+---
+title: 'Entrar Usando Convite do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite que um usuário entre em um grupo utilizando o convite gerado para o grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é entrar no grupo usando o convite.  
+\* `entrarConvite`: Link do convite do grupo para o qual o usuário deseja entrar.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "entrarConvite": "https://chatbot.menuia.com/invite/ID_DO_GRUPO"
+}
+

@@ -45,24 +45,96 @@
     {
       "group": "Whatsapp (Globais)",
       "pages": [
-        "api-reference/endpoint/enviarMensagemAgendada",
-        "api-reference/endpoint/apagarChat",
-        "api-reference/endpoint/apagar",
-        "api-reference/endpoint/arquivarChat",
-        "api-reference/endpoint/cancelarMensagemAgendada",
-        "api-reference/endpoint/textoParaAudio",
-        "api-reference/endpoint/criarOTP",
-        "api-reference/endpoint/contato",
-        "api-reference/endpoint/mensagemTexto",
-        "api-reference/endpoint/enviarMultimidia",
-        "api-reference/endpoint/enviarTemplate",
-        "api-reference/endpoint/fixarChats",
-        "api-reference/endpoint/listarMensagensAgendadas",
-        "api-reference/endpoint/localizacao",
-        "api-reference/endpoint/notificacaoChat",
-        "api-reference/endpoint/reagir",
-        "api-reference/endpoint/responder",
-        "api-reference/endpoint/verificarOTP"
+        "api-reference/create-message/enviarMensagemAgendada",
+        "api-reference/create-message/apagarChat",
+        "api-reference/create-message/apagar",
+        "api-reference/create-message/arquivarChat",
+        "api-reference/create-message/cancelarMensagemAgendada",
+        "api-reference/create-message/textoParaAudio",
+        "api-reference/create-message/criarOTP",
+        "api-reference/create-message/contato",
+        "api-reference/create-message/mensagemTexto",
+        "api-reference/create-message/enviarMultimidia",
+        "api-reference/create-message/enviarTemplate",
+        "api-reference/create-message/fixarChats",
+        "api-reference/create-message/listarMensagensAgendadas",
+        "api-reference/create-message/localizacao",
+        "api-reference/create-message/notificacaoChat",
+        "api-reference/create-message/reagir",
+        "api-reference/create-message/responder",
+        "api-reference/create-message/verificarOTP"
+      ]
+    },
+    {
+      "group": "Grupo",
+      "pages": [
+        "api-reference/groups/descricaoGrupo",
+        "api-reference/groups/tituloGrupo",
+        "api-reference/groups/criarGrupo",
+        "api-reference/groups/entrarGrupo",
+        "api-reference/groups/infoGrupo",
+        "api-reference/groups/gerenciarGrupo",
+        "api-reference/groups/conviteGrupo",
+        "api-reference/groups/obterGrupos",
+        "api-reference/groups/permissoesGrupo",
+        "api-reference/groups/sairGrupo"
+      ]
+    },
+    {
+      "group": "Voz",
+      "pages": [
+        "api-reference/voice/converter"
+      ]
+    },
+    {
+      "group": "Media",
+      "pages": [
+        "api-reference/media/converter"
+      ]
+    },
+    {
+      "group": "Revenda",
+      "pages": [
+        "api-reference/developer/adicionarDispositivo",
+        "api-reference/developer/apagarDispositivo",
+        "api-reference/developer/criarAplicativo",
+        "api-reference/developer/criarLinkQr",
+        "api-reference/developer/desconectarDispositivo",
+        "api-reference/developer/editarDispositivo",
+        "api-reference/developer/excluirLinkQr",
+        "api-reference/developer/listarLinkQr",
+        "api-reference/developer/infoDevices",
+        "api-reference/developer/reconectarDispositivo",
+        "api-reference/developer/statusDispositivo"
+
+      ]
+    },
+    {
+      "group": "Informações da Conta",
+      "pages": [
+        "api-reference/auth/logar",
+        "api-reference/auth/registrar"
+      ]
+    },
+    {
+      "group": "Informações do Sistema",
+      "pages": [
+        "api-reference/info/obterLista"
+      ]
+    },
+    {
+      "group": "Configurações",
+      "pages": [
+        "api-reference/settings/alterarNome",
+        "api-reference/settings/bloqueioUsuario",
+        "api-reference/settings/deletarFluxo",
+        "api-reference/settings/webhook",
+        "api-reference/settings/editarStatus",
+        "api-reference/settings/obterChats",
+        "api-reference/settings/obterImage",
+        "api-reference/settings/obterStatus",
+        "api-reference/settings/pausarFluxo",
+        "api-reference/settings/verificarUsuario"
       ]
     },
     {

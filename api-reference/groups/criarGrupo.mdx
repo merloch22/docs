@@ -1,0 +1,27 @@
+---
+title: 'Criar Grupos'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite criar um novo grupo, especificando o nome do grupo e a lista de usuários que devem ser adicionados.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nome do grupo que será criado.  
+\* `usuarios`: Lista de usuários para adicionar ao grupo, separados por hífen (`-`).  
+\* `criarGrupo`: Deve ser "true" para criar o grupo.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Nome do Grupo",
+  "usuarios": "5581989769960-55819988775522",
+  "criarGrupo": "true"
+}

@@ -1,0 +1,25 @@
+---
+title: 'Obter Lista de Grupos'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite obter uma lista de grupos cadastrados, retornando o nome e o ID de cada grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "listagrupo" para listar os grupos.  
+\* `grupo`: Deve ser "true" para ativar a listagem de grupos.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "listagrupo",
+  "grupo": "true"
+}

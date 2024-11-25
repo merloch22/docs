@@ -1,0 +1,25 @@
+---
+title: 'Criar Link de Compartilhamento de QRcode'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite criar um link de compartilhamento de QRcode para um dispositivo, fornecendo o `appkey` ou nome do dispositivo.
+
+### Parâmetros
+
+\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nome para o dispositivo que gerará o link do QRcode.  
+\* `GerenciarLinks`: Deve ser "conectar" para criar o link de compartilhamento de QRcode.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "nome para o dispositivo",
+  "GerenciarLinks": "conectar"
+}

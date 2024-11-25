@@ -1,0 +1,25 @@
+---
+title: 'Sair do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite que um usuário saia de um grupo especificado, fornecendo o ID do grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o usuário deseja sair do grupo.  
+\* `sairGrupo`: ID do grupo do qual o usuário deseja sair.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "sairGrupo": "ID_DO_GRUPO"
+}

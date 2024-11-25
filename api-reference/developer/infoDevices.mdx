@@ -1,0 +1,23 @@
+---
+title: 'Obter Informações de Todos Dispositivos'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite obter informações sobre todos os dispositivos registrados, incluindo ID, webhook, nome, número de telefone e a chave de autenticação (`authkey`).
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é obter as informações dos dispositivos.  
+\* `dispositivos`: Deve ser "true" para ativar a consulta das informações dos dispositivos.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "dispositivos": "true"
+}

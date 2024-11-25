@@ -1,0 +1,27 @@
+---
+title: 'Alterar Título do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite alterar o título de um grupo existente, especificando o novo título e o ID do grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Novo título do grupo.  
+\* `to`: ID do grupo cujo título será alterado.  
+\* `tituloGrupo`: Deve ser "true" para ativar a alteração de título.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Novo Título do Grupo",
+  "to": "ID_DO_GRUPO",
+  "tituloGrupo": "true"
+}

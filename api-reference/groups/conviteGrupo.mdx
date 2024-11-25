@@ -1,0 +1,25 @@
+---
+title: 'Obter Convite do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite obter o convite para um grupo especificado, utilizando o ID do grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é obter o convite para o grupo.  
+\* `obterConvite`: ID do grupo para o qual o convite será gerado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "obterConvite": "ID_DO_GRUPO"
+}

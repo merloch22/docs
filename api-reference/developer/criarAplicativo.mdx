@@ -1,0 +1,23 @@
+---
+title: 'Criar Aplicativo (appkey)'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite criar um novo aplicativo (gerando um `appkey`), associando-o a um dispositivo especificado. O nome do aplicativo é definido pelo usuário, e o dispositivo ao qual ele será associado é indicado por seu ID ou nome.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nome do aplicativo a ser criado.  
+\* `criarApp`: ID ou nome do dispositivo ao qual o aplicativo será associado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Nome do App",
+  "criarApp": "ID_OU_NOME_DO_DISPOSITIVO"
+}

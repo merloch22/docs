@@ -1,0 +1,25 @@
+---
+title: 'Extrair Informações do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite extrair todas as informações de um grupo, como descrição, título, contatos e outras configurações, usando o ID ou o convite do grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é extrair informações do grupo.  
+\* `infoConvite`: ID do grupo ou o convite do grupo utilizado para extrair as informações.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "infoConvite": "ID_OU_CONVITE_DO_GRUPO"
+}

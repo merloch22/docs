@@ -1,0 +1,27 @@
+---
+title: 'Deletar Conversa Chatbot (Fluxo)'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite deletar conversas relacionadas a fluxos do chatbot. O endpoint aceita a exclusão de conversas específicas ou de todas as conversas relacionadas, com base nos parâmetros fornecidos.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `to`: Número de telefone do destinatário ou o valor `"todos"` para apagar conversas de todos os usuários.  
+\* `message`: Valor obrigatório para indicar o conteúdo da mensagem. Para deletar, deve ser `"false"`.  
+\* `deleteConversaFluxo`: Deve ser `"true"` para confirmar a exclusão das conversas relacionadas ao fluxo.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "false",
+  "deleteConversaFluxo": "true"
+}

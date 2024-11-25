@@ -128,6 +128,842 @@
           }
         }
       }
+    },
+    "/api/settings": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/auth": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/developer": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/groups": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/info": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/media": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "servers": [
+          {
+            "url": "https://textscan.menuia.com"
+          }
+        ],
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/voice": {
+      "post": {
+        "summary": "Enviar mensagem",
+        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
+        "servers": [
+          {
+            "url": "https://textscan.menuia.com"
+          }
+        ],
+        "requestBody": {
+          "description": "Parâmetros necessários para enviar uma mensagem.",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "appkey": {
+                    "type": "string",
+                    "description": "Chave de aplicação."
+                  },
+                  "authkey": {
+                    "type": "string",
+                    "description": "Chave de autenticação do usuário."
+                  },
+                  "to": {
+                    "type": "string",
+                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                  },
+                  "message": {
+                    "type": "string",
+                    "description": "Conteúdo da mensagem."
+                  }
+                },
+                "required": ["appkey", "authkey", "to", "message"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Mensagem enviada com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Mensagem enviada com sucesso."
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "validation.required",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 401
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "validation.required"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "string.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 403
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "<string>"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Nenhum dispositivo encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 }

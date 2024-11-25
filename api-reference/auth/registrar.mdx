@@ -1,0 +1,29 @@
+---
+title: 'Registrar e Obter Informações de Usuário'
+openapi: 'POST /api/auth'
+---
+
+## Descrição
+
+Este endpoint permite registrar um novo usuário e obter informações como nome, e-mail, telefone, `authkey`, data de expiração e o plano do usuário.
+
+### Parâmetros
+
+* `email`: O e-mail do usuário para registro.
+* `senha`: A senha do usuário para registro.
+* `nome`: Nome completo do usuário.
+* `telefone`: Número de telefone do usuário (incluindo código do país).
+* `plano`: ID do plano do usuário.
+* `auth`: Identificador da requisição, deve ser "registrar" para registrar um novo usuário.
+
+### Exemplo de Requisição:
+
+```json
+{
+  "email": "exemplo@exemplo.com",
+  "senha": "Sua senha aqui",
+  "nome": "João",
+  "telefone": "+558198976996",
+  "plano": "ID do plano",
+  "auth": "registrar"
+}

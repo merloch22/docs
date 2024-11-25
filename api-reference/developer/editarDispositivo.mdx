@@ -1,0 +1,27 @@
+---
+title: 'Editar Dispositivo'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite editar as informações de um dispositivo, como o nome e o URL do webhook. O ID ou nome do dispositivo é fornecido para identificar qual dispositivo será editado.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: ID ou nome do dispositivo a ser editado.  
+\* `webhook`: (Opcional) Novo URL do webhook a ser associado ao dispositivo.  
+\* `nome`: (Opcional) Novo nome do dispositivo.  
+\* `editeDispositivo`: Deve ser "true" para indicar que o dispositivo será editado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "ID ou Nome do Dispositivo",
+  "webhook": "https://exemplo.com/novo_webhook",
+  "nome": "Novo Nome do Dispositivo",
+  "editeDispositivo": "true"
+}

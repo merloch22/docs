@@ -1,0 +1,27 @@
+---
+title: 'Excluir Link de Compartilhamento de QRcode'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite excluir um link de compartilhamento de QRcode de um dispositivo, fornecendo o `appkey` ou nome do dispositivo, além do nome ou ID do dispositivo cujo link será excluído.
+
+### Parâmetros
+
+\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é excluir o link de QRcode.  
+\* `to`: Nome ou ID do dispositivo cujo link de QRcode será excluído.  
+\* `GerenciarLinks`: Deve ser "excluir" para excluir o link de compartilhamento de QRcode.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "to": "Nome ou id do dispositivo",
+  "GerenciarLinks": "excluir"
+}

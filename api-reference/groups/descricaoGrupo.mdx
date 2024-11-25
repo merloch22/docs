@@ -1,0 +1,27 @@
+---
+title: 'Alterar Descrição do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite alterar a descrição de um grupo existente, especificando a nova descrição e o ID do grupo.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nova descrição do grupo.  
+\* `to`: ID do grupo cuja descrição será alterada.  
+\* `descGrupo`: Deve ser "true" para ativar a alteração de descrição.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Nova descrição do grupo",
+  "to": "ID_DO_GRUPO",
+  "descGrupo": "true"
+}

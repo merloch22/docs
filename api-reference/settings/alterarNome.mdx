@@ -1,0 +1,25 @@
+---
+title: 'Alterar Nome'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite alterar o nome associado a um fluxo ou configuração do chatbot. A alteração é confirmada pelo parâmetro `altereNome`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Novo nome a ser atribuído.  
+\* `altereNome`: Deve ser `"true"` para confirmar a alteração do nome.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Novo nome aqui",
+  "altereNome": "true"
+}

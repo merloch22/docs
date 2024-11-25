@@ -1,0 +1,23 @@
+---
+title: 'Desconectar Dispositivo'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite desconectar um dispositivo, fornecendo o ID ou nome do dispositivo que será desconectado.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: ID ou nome do dispositivo a ser desconectado.  
+\* `desconectar`: Deve ser "true" para indicar que o dispositivo será desconectado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "ID ou Nome do Dispositivo",
+  "desconectar": "true"
+}

@@ -1,0 +1,23 @@
+---
+title: 'Apagar Dispositivo'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite apagar um dispositivo do sistema, fornecendo o ID ou nome do dispositivo a ser apagado.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: ID ou nome do dispositivo a ser apagado.  
+\* `apagarDispositivo`: Deve ser "true" para indicar que o dispositivo será apagado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "ID ou Nome do Dispositivo",
+  "apagarDispositivo": "true"
+}

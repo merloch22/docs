@@ -1,0 +1,31 @@
+---
+title: 'Permissões do Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite definir permissões para um grupo, controlando quem pode enviar mensagens, alterar a imagem do grupo e outras permissões, como se a mensagem é restrita aos administradores ou pode ser enviada por todos.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Tipo de permissão a ser configurada. As opções incluem:
+  - `not_announcement`: Todos podem enviar mensagens.  
+  - `announcement`: Apenas administradores podem enviar mensagens.  
+  - `unlocked`: Todos podem alterar a imagem do grupo.  
+  - `locked`: Apenas administradores podem alterar a imagem do grupo.  
+\* `to`: ID do grupo cuja permissão será alterada.  
+\* `permissaoGrupo`: Deve ser "true" para ativar a alteração das permissões.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "not_announcement",
+  "to": "ID_DO_GRUPO",
+  "permissaoGrupo": "true"
+}

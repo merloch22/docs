@@ -1,0 +1,29 @@
+---
+title: 'Desativar e Ativar Webhooks'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite ativar ou desativar webhooks para chats ou grupos no sistema do chatbot. A operação é configurada pelo parâmetro `statusWebhook`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `type`: Define o tipo de webhook, sendo `"chat"` ou `"grupo"`.  
+\* `message`: ID do dispositivo relacionado ao webhook.  
+\* `statusWebhook`: Deve ser `"true"` para ativar ou `"false"` para desativar o webhook.
+
+### Exemplo de requisição:
+
+#### Ativar um webhook:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "type": "chat",
+  "message": "ID_DISPOSITIVO_AQUI",
+  "statusWebhook": "true"
+}

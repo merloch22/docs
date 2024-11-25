@@ -1,0 +1,27 @@
+---
+title: 'Obter Status de Usuários'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite obter o status de um usuário específico no sistema do chatbot. A operação é ativada pelo parâmetro `obterStatus`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `to`: Número de telefone do usuário para quem o status será obtido (exemplo: `5581989769960`).  
+\* `message`: Deve ser `"false"` para realizar a operação.  
+\* `obterStatus`: Deve ser `"true"` para solicitar o status do usuário.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "+5581989769960",
+  "message": "false",
+  "obterStatus": "true"
+}

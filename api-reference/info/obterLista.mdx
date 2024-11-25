@@ -1,0 +1,19 @@
+---
+title: 'Obter Lista de Planos'
+openapi: 'POST /api/info'
+---
+
+## Descrição
+
+Este endpoint permite obter a lista de planos disponíveis no sistema. A resposta inclui informações sobre os planos, como o nome do plano, preço, descrição e outras características associadas.
+
+### Parâmetros
+
+* `planos`: Deve ser definido como `"true"` para obter a lista de planos.
+
+### Exemplo de Requisição:
+
+```json
+{
+  "planos": "true"
+}

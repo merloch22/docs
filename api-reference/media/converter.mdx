@@ -1,0 +1,25 @@
+---
+title: 'Conversor Imagem/PDF para Texto'
+openapi: 'POST /api/media'
+---
+
+## Descrição
+
+Este endpoint permite converter arquivos de imagem ou PDF para texto. O arquivo pode ser enviado como URL ou como base64, e a API retornará o texto extraído.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação da API.
+
+\* `file`: O arquivo a ser processado, que pode ser enviado como URL ou em formato base64.
+
+\* `format`: O formato do arquivo, que pode ser `image` ou `pdf`.
+
+### Exemplo de requisição:
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "file": "URL ou base64 do arquivo",
+  "format": "pdf"  // ou "JPG", "PNG"...
+}

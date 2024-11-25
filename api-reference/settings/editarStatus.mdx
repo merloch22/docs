@@ -1,0 +1,25 @@
+---
+title: 'Editar Status'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite editar o status de um fluxo ou mensagem no chatbot, utilizando o parâmetro `editeStatus`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Novo status que será atribuído.  
+\* `editeStatus`: Deve ser `"true"` para confirmar a edição do status.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Novo status aqui",
+  "editeStatus": "true"
+}

@@ -1,0 +1,25 @@
+---
+title: 'Adicionar Dispositivo (QR CODE)'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite adicionar um novo dispositivo ao sistema utilizando um QR Code para autenticação. O dispositivo é identificado por um nome, e pode incluir um webhook opcional para notificações.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nome do dispositivo a ser registrado.  
+\* `conecteQR`: Deve ser "true" para indicar que a autenticação será feita via QR Code.  
+\* `webhook`: (Opcional) URL do webhook para notificações do dispositivo.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "Nome do Dispositivo",
+  "conecteQR": "true",
+  "webhook": "https://exemplo.com/webhook"
+}

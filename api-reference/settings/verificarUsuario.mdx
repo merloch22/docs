@@ -1,0 +1,25 @@
+---
+title: 'Verificar se o Contato Está no WhatsApp'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite verificar se um número de telefone está registrado no WhatsApp. A operação é ativada pelo parâmetro `checkDevice`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser `"false"` para realizar a operação.  
+\* `checkDevice`: Número de telefone a ser verificado (exemplo: `5581989769960`).
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "checkDevice": "5581989769960"
+}

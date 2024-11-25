@@ -1,0 +1,25 @@
+---
+title: 'Obter Lista de Chats'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite obter a lista de chats disponíveis no sistema do chatbot. A operação é ativada pelo parâmetro `listChat`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser `"false"` para realizar a operação.  
+\* `listChat`: Deve ser `"true"` para solicitar a lista de chats.
+
+### Exemplo de requisição:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "listChat": "true"
+}

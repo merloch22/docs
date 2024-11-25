@@ -1,0 +1,29 @@
+---
+title: 'Bloquear e Desbloquear Usuário'
+openapi: 'POST /api/settings'
+---
+
+## Descrição
+
+Este endpoint permite bloquear ou desbloquear um usuário no sistema do chatbot. A operação é controlada pelo valor do parâmetro `message` (block/unblock) e confirmada pelo parâmetro `desBlock`.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `to`: Número de telefone do usuário a ser bloqueado ou desbloqueado (exemplo: `5581989769960`).  
+\* `message`: Deve ser `"block"` para bloquear ou `"unblock"` para desbloquear o usuário.  
+\* `desBlock`: Deve ser `"true"` para confirmar a operação.
+
+### Exemplo de requisição:
+
+#### Bloquear um usuário:
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "to": "5581989769960",
+  "message": "block",
+  "desBlock": "true"
+}

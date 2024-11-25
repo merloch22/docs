@@ -1,0 +1,23 @@
+---
+title: 'Logar e Obter Informações de Usuário'
+openapi: 'POST /api/auth'
+---
+
+## Descrição
+
+Este endpoint permite autenticar um usuário e obter informações como nome, e-mail, telefone, `authkey` e a data de expiração do acesso.
+
+### Parâmetros
+
+* `email`: O e-mail do usuário para autenticação.
+* `senha`: A senha do usuário para autenticação.
+* `auth`: Identificador da requisição, deve ser "login" para logar.
+
+### Exemplo de Requisição:
+
+```json
+{
+  "email": "exemplo@exemplo.com",
+  "senha": "Sua senha aqui",
+  "auth": "login"
+}

@@ -1,0 +1,23 @@
+---
+title: 'Verificar Status do Dispositivo'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite verificar o status de um dispositivo, incluindo informações como ID, número de telefone, nome, e webhook associados ao dispositivo.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: ID ou nome do dispositivo que será verificado.  
+\* `checkDispositivo`: Deve ser "true" para verificar o status do dispositivo.
+
+### Exemplo de Requisição
+
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "ID ou Nome do Dispositivo",
+  "checkDispositivo": "true"
+}

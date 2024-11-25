@@ -1,0 +1,27 @@
+---
+title: 'Reconectar Dispositivo via Link de Compartilhamento de QRcode'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite reconectar um dispositivo usando o link de compartilhamento de QRcode, fornecendo o `appkey` ou nome do dispositivo, além do nome ou ID do dispositivo que será reconectado.
+
+### Parâmetros
+
+\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Nome para o link que será usado para reconectar o dispositivo.  
+\* `to`: Nome ou ID do dispositivo a ser reconectado.  
+\* `GerenciarLinks`: Deve ser "reconectar" para realizar a reconexão via link de QRcode.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "nome para link",
+  "to": "Nome ou id do dispositivo",
+  "GerenciarLinks": "reconectar"
+}

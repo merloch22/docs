@@ -1,0 +1,27 @@
+---
+title: 'Transcrição de Áudio para Texto'
+openapi: 'POST /api/voice'
+---
+
+## Descrição
+
+Este endpoint permite transcrever arquivos de áudio para texto. O arquivo pode ser enviado como URL ou como base64, e a API retornará o texto transcrito.
+
+### Parâmetros
+
+\* `authkey`: Chave de autenticação da API.
+
+\* `audio`: O arquivo de áudio a ser processado, que pode ser enviado como URL ou em formato base64.
+
+\* `format`: O formato do áudio, como `mp3`, `wav`, `ogg`, etc.
+
+### Exemplo de requisição:
+
+```bash
+curl --location 'https://textscan.menuia.com/api/voice' \
+--header 'Content-Type: application/json' \
+--data '{
+    "authkey":"A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+    "audio":"URL ou base64 do arquivo de áudio",
+    "format":"mp3"  // ou "wav", "ogg", etc.
+}'

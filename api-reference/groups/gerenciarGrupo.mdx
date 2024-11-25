@@ -1,0 +1,31 @@
+---
+title: 'Gerenciar Grupo'
+openapi: 'POST /api/groups'
+---
+
+## Descrição
+
+Este endpoint permite gerenciar membros de um grupo existente. As ações disponíveis são: adicionar usuários, remover usuários, promover membros a administradores e rebaixar administradores a membros regulares.
+
+### Parâmetros
+
+\* `appkey`: Chave da aplicação.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Ação a ser realizada no grupo. Valores possíveis:  
+  - `add`: Adicionar usuários.  
+  - `remove`: Remover usuários.  
+  - `promote`: Promover usuários a administradores.  
+  - `demote`: Rebaixar administradores a membros.  
+\* `usuarios`: Lista de usuários a serem gerenciados, separados por hífen (`-`).  
+\* `gerenciarGrupo`: ID do grupo a ser gerenciado.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "add",
+  "usuarios": "5581989769960-55819988775522",
+  "gerenciarGrupo": "ID_DO_GRUPO"
+}

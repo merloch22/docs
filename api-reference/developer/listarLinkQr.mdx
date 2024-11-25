@@ -1,0 +1,25 @@
+---
+title: 'Listar Links de Compartilhamento de QRcode'
+openapi: 'POST /api/developer'
+---
+
+## Descrição
+
+Este endpoint permite listar os links de compartilhamento de QRcode associados ao aplicativo ou dispositivo, fornecendo o `appkey` ou nome do dispositivo.
+
+### Parâmetros
+
+\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
+\* `authkey`: Chave de autenticação do usuário.  
+\* `message`: Deve ser "false" para indicar que o objetivo é listar os QRcodes.  
+\* `listaQrcode`: Deve ser "true" para listar os links de compartilhamento de QRcode.
+
+### Exemplo de Requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "message": "false",
+  "listaQrcode": "true"
+}
