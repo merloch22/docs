@@ -17,11 +17,10 @@ Este endpoint permite transcrever arquivos de áudio para texto. O arquivo pode 
 
 ### Exemplo de requisição:
 
-```bash
-curl --location 'https://textscan.menuia.com/api/voice' \
---header 'Content-Type: application/json' \
---data '{
-    "authkey":"A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
-    "audio":"URL ou base64 do arquivo de áudio",
-    "format":"mp3"  // ou "wav", "ogg", etc.
-}'
+```json
+{
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "audio": "URL ou base64 do arquivo",
+  "format": "pdf"  // ou "JPG", "PNG"...
+}
+

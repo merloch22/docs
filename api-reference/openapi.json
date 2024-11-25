@@ -13,8 +13,6 @@
   "paths": {
     "/api/create-message": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -131,8 +129,6 @@
     },
     "/api/settings": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -249,8 +245,6 @@
     },
     "/api/auth": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -259,24 +253,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "appkey": {
+                  "email": {
                     "type": "string",
-                    "description": "Chave de aplicação."
+                    "description": "O e-mail do usuário para autenticação."
                   },
-                  "authkey": {
+                  "senha": {
                     "type": "string",
-                    "description": "Chave de autenticação do usuário."
+                    "description": "A senha do usuário para autenticação."
                   },
-                  "to": {
+                  "auth": {
                     "type": "string",
-                    "description": "Número de telefone no formato internacional ou ID do grupo."
-                  },
-                  "message": {
-                    "type": "string",
-                    "description": "Conteúdo da mensagem."
+                    "description": "Identificador da requisição."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": ["email", "senha", "auth"]
               }
             }
           }
@@ -367,8 +357,6 @@
     },
     "/api/developer": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -485,8 +473,6 @@
     },
     "/api/groups": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -603,8 +589,6 @@
     },
     "/api/info": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "requestBody": {
           "description": "Parâmetros necessários para enviar uma mensagem.",
           "required": true,
@@ -613,24 +597,12 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "appkey": {
+                  "planos": {
                     "type": "string",
                     "description": "Chave de aplicação."
-                  },
-                  "authkey": {
-                    "type": "string",
-                    "description": "Chave de autenticação do usuário."
-                  },
-                  "to": {
-                    "type": "string",
-                    "description": "Número de telefone no formato internacional ou ID do grupo."
-                  },
-                  "message": {
-                    "type": "string",
-                    "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": ["planos"]
               }
             }
           }
@@ -721,8 +693,6 @@
     },
     "/api/media": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "servers": [
           {
             "url": "https://textscan.menuia.com"
@@ -736,24 +706,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "appkey": {
-                    "type": "string",
-                    "description": "Chave de aplicação."
-                  },
                   "authkey": {
                     "type": "string",
                     "description": "Chave de autenticação do usuário."
                   },
-                  "to": {
+                  "file": {
                     "type": "string",
-                    "description": "Número de telefone no formato internacional ou ID do grupo."
+                    "description": "O arquivo a ser processado, que pode ser enviado como URL ou em formato base64."
                   },
-                  "message": {
+                  "format": {
                     "type": "string",
-                    "description": "Conteúdo da mensagem."
+                    "description": "O formato do arquivo"
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": ["authkey", "file", "format"]
               }
             }
           }
@@ -844,8 +810,6 @@
     },
     "/api/voice": {
       "post": {
-        "summary": "Enviar mensagem",
-        "description": "Permite enviar uma mensagem para um número de telefone ou grupo.",
         "servers": [
           {
             "url": "https://textscan.menuia.com"

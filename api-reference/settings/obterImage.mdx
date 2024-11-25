@@ -1,18 +1,19 @@
 ---
-title: 'Obter Lista de Chats'
+title: 'Obter Imagem (Usuários ou Grupo)'
 openapi: 'POST /api/settings'
 ---
 
 ## Descrição
 
-Este endpoint permite obter a lista de chats disponíveis no sistema do chatbot. A operação é ativada pelo parâmetro `listChat`.
+Este endpoint permite obter a imagem de um usuário ou grupo no sistema do chatbot. A operação é ativada pelo parâmetro `obterImagem`.
 
 ### Parâmetros
 
 \* `appkey`: Chave da aplicação.  
 \* `authkey`: Chave de autenticação do usuário.  
+\* `to`: Número do usuário (ex: `5581989769960`) ou ID do grupo (ex: `120363180117806010@g.us`).  
+\* `obterImagem`: Deve ser `"true"` para solicitar a imagem.  
 \* `message`: Deve ser `"false"` para realizar a operação.  
-\* `listChat`: Deve ser `"true"` para solicitar a lista de chats.
 
 ### Exemplo de requisição:
 
@@ -20,6 +21,7 @@ Este endpoint permite obter a lista de chats disponíveis no sistema do chatbot.
 {
   "appkey": "SUA_APPKEY_AQUI",
   "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "false",
-  "listChat": "true"
+  "to": "5581989769960 ou 120363180117806010@g.us",
+  "obterImagem": "true",
+  "message": "false"
 }
