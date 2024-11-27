@@ -161,7 +161,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "Sucesso.",
             "content": {
               "application/json": {
                 "schema": {
@@ -173,7 +173,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "Sucesso"
                     }
                   }
                 }
@@ -181,7 +181,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "Ocorreu uma falha na requisição",
             "content": {
               "application/json": {
                 "schema": {
@@ -193,27 +193,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "string.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 403
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "<string>"
+                      "example": "Ocorreu uma falha na requisição"
                     }
                   }
                 }
@@ -389,7 +369,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -401,7 +381,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -409,7 +389,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -421,7 +401,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
+                      "example": "<string>"
                     }
                   }
                 }
@@ -449,7 +429,7 @@
             }
           },
           "404": {
-            "description": "Nenhum dispositivo encontrado.",
+            "description": "string.",
             "content": {
               "application/json": {
                 "schema": {
@@ -461,7 +441,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Nenhum dispositivo encontrado."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -505,7 +485,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -517,7 +497,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -525,7 +505,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -537,7 +517,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
+                      "example": "<string>"
                     }
                   }
                 }
@@ -545,7 +525,7 @@
             }
           },
           "403": {
-            "description": "string.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -609,7 +589,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "Lista de planos obtidas com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
@@ -621,7 +601,11 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "Lista de planos obtidas com sucesso!"
+                    },
+                    "dados": {
+                      "type": "string",
+                      "example": "JSON"
                     }
                   }
                 }
@@ -629,7 +613,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "Nenhuma opção da api selecionada",
             "content": {
               "application/json": {
                 "schema": {
@@ -641,47 +625,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "string.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 403
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "<string>"
-                    }
-                  }
-                }
-              }
-            }
-          },
-          "404": {
-            "description": "Nenhum dispositivo encontrado.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 404
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Nenhum dispositivo encontrado."
+                      "example": "Nenhuma opção da api selecionada"
                     }
                   }
                 }
@@ -726,7 +670,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -738,7 +682,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -746,7 +690,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -758,7 +702,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
+                      "example": "<string>"
                     }
                   }
                 }
@@ -786,7 +730,7 @@
             }
           },
           "404": {
-            "description": "Nenhum dispositivo encontrado.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -798,7 +742,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Nenhum dispositivo encontrado."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -847,7 +791,7 @@
         },
         "responses": {
           "200": {
-            "description": "Mensagem enviada com sucesso.",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -859,7 +803,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "Mensagem enviada com sucesso."
+                      "example": "<string>"
                     }
                   }
                 }
@@ -867,7 +811,7 @@
             }
           },
           "401": {
-            "description": "validation.required",
+            "description": "string",
             "content": {
               "application/json": {
                 "schema": {
@@ -879,7 +823,7 @@
                     },
                     "message": {
                       "type": "string",
-                      "example": "validation.required"
+                      "example": "<string>"
                     }
                   }
                 }
