@@ -43,6 +43,12 @@
       ]
     },
     {
+      "group": "Início",
+      "pages": [
+        "api-reference/pages/introducao"
+      ]
+    },
+    {
       "group": "Whatsapp (Globais)",
       "pages": [
         "api-reference/create-message/enviarMensagemAgendada",
