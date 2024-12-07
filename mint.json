@@ -43,9 +43,21 @@
       ]
     },
     {
+      "group": "Chatbot Fluxo",
+      "pages": [
+        "introduction"
+      ]
+    },
+    {
+      "group": "Plugin Wordpress",
+      "pages": [
+        "pages/plugins/introducao"
+      ]
+    },
+    {
       "group": "Início",
       "pages": [
-        "api-reference/pages/introducao"
+        "api-reference/introduction"
       ]
     },
     {
