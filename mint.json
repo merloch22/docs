@@ -45,19 +45,56 @@
     {
       "group": "Chatbot Fluxo",
       "pages": [
-        "pages/fluxo/introducao"
+        "pages/fluxo/criandoFluxo",
+        "pages/fluxo/configurandoFluxo",
+        "pages/fluxo/publicando",
+        "pages/fluxo/bubble",
+        "pages/fluxo/inputs",
+        {
+          "group": "Condicionais",
+          "pages": [
+            "pages/fluxo/condicionais/variaveis",
+            "pages/fluxo/condicionais/variaveisGlobais",
+            "pages/fluxo/condicionais/condicoes",
+            "pages/fluxo/condicionais/espera",
+            "pages/fluxo/condicionais/pular"
+          ]
+        }
       ]
     },
     {
       "group": "Plugin Wordpress",
       "pages": [
-        "pages/plugins/introducao"
-      ]
-    },
-    {
-      "group": "Início",
-      "pages": [
-        "api-reference/introduction"
+        {
+          "group": "Instalação Passo a Passo",
+          "pages": [
+            "pages/wordpress/instalacao/introducao",
+            "pages/wordpress/instalacao/instalacao",
+            "pages/wordpress/instalacao/obtendoAuthkey",
+            "pages/wordpress/instalacao/authkey"
+
+          ]
+        },
+        "pages/wordpress/addWhatsapp",
+        {
+          "group": "Introdução à Recuperação de Pagamentos e Carrinhos Abandonados via WhatsApp",
+          "pages": [
+            "pages/wordpress/recuperacao/introducao",
+            "pages/wordpress/recuperacao/carrinho",
+            "pages/wordpress/recuperacao/pagamentos"
+          ]
+        },
+        {
+          "group": "Shortcodes",
+          "pages": [
+            "pages/wordpress/shortcodes/introducao",
+            "pages/wordpress/shortcodes/info",
+            "pages/wordpress/shortcodes/carrinho",
+            "pages/wordpress/shortcodes/envios",
+            "pages/wordpress/shortcodes/loja",
+            "pages/wordpress/shortcodes/pedidos"
+          ]
+        }
       ]
     },
     {
@@ -153,12 +190,6 @@
         "api-reference/settings/obterStatus",
         "api-reference/settings/pausarFluxo",
         "api-reference/settings/verificarUsuario"
-      ]
-    },
-    {
-      "group": "Webhook",
-      "pages": [
-        "webhook-reference/introduction"
       ]
     },
     {
