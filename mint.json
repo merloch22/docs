@@ -31,15 +31,45 @@
       "url": "api-reference"
     },
     {
-      "name": "Webhook",
+      "name": "Eventos do Webhook",
       "url": "webhook-reference"
     }
   ],
   "navigation": [
     {
-      "group": "Início",
+      "group": "API",
       "pages": [
-        "introduction"
+        "pages/introducao",
+        {
+          "group": "Endpoints e Tokens",
+          "pages": [
+            "pages/endpoints/introducao",
+            "pages/endpoints/authkey",
+            "pages/endpoints/appkey"
+          ]
+        },
+        {
+          "group": "Parâmetros",
+          "pages": [
+            "pages/parametros/introducao",
+            "pages/parametros/destinatarios",
+            "pages/parametros/agendamento",
+            "pages/parametros/multimidia",
+            "pages/parametros/localizacao",
+            "pages/parametros/booleanos",
+            "pages/parametros/block",
+            "pages/parametros/permissoes",
+            "pages/parametros/webhook"
+
+          ]
+        },
+        {
+          "group": "API de Configurações",
+          "pages": [
+            "pages/configuracoes/introducao",
+            "pages/configuracoes/consumindo"
+          ]
+        }
       ]
     },
     {

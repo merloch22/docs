@@ -1,0 +1,26 @@
+---
+title: "Bloqueando e desbloqueando usuários"
+---
+
+O bloqueio e desbloqueio de usuários são ações essenciais em qualquer plataforma de mensagens. Permitem que um usuário restrinja ou permita que outro usuário entre em contato com ele. Na sua API do WhatsApp, essas ações podem ser realizadas por meio dos comandos "block" (bloquear) e "unblock" (desbloquear).
+
+**Bloqueio de Usuários (Block)**
+
+O comando "block" permite que um usuário bloqueie outro, impedindo que o usuário bloqueado envie mensagens ou realize outras interações. Quando um usuário é bloqueado, ele não pode enviar mensagens, fazer chamadas ou visualizar o status online do usuário que o bloqueou. Essa ação é útil quando um usuário deseja evitar o contato indesejado de outro usuário ou interações não desejadas.
+
+**Exemplo de Utilização:**
+
+* Para bloquear um usuário, você pode enviar uma solicitação que inclua o comando "block" através do parametro message = "block"
+
+**Desbloqueio de Usuários (Unblock)**
+
+O comando "unblock" é a ação oposta ao bloqueio e permite que um usuário desbloqueie outro, restaurando a capacidade de interagir normalmente. Quando um usuário é desbloqueado, ele pode enviar mensagens, fazer chamadas e interagir com o usuário que o desbloqueou como de costume.
+
+**Exemplo de Utilização:**
+
+* Para desbloquear um usuário previamente bloqueado, envie uma solicitação que inclua o comando "unblock" através do parametro
+
+* message = "unblock"
+  Copy
+
+É importante lembrar que o processo de bloqueio e desbloqueio é uma funcionalidade crítica para a privacidade e a experiência do usuário em sua plataforma de mensagens. Portanto, use esses comandos com responsabilidade e forneça aos usuários as opções necessárias para gerenciar suas interações dentro do aplicativo ou serviço que utiliza a API do WhatsApp. Isso garantirá um ambiente de mensagens seguro e confiável para todos os envolvidos.

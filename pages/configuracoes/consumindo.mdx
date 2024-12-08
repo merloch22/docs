@@ -1,0 +1,93 @@
+---
+title: "Consumindo APi de configurações"
+description: "Formas de consumir API de configurações"
+---
+
+### Alterar Recado
+
+
+```
+POST https://chatbot.menuia.com/api/settings
+```
+
+Path Parameters
+
+| Name          | Type     | Description                         |
+| ------------- | -------- | ----------------------------------- |
+| appkey\*      | Texto    | Chave de autenticação do aplicativo |
+| authkey\*     | Texto    | Chave de autenticação do usuario    |
+| message\*     | Texto    | Ex: Disponível                      |
+| editeStatus\* | Booleano | true                                |
+
+<Tabs>
+  <Tab title="200">
+    \{"status":200,"message":"Recado atualizado com sucesso!"}
+  </Tab>
+
+  <Tab title="404">
+    \{"status":404,"message":"Nenhum dispositivo encontrado ou conectado"}
+  </Tab>
+
+  <Tab title="500">
+    \{"status":500,"message":"Falha ao atualizar o recado."}
+  </Tab>
+</Tabs>
+
+### Alterar Nome
+
+```
+POST https://chatbot.menuia.com/api/settings
+```
+
+Path Parameters
+
+| Name         | Type     | Description                         |
+| ------------ | -------- | ----------------------------------- |
+| appkey\*     | Texto    | Chave de autenticação do aplicativo |
+| authkey\*    | Texto    | Chave de autenticação do usuario    |
+| message\*    | Booleano | false                               |
+| altereNome\* | Booleano | true                                |
+
+<Tabs>
+  <Tab title="200">
+    \{"status":200,"message":"Nome Atualizado com sucesso!"}
+  </Tab>
+
+  <Tab title="404">
+    \{"status":404,"message":"Nenhum dispositivo encontrado ou conectado"}
+  </Tab>
+
+  <Tab title="500">
+    \{"status":500,"message":"Falha ao atualizar o nome"}
+  </Tab>
+</Tabs>
+
+### Obter Imagem - (Usuarios ou Grupo)
+
+```
+POST https://chatbot.menuia.com/api/settings
+```
+
+Path Parameters
+
+| Name          | Type     | Description                         |
+| ------------- | -------- | ----------------------------------- |
+| appkey\*      | Texto    | Chave de autenticação do aplicativo |
+| authkey\*     | Texto    | Chave de autenticação do usuario    |
+| message\*     | Booleano | false                               |
+| obterImagem\* | Booleano | true                                |
+| to\*          | Texto    | Ex: +5581989769960 Ou ID Grupo      |
+
+<Tabs>
+  <Tab title="200">
+    \{"status":200,"message":"Nome Atualizado com sucesso!"}
+  </Tab>
+
+  <Tab title="404">
+    \{"status":404,"message":"Nenhum dispositivo encontrado ou conectado"}
+  </Tab>
+
+  <Tab title="500">
+    \{"status":500,"message":"Falha ao atualizar o nome"}
+  </Tab>
+</Tabs>

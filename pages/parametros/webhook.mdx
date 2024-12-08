@@ -1,0 +1,25 @@
+---
+title: "Ativando e Desativando Webhooks"
+---
+
+A funcionalidade de desativar e ativar Webhooks é crucial para controlar a recepção de eventos de mensagens em sua API do WhatsApp. Isso permite que você escolha quando deseja ou não receber notificações de mensagens em chats individuais e grupos.
+
+**Tipos de Chat (Tipo 'type')**
+
+O campo 'type' é usado para especificar se a ação de desativar ou ativar Webhooks se aplica a chats individuais ou grupos. Isso permite que você diferencie entre esses dois tipos de conversas e tome medidas específicas com base em suas necessidades.
+
+**Desativação de Webhooks:**
+
+Quando você desativa Webhooks, você para de receber notificações de eventos de mensagens em chats individuais e grupos do tipo especificado no campo 'type'. Isso pode ser útil em situações em que você deseja suspender temporariamente a interação com esses chats, por exemplo, para realizar manutenção ou atualizações no sistema. Para desativar Webhooks, defina 'type' como 'chat' para chats individuais ou 'type' como 'grupo' para grupos e execute a ação de desativação.
+
+**Ativação de Webhooks:**
+
+Por outro lado, a ativação de Webhooks permite que você retome a recepção de notificações de eventos de mensagens em chats individuais e grupos do tipo especificado no campo 'type'. Isso é útil quando você deseja restaurar a comunicação e receber notificações em tempo real das conversas. Para ativar Webhooks, defina 'type' como 'chat' para chats individuais ou 'type' como 'grupo' para grupos e execute a ação de ativação.
+
+**Exemplo de Utilização:**
+
+* Para desativar Webhooks em chats individuais, você pode enviar uma solicitação definindo 'type' como 'chat' e a ação apropriada para desativação.
+
+* Para ativar Webhooks em grupos, configure 'type' como 'grupo' e execute a ação de ativação.
+
+A capacidade de desativar e ativar Webhooks de forma seletiva ajuda a gerenciar eficazmente a comunicação em sua API do WhatsApp, garantindo que você possa controlar quando deseja receber notificações e quando deseja pausá-las temporariamente, de acordo com as necessidades de sua plataforma e dos usuários.

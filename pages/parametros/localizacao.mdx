@@ -1,0 +1,23 @@
+---
+title: "Obtendo Coordenadas de Latitude e Longitude para Localizações Fixas"
+---
+
+Para enviar localizações fixas por meio da API do WhatsApp, você precisará das coordenadas de latitude e longitude da localização específica que deseja compartilhar. O exemplo a seguir mostra como identificar essas coordenadas em um link do Google Maps:
+
+* Exemplo de link do Google Maps: [`https://www.google.com.br/maps/place/Recife/@-8.0655835,-34.8818412,15.7z`](https://www.google.com.br/maps/place/Recife/@-8.0655835,-34.8818412,15.7z)
+
+Nesse link, você pode ver as coordenadas de latitude e longitude incorporadas:
+
+* Latitude: -8.0655835
+
+* Longitude: -34.8818412
+
+**Como Identificar Latitude e Longitude:**
+
+1. **Latitude:** Geralmente, a latitude é representada pelo valor que segue o "@" no link. No exemplo acima, "-8.0655835" é a latitude. Valores negativos representam posições ao sul do equador, enquanto valores positivos indicam posições ao norte.
+
+2. **Longitude:** A longitude é representada pelo valor após a primeira vírgula. No exemplo acima, "-34.8818412" é a longitude. Valores negativos representam posições a oeste do Meridiano de Greenwich, e valores positivos indicam posições a leste.
+
+Para obter as coordenadas de latitude e longitude de uma localização fixa, basta acessar um serviço de mapas, como o Google Maps, localizar o ponto desejado e copiar as coordenadas exibidas na URL.
+
+Agora, você pode utilizar essas coordenadas em sua solicitação para a API do WhatsApp, garantindo que a localização fixa seja compartilhada com precisão. Certifique-se de incluir essas coordenadas nos campos apropriados ao enviar sua solicitação pela API.
