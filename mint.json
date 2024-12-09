@@ -137,6 +137,7 @@
         "api-reference/create-message/cancelarMensagemAgendada",
         "api-reference/create-message/textoParaAudio",
         "api-reference/create-message/criarOTP",
+        "api-reference/create-message/editMensagem",
         "api-reference/create-message/contato",
         "api-reference/create-message/mensagemTexto",
         "api-reference/create-message/enviarMultimidia",

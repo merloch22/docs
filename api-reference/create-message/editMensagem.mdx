@@ -1,0 +1,31 @@
+---
+title: "Editar Mensagem"
+openapi: "POST /api/create-message"
+---
+
+## Descrição
+
+Este endpoint permite editar uma mensagem existente. Você pode atualizar o texto, destinatário ou informações de multimídia de uma mensagem previamente criada.
+
+### Parâmetros
+
+\* `appkey`: Chave de aplicação.
+
+\* `authkey`: Chave de autenticação do usuário.
+
+\* `editMessage`: ID da mensagem que será editada.
+
+\* `to`: Número de telefone ou ID do grupo para onde a mensagem será enviada.
+
+\* `message`: Novo texto da mensagem.
+
+### Exemplo de requisição
+
+```json
+{
+  "appkey": "SUA_APPKEY_AQUI",
+  "authkey": "SUA_AUTHKEY_AQUI",
+  "editMessage": "3FE2B7FE47A0E950B89A",
+  "to": "+558175040503",
+  "message": "Olá"
+}
