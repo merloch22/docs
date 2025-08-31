@@ -1036,19 +1036,19 @@
                 "type": "object",
                 "properties": {
                   "authkey": { "type": "string", "example": "SUA_APPKEY" },
-                  "cpf": { "type": "boolean", "example": true },
-                  "email": { "type": "boolean", "example": false },
+                  "cpf": { "type": "boolean", "example": 1 },
+                  "email": { "type": "boolean", "example": 0 },
                   "webhook": { "type": "string", "example": "https://meusite.com/webhook" },
                   "device_id": { "type": "integer", "example": 4586 },
-                  "send_audio": { "type": "boolean", "example": true },
-                  "receiver_audio": { "type": "boolean", "example": true },
+                  "send_audio": { "type": "boolean", "example": 1 },
+                  "receiver_audio": { "type": "boolean", "example": 1 },
                   "voice": { "type": "string", "example": "m" },
                   "agent_name": { "type": "string", "example": "Lab IA" },
                   "system": { "type": "string", "nullable": true, "example": "Você é uma Biomédica responsável por Laboratório de Análises Clínicas" },
-                  "stop_bot": { "type": "boolean", "example": false },
+                  "stop_bot": { "type": "boolean", "example": 0 },
                   "work_days": { "type": "array", "items": { "type": "string" }, "example": ["seg","ter","qua","qui","sex","sab","dom"] },
-                  "stop_client": { "type": "boolean", "example": false },
-                  "stop_server": { "type": "boolean", "example": false },
+                  "stop_client": { "type": "boolean", "example": 0 },
+                  "stop_server": { "type": "boolean", "example": 0 },
                   "time_pause": { "type": "string", "example": "00:30:00" },
                   "blacklist": { "type": "array", "items": { "type": "string" }, "example": ["palavra1","palavra2"] },
                   "temperature": { "type": "number", "example": 0.3 }
@@ -1124,20 +1124,6 @@
               }
             }
           },
-          "404": {
-            "description": "Chatbot não encontrado.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": { "type": "integer", "example": 404 },
-                    "message": { "type": "string", "example": "Chatbot de IA com o ID especificado não foi encontrado." }
-                  }
-                }
-              }
-            }
-          }
         }
       },
       "delete": {
@@ -1188,20 +1174,6 @@
               }
             }
           },
-          "404": {
-            "description": "Chatbot não encontrado.",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object",
-                  "properties": {
-                    "status": { "type": "integer", "example": 404 },
-                    "message": { "type": "string", "example": "Chatbot de IA com o ID especificado não foi encontrado." }
-                  }
-                }
-              }
-            }
-          }
         }
       }
     }
