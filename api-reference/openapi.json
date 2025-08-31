@@ -910,8 +910,8 @@
     },
     "/api/v2/ia": {
       "post": {
-        "summary": "Cria um novo chatbot de IA",
-        "description": "Cria um novo chatbot de IA.",
+        "summary": "Cria um novo agente de IA",
+        "description": "Cria um novo agente de IA.",
         "requestBody": {
           "required": true,
           "content": {
@@ -919,8 +919,8 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "authkey": { "type": "string", "example": "A29gzpIJyLWvxg2opJaq70AscJ08PWGL" },
-                  "device": { "type": "string", "example": "servidor" },
+                  "authkey": { "type": "string", "example": "SUA_AUTHKEY" },
+                  "device": { "type": "string", "example": "SEU DEVICE" },
                   "agent_name": { "type": "string", "example": "Assistente de Vendas" }
                 },
                 "required": ["authkey", "agent_name"]
@@ -930,44 +930,82 @@
         },
         "responses": {
           "201": {
-            "description": "Chatbot criado com sucesso.",
+            "description": "Agente Criado com sucesso",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": { "type": "integer", "example": 201 },
-                    "message": { "type": "string", "example": "Chatbot criado com sucesso." },
-                    "data": { "type": "object" }
+                    "message": { "type": "string", "example": "Agente Criado com sucesso" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "agent_id": { "type": "integer", "example": 34 },
+                        "agent_name": { "type": "string", "example": "Meu agente" }
+                      }
+                    }
                   }
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/api/v2/ia/{id}": {
       "get": {
-        "summary": "Lista todos os chatbots de IA",
-        "description": "Retorna uma lista com todos os chatbots de IA disponíveis.",
+        "summary": "Lista todos os agentes de IA",
+        "description": "Retorna uma lista com todos os agentes de IA disponíveis.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authkey": { "type": "string", "example": "SUA_AUTHKEY" }
+                },
+                "required": ["authkey"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Lista de chatbots obtida com sucesso.",
+            "description": "Lista de agentes obtida com sucesso.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": { "type": "integer", "example": 200 },
-                    "message": { "type": "string", "example": "Lista de chatbots obtida com sucesso." },
+                    "message": { "type": "string", "example": "Sucesso" },
                     "data": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "id": { "type": "string", "example": "ia_12345" },
-                          "name": { "type": "string", "example": "Assistente de Vendas" },
-                          "version": { "type": "string", "example": "2.0" },
-                          "creation_date": { "type": "string", "format": "date-time", "example": "2023-10-27T10:00:00Z" }
+                          "id": { "type": "integer", "example": 35 },
+                          "cpf": { "type": "boolean", "example": 0 },
+                          "email": { "type": "boolean", "example": 0 },
+                          "webhook": { "type": "string", "nullable": true, "example": null },
+                          "user_id": { "type": "integer", "example": 24 },
+                          "device_id": { "type": "integer", "example": 1111 },
+                          "send_audio": { "type": "boolean", "example": 0 },
+                          "temperature": { "type": "number", "example": 0.3 },
+                          "receiver_audio": { "type": "boolean", "example": 1 },
+                          "voice": { "type": "string", "example": "f" },
+                          "agent_name": { "type": "string", "example": "AGENTE 2" },
+                          "system": { "type": "string", "nullable": true, "example": null },
+                          "stop_bot": { "type": "boolean", "example": 0 },
+                          "work_days": { "type": "string", "example": "[\"seg\",\"ter\",\"qua\",\"qui\",\"sex\",\"sab\",\"dom\"]" },
+                          "stop_client": { "type": "string", "nullable": true, "example": null },
+                          "stop_server": { "type": "string", "nullable": true, "example": null },
+                          "time_pause": { "type": "string", "example": "00:30:00" },
+                          "blacklist": { "type": "string", "nullable": true, "example": null },
+                          "created_at": { "type": "string", "format": "date-time", "example": "2025-08-31T00:38:08.000000Z" },
+                          "updated_at": { "type": "string", "format": "date-time", "example": "2025-08-31T00:38:08.000000Z" }
                         }
                       }
                     }
@@ -979,14 +1017,14 @@
         }
       },
       "put": {
-        "summary": "Atualiza um chatbot de IA existente",
-        "description": "Atualiza informações de um chatbot de IA pelo ID.",
+        "summary": "Atualiza um agente de IA existente",
+        "description": "Atualiza informações de um agente de IA pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "query",
             "required": true,
-            "description": "O ID do chatbot a ser atualizado.",
+            "description": "O ID do agente a ser atualizado.",
             "schema": { "type": "string" }
           }
         ],
@@ -997,23 +1035,90 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "agent_name": { "type": "string", "example": "Novo Nome do Assistente" }
-                }
+                  "authkey": { "type": "string", "example": "SUA_APPKEY" },
+                  "cpf": { "type": "boolean", "example": true },
+                  "email": { "type": "boolean", "example": false },
+                  "webhook": { "type": "string", "example": "https://meusite.com/webhook" },
+                  "device_id": { "type": "integer", "example": 4586 },
+                  "send_audio": { "type": "boolean", "example": true },
+                  "receiver_audio": { "type": "boolean", "example": true },
+                  "voice": { "type": "string", "example": "m" },
+                  "agent_name": { "type": "string", "example": "Lab IA" },
+                  "system": { "type": "string", "nullable": true, "example": "Você é uma Biomédica responsável por Laboratório de Análises Clínicas" },
+                  "stop_bot": { "type": "boolean", "example": false },
+                  "work_days": { "type": "array", "items": { "type": "string" }, "example": ["seg","ter","qua","qui","sex","sab","dom"] },
+                  "stop_client": { "type": "boolean", "example": false },
+                  "stop_server": { "type": "boolean", "example": false },
+                  "time_pause": { "type": "string", "example": "00:30:00" },
+                  "blacklist": { "type": "array", "items": { "type": "string" }, "example": ["palavra1","palavra2"] },
+                  "temperature": { "type": "number", "example": 0.3 }
+                },
+                "required": ["agent_name"]
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "Chatbot atualizado com sucesso.",
+            "description": "Agente de IA atualizado com sucesso",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": { "type": "integer", "example": 200 },
-                    "message": { "type": "string", "example": "Chatbot atualizado com sucesso." },
-                    "data": { "type": "object" }
+                    "message": { "type": "string", "example": "Agente de IA atualizado com sucesso" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": { "type": "integer", "example": 35 },
+                        "cpf": { "type": "boolean", "example": 0 },
+                        "email": { "type": "boolean", "example": 0 },
+                        "webhook": { "type": "string", "example": "https://chatbot.menuia.com" },
+                        "user_id": { "type": "integer", "example": 24 },
+                        "device_id": { "type": "integer", "example": 1111 },
+                        "send_audio": { "type": "boolean", "example": 0 },
+                        "temperature": { "type": "number", "example": 0.3 },
+                        "receiver_audio": { "type": "boolean", "example": 1 },
+                        "voice": { "type": "string", "example": "m" },
+                        "agent_name": { "type": "string", "example": "AGENTE 2" },
+                        "system": { "type": "string", "nullable": true, "example": null },
+                        "stop_bot": { "type": "boolean", "example": 0 },
+                        "work_days": { 
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "example": ["seg","ter","qua","qui","sex","sab","dom"]
+                        },
+                        "stop_client": { "type": "string", "nullable": true, "example": null },
+                        "stop_server": { "type": "string", "nullable": true, "example": null },
+                        "time_pause": { "type": "string", "example": "00:30:00" },
+                        "blacklist": { "type": "string", "nullable": true, "example": null },
+                        "created_at": { "type": "string", "format": "date-time", "example": "2025-08-31T00:38:08.000000Z" },
+                        "updated_at": { "type": "string", "format": "date-time", "example": "2025-08-31T00:59:28.000000Z" }
+                      },
+                      "example": {
+                        "id": 35,
+                        "cpf": 0,
+                        "email": 0,
+                        "webhook": "https://chatbot.menuia.com",
+                        "user_id": 24,
+                        "device_id": 1111,
+                        "send_audio": 0,
+                        "temperature": 0.3,
+                        "receiver_audio": 1,
+                        "voice": "m",
+                        "agent_name": "AGENTE 2",
+                        "system": null,
+                        "stop_bot": 0,
+                        "work_days": ["seg","ter","qua","qui","sex","sab","dom"],
+                        "stop_client": null,
+                        "stop_server": null,
+                        "time_pause": "00:30:00",
+                        "blacklist": null,
+                        "created_at": "2025-08-31T00:38:08.000000Z",
+                        "updated_at": "2025-08-31T00:59:28.000000Z"
+                      }
+                    }
                   }
                 }
               }
@@ -1036,27 +1141,48 @@
         }
       },
       "delete": {
-        "summary": "Deleta um chatbot de IA",
-        "description": "Remove um chatbot de IA pelo ID.",
+        "summary": "Deleta um Agente de IA",
+        "description": "Remove um Agente de IA pelo ID.",
         "parameters": [
           {
             "name": "id",
             "in": "query",
             "required": true,
-            "description": "O ID do chatbot a ser removido.",
+            "description": "O ID do agente IA a ser removido.",
             "schema": { "type": "string" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authkey": { "type": "string", "example": "SUA_AUTHKEY" }
+                },
+                "required": ["authkey"]
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Chatbot removido com sucesso.",
+            "description": "Agente de IA apagado com sucesso!",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
                     "status": { "type": "integer", "example": 200 },
-                    "message": { "type": "string", "example": "Chatbot removido com sucesso." }
+                    "message": { "type": "string", "example": "Agente de IA apagado com sucesso!" },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "agent_id": { "type": "integer", "example": 34 },
+                        "agent_name": { "type": "string", "example": "Meu agente" }
+                      }
+                    }
                   }
                 }
               }

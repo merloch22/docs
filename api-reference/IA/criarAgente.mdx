@@ -1,32 +1,14 @@
 ---
-title: API de Agentes de IA
+title: Criar Agente de IA
 openapi: 'POST /api/v2/ia'
 ---
 
-# Criar Agente de IA
+## Descrição
 
-### Headers
+Este endpoint permite criar um agente de IA.
 
-| Header | Tipo | Obrigatório |
-|--------|------|------------|
-| Content-Type | string | Sim |
-| authkey | string | Sim |
+### Parâmetros
 
-### Parâmetros do Corpo (JSON)
-
-| Parâmetro | Tipo | Obrigatório |
-|-----------|------|------------|
-| authkey | string | Sim |
-| device | string | Sim |
-| agent_name | string | Sim |
-
-### Exemplo de Requisição
-
-```bash
-curl --location 'https://chatbot.menuia.com/api/v2/ia' \
---header 'Content-Type: application/json' \
---data '{
-    "authkey":"SUA AUTHKEY",
-    "device":"SEU DEVICE",
-    "agent_name":"AGENTE 2"
-}'
+* `authkey`: Chave de autenticação da conta.
+* `device`: APPKEY ou nome da chave.
+* `agent_name`: Nome do agente.

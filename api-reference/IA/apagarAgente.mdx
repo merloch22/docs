@@ -11,12 +11,3 @@ Este endpoint permite apagar um agente de IA existente, utilizando o `id` do age
 
 * `id`: ID do agente de IA que será apagado (informado na URL do endpoint).
 * `authkey`: Chave de autenticação da conta.
-
-### Exemplo de `curl`:
-
-```bash
-curl --location --request DELETE 'https://chatbot.menuia.com/api/v2/ia/34' \
---header 'Content-Type: application/json' \
---data '{
-    "authkey":"SUA_AUTHKEY"
-}'
