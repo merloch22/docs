@@ -154,7 +154,10 @@
     {
       "group": "Agente IA",
       "pages": [
-        "api-reference/IA/apagarAgente"
+        "api-reference/IA/apagarAgente",
+        "api-reference/IA/atualizarAgente",
+        "api-reference/IA/criarAgente",
+        "api-reference/IA/informacoesAgente"
       ]
     },
     {
