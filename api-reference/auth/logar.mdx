@@ -1,23 +1,23 @@
 ---
-title: 'Logar e Obter Informações de Usuário'
-openapi: 'POST /api/auth'
+title: 'Criar Agente de IA'
+openapi: 'POST /api/v2/ia'
 ---
 
 ## Descrição
 
-Este endpoint permite autenticar um usuário e obter informações como nome, e-mail, telefone, `authkey` e a data de expiração do acesso.
+Este endpoint permite criar um novo agente de IA associado à sua conta, informando o nome do agente e o dispositivo que o hospeda.
 
 ### Parâmetros
 
-* `email`: O e-mail do usuário para autenticação.
-* `senha`: A senha do usuário para autenticação.
-* `auth`: Identificador da requisição, deve ser "login" para logar.
+* `authkey`: Chave de autenticação da conta.
+* `device`: Dispositivo que irá hospedar o agente (ex: "servidor").
+* `agent_name`: Nome do agente que será criado.
 
 ### Exemplo de Requisição:
 
 ```json
 {
-  "email": "exemplo@exemplo.com",
-  "senha": "Sua senha aqui",
-  "auth": "login"
+  "authkey": "A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+  "device": "servidor",
+  "agent_name": "AGENTE 2"
 }

@@ -1,0 +1,34 @@
+---
+title: API de Agentes de IA
+---
+
+# Criar Agente de IA
+
+## Requisição
+POST https://chatbot.menuia.com/api/v2/ia
+
+### Headers
+
+| Header | Tipo | Obrigatório |
+|--------|------|------------|
+| Content-Type | string | Sim |
+| authkey | string | Sim |
+
+### Parâmetros do Corpo (JSON)
+
+| Parâmetro | Tipo | Obrigatório |
+|-----------|------|------------|
+| authkey | string | Sim |
+| device | string | Sim |
+| agent_name | string | Sim |
+
+### Exemplo de Requisição
+
+```bash
+curl --location 'https://chatbot.menuia.com/api/v2/ia' \
+--header 'Content-Type: application/json' \
+--data '{
+    "authkey":"A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+    "device":"servidor",
+    "agent_name":"AGENTE 2"
+}'

@@ -38,7 +38,12 @@
                     "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": [
+                  "appkey",
+                  "authkey",
+                  "to",
+                  "message"
+                ]
               }
             }
           }
@@ -154,7 +159,12 @@
                     "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": [
+                  "appkey",
+                  "authkey",
+                  "to",
+                  "message"
+                ]
               }
             }
           }
@@ -246,7 +256,11 @@
                     "description": "Identificador da requisição."
                   }
                 },
-                "required": ["email", "senha", "auth"]
+                "required": [
+                  "email",
+                  "senha",
+                  "auth"
+                ]
               }
             }
           }
@@ -362,7 +376,12 @@
                     "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": [
+                  "appkey",
+                  "authkey",
+                  "to",
+                  "message"
+                ]
               }
             }
           }
@@ -478,7 +497,12 @@
                     "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": [
+                  "appkey",
+                  "authkey",
+                  "to",
+                  "message"
+                ]
               }
             }
           }
@@ -582,7 +606,9 @@
                     "description": "Chave de aplicação."
                   }
                 },
-                "required": ["planos"]
+                "required": [
+                  "planos"
+                ]
               }
             }
           }
@@ -663,7 +689,11 @@
                     "description": "O formato do arquivo"
                   }
                 },
-                "required": ["authkey", "file", "format"]
+                "required": [
+                  "authkey",
+                  "file",
+                  "format"
+                ]
               }
             }
           }
@@ -784,7 +814,12 @@
                     "description": "Conteúdo da mensagem."
                   }
                 },
-                "required": ["appkey", "authkey", "to", "message"]
+                "required": [
+                  "appkey",
+                  "authkey",
+                  "to",
+                  "message"
+                ]
               }
             }
           }
@@ -864,6 +899,87 @@
                     "message": {
                       "type": "string",
                       "example": "Nenhum dispositivo encontrado."
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/ia/{id}": {
+      "get": {
+        "summary": "Obtém informações de um chatbot de IA específico.",
+        "description": "Retorna os detalhes de um chatbot de IA usando seu ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "O ID do chatbot de IA a ser recuperado.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Informações do chatbot obtidas com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 200
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Informações do chatbot de IA obtidas com sucesso."
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "example": "ia_12345"
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "Assistente de Vendas"
+                        },
+                        "version": {
+                          "type": "string",
+                          "example": "2.0"
+                        },
+                        "creation_date": {
+                          "type": "string",
+                          "format": "date-time",
+                          "example": "2023-10-27T10:00:00Z"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Chatbot de IA não encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "integer",
+                      "example": 404
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Chatbot de IA com o ID especificado não foi encontrado."
                     }
                   }
                 }

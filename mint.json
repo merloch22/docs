@@ -152,6 +152,12 @@
       ]
     },
     {
+      "group": "Agente IA",
+      "pages": [
+        "api-reference/IA/apagarAgente"
+      ]
+    },
+    {
       "group": "Grupo",
       "pages": [
         "api-reference/groups/descricaoGrupo",

@@ -1,0 +1,22 @@
+---
+title: 'Obter Informações de Um Agente de IA'
+openapi: 'GET /api/v2/ia/{id}'
+---
+
+## Descrição
+
+Este endpoint permite obter informações detalhadas de um agente de IA específico, utilizando o `id` do agente e a chave de autenticação.
+
+### Parâmetros
+
+* `id`: ID do agente de IA que será consultado (informado na URL do endpoint).
+* `authkey`: Chave de autenticação da conta.
+
+### Exemplo de `curl`:
+
+```bash
+curl --location --request GET 'https://chatbot.menuia.com/api/v2/ia/35' \
+--header 'Content-Type: application/json' \
+--data '{
+    "authkey":"A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz"
+}'
