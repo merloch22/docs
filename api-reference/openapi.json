@@ -908,78 +908,68 @@
         }
       }
     },
-    "/api/v2/ia/{id}": {
-      "get": {
-        "summary": "Obtém informações de um chatbot de IA específico.",
-        "description": "Retorna os detalhes de um chatbot de IA usando seu ID.",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "O ID do chatbot de IA a ser recuperado.",
-            "schema": {
-              "type": "string"
+    "/api/v2/ia": {
+      "post": {
+        "summary": "Cria um novo chatbot de IA",
+        "description": "Cria um novo chatbot de IA.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "authkey": { "type": "string", "example": "A29gzpIJyLWvxg2opJaq70AscJ08PWGL" },
+                  "device": { "type": "string", "example": "servidor" },
+                  "agent_name": { "type": "string", "example": "Assistente de Vendas" }
+                },
+                "required": ["authkey", "agent_name"]
+              }
             }
           }
-        ],
+        },
         "responses": {
-          "200": {
-            "description": "Informações do chatbot obtidas com sucesso.",
+          "201": {
+            "description": "Chatbot criado com sucesso.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Informações do chatbot de IA obtidas com sucesso."
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "example": "ia_12345"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "Assistente de Vendas"
-                        },
-                        "version": {
-                          "type": "string",
-                          "example": "2.0"
-                        },
-                        "creation_date": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2023-10-27T10:00:00Z"
-                        }
-                      }
-                    }
+                    "status": { "type": "integer", "example": 201 },
+                    "message": { "type": "string", "example": "Chatbot criado com sucesso." },
+                    "data": { "type": "object" }
                   }
                 }
               }
             }
-          },
-          "404": {
-            "description": "Chatbot de IA não encontrado.",
+          }
+        }
+      },
+      "get": {
+        "summary": "Lista todos os chatbots de IA",
+        "description": "Retorna uma lista com todos os chatbots de IA disponíveis.",
+        "responses": {
+          "200": {
+            "description": "Lista de chatbots obtida com sucesso.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 404
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Chatbot de IA com o ID especificado não foi encontrado."
+                    "status": { "type": "integer", "example": 200 },
+                    "message": { "type": "string", "example": "Lista de chatbots obtida com sucesso." },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "string", "example": "ia_12345" },
+                          "name": { "type": "string", "example": "Assistente de Vendas" },
+                          "version": { "type": "string", "example": "2.0" },
+                          "creation_date": { "type": "string", "format": "date-time", "example": "2023-10-27T10:00:00Z" }
+                        }
+                      }
                     }
                   }
                 }
@@ -987,80 +977,100 @@
             }
           }
         }
-      }
-    }, "/api/v2/ia": {
-      "get": {
-        "summary": "Obtém informações de um chatbot de IA específico.",
-        "description": "Retorna os detalhes de um chatbot de IA usando seu ID.",
+      },
+      "put": {
+        "summary": "Atualiza um chatbot de IA existente",
+        "description": "Atualiza informações de um chatbot de IA pelo ID.",
         "parameters": [
           {
             "name": "id",
-            "in": "path",
+            "in": "query",
             "required": true,
-            "description": "O ID do chatbot de IA a ser recuperado.",
-            "schema": {
-              "type": "string"
-            }
+            "description": "O ID do chatbot a ser atualizado.",
+            "schema": { "type": "string" }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "agent_name": { "type": "string", "example": "Novo Nome do Assistente" }
+                }
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
-            "description": "Informações do chatbot obtidas com sucesso.",
+            "description": "Chatbot atualizado com sucesso.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 200
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Informações do chatbot de IA obtidas com sucesso."
-                    },
-                    "data": {
-                      "type": "object",
-                      "properties": {
-                        "id": {
-                          "type": "string",
-                          "example": "ia_12345"
-                        },
-                        "name": {
-                          "type": "string",
-                          "example": "Assistente de Vendas"
-                        },
-                        "version": {
-                          "type": "string",
-                          "example": "2.0"
-                        },
-                        "creation_date": {
-                          "type": "string",
-                          "format": "date-time",
-                          "example": "2023-10-27T10:00:00Z"
-                        }
-                      }
-                    }
+                    "status": { "type": "integer", "example": 200 },
+                    "message": { "type": "string", "example": "Chatbot atualizado com sucesso." },
+                    "data": { "type": "object" }
                   }
                 }
               }
             }
           },
           "404": {
-            "description": "Chatbot de IA não encontrado.",
+            "description": "Chatbot não encontrado.",
             "content": {
               "application/json": {
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "status": {
-                      "type": "integer",
-                      "example": 404
-                    },
-                    "message": {
-                      "type": "string",
-                      "example": "Chatbot de IA com o ID especificado não foi encontrado."
-                    }
+                    "status": { "type": "integer", "example": 404 },
+                    "message": { "type": "string", "example": "Chatbot de IA com o ID especificado não foi encontrado." }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Deleta um chatbot de IA",
+        "description": "Remove um chatbot de IA pelo ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "O ID do chatbot a ser removido.",
+            "schema": { "type": "string" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Chatbot removido com sucesso.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "integer", "example": 200 },
+                    "message": { "type": "string", "example": "Chatbot removido com sucesso." }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Chatbot não encontrado.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": { "type": "integer", "example": 404 },
+                    "message": { "type": "string", "example": "Chatbot de IA com o ID especificado não foi encontrado." }
                   }
                 }
               }
