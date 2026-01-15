@@ -1,6 +1,6 @@
 ---
 title: 'Bloquear e Desbloquear Usuário'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,21 +9,98 @@ Este endpoint permite bloquear ou desbloquear um usuário no sistema do chatbot.
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `to`: Número de telefone do usuário a ser bloqueado ou desbloqueado (exemplo: `5581989769960`).  
-\* `message`: Deve ser `"block"` para bloquear ou `"unblock"` para desbloquear o usuário.  
-\* `desBlock`: Deve ser `"true"` para confirmar a operação.
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-#### Bloquear um usuário:
+<ParamField body="to" type="string" required>
+  Número de telefone do usuário a ser bloqueado ou desbloqueado (exemplo: `5581989769960`).
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Deve ser `"block"` para bloquear ou `"unblock"` para desbloquear o usuário.
+</ParamField>
+
+<ParamField body="desBlock" type="string" required>
+  Deve ser `"true"` para confirmar a operação.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "5581989769960",
+    "message": "block",
+    "desBlock": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '5581989769960',
+    message: 'block',
+    desBlock: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '5581989769960',
+        'message': 'block',
+        'desBlock': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '5581989769960',
+    'message' => 'block',
+    'desBlock' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "5581989769960",
-  "message": "block",
-  "desBlock": "true"
+  "status": 200,
+  "message": "Usuário bloqueado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

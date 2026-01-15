@@ -1,19 +1,96 @@
 ---
 title: 'Obter Lista de Planos'
-openapi: 'POST /api/info'
+api: 'POST https://chatbot.menuia.com/api/info'
 ---
 
-## Descrição
+## Descricao
 
-Este endpoint permite obter a lista de planos disponíveis no sistema. A resposta inclui informações sobre os planos, como o nome do plano, preço, descrição e outras características associadas.
+Este endpoint permite obter a lista de planos disponiveis no sistema. A resposta inclui informacoes sobre os planos, como o nome do plano, preco, descricao e outras caracteristicas associadas.
 
-### Parâmetros
+### Parametros
 
-* `planos`: Deve ser definido como `"true"` para obter a lista de planos.
+<ParamField body="planos" type="string" required>
+  Deve ser definido como "true" para obter a lista de planos.
+</ParamField>
 
-### Exemplo de Requisição:
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/info \
+  -H "Content-Type: application/json" \
+  -d '{
+    "planos": "true"
+  }'
+```
 
-```json
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/info', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    planos: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/info',
+    json={
+        'planos': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/info', [
+    'planos' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "planos": "true"
+  "status": 200,
+  "planos": [
+    {
+      "id": "plan_basic",
+      "nome": "Basico",
+      "preco": 29.90,
+      "descricao": "Plano basico com recursos essenciais",
+      "recursos": ["1000 mensagens/mes", "1 dispositivo", "Suporte por email"]
+    },
+    {
+      "id": "plan_pro",
+      "nome": "Profissional",
+      "preco": 79.90,
+      "descricao": "Plano profissional com recursos avancados",
+      "recursos": ["10000 mensagens/mes", "5 dispositivos", "Suporte prioritario"]
+    },
+    {
+      "id": "plan_enterprise",
+      "nome": "Empresarial",
+      "preco": 199.90,
+      "descricao": "Plano empresarial com recursos ilimitados",
+      "recursos": ["Mensagens ilimitadas", "Dispositivos ilimitados", "Suporte 24/7"]
+    }
+  ]
 }
+```
+
+```json 400 - Erro de requisicao
+{
+  "status": 400,
+  "message": "Parametro 'planos' e obrigatorio."
+}
+```
+
+```json 500 - Erro interno
+{
+  "status": 500,
+  "message": "Erro ao obter lista de planos."
+}
+```
+</ResponseExample>

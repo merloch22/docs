@@ -1,6 +1,6 @@
 ---
 title: 'Criar Aplicativo (appkey)'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,15 +9,83 @@ Este endpoint permite criar um novo aplicativo (gerando um `appkey`), associando
 
 ### Parâmetros
 
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Nome do aplicativo a ser criado.  
-\* `criarApp`: ID ou nome do dispositivo ao qual o aplicativo será associado.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="message" type="string" required>
+  Nome do aplicativo a ser criado.
+</ParamField>
 
-```json
+<ParamField body="criarApp" type="string" required>
+  ID ou nome do dispositivo ao qual o aplicativo será associado.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "Nome do App",
+    "criarApp": "ID_OU_NOME_DO_DISPOSITIVO"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'Nome do App',
+    criarApp: 'ID_OU_NOME_DO_DISPOSITIVO'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'Nome do App',
+        'criarApp': 'ID_OU_NOME_DO_DISPOSITIVO'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'Nome do App',
+    'criarApp' => 'ID_OU_NOME_DO_DISPOSITIVO'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "Nome do App",
-  "criarApp": "ID_OU_NOME_DO_DISPOSITIVO"
+  "status": 200,
+  "message": "Aplicativo criado com sucesso.",
+  "appkey": "APPKEY_GERADA"
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

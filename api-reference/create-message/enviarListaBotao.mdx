@@ -1,0 +1,204 @@
+---
+title: 'Enviar Lista Botão'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar uma mensagem interativa com lista de opções organizadas em seções. Ideal para menus de serviços, catálogos de produtos ou qualquer situação que necessite de múltiplas escolhas organizadas.
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto principal da mensagem que aparece antes da lista.
+</ParamField>
+
+<ParamField body="header_title" type="string">
+  Título do cabeçalho da lista.
+</ParamField>
+
+<ParamField body="footer_text" type="string">
+  Texto do rodapé da lista.
+</ParamField>
+
+<ParamField body="button_text" type="string" required>
+  Texto do botão que abre a lista de opções.
+</ParamField>
+
+<ParamField body="section" type="array" required>
+  Array de seções contendo as opções da lista. Cada seção possui:
+  - `title`: Título da seção
+  - `value`: Array de itens com `title` e `description`
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5581999999999",
+    "message": "Confira nossos serviços disponíveis:",
+    "header_title": "Menu de Serviços",
+    "footer_text": "Selecione para saber mais",
+    "button_text": "Ver Opções",
+    "section": [
+      {
+        "title": "Produtos",
+        "value": [
+          {
+            "title": "Celulares",
+            "description": "Smartphones e acessórios"
+          },
+          {
+            "title": "Notebooks",
+            "description": "Computadores portáteis"
+          }
+        ]
+      },
+      {
+        "title": "Serviços",
+        "value": [
+          {
+            "title": "Suporte Técnico",
+            "description": "Atendimento 24h"
+          },
+          {
+            "title": "Instalação",
+            "description": "Configuração completa"
+          }
+        ]
+      }
+    ]
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5581999999999',
+    message: 'Confira nossos serviços disponíveis:',
+    header_title: 'Menu de Serviços',
+    footer_text: 'Selecione para saber mais',
+    button_text: 'Ver Opções',
+    section: [
+      {
+        title: 'Produtos',
+        value: [
+          { title: 'Celulares', description: 'Smartphones e acessórios' },
+          { title: 'Notebooks', description: 'Computadores portáteis' }
+        ]
+      },
+      {
+        title: 'Serviços',
+        value: [
+          { title: 'Suporte Técnico', description: 'Atendimento 24h' },
+          { title: 'Instalação', description: 'Configuração completa' }
+        ]
+      }
+    ]
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5581999999999',
+        'message': 'Confira nossos serviços disponíveis:',
+        'header_title': 'Menu de Serviços',
+        'footer_text': 'Selecione para saber mais',
+        'button_text': 'Ver Opções',
+        'section': [
+            {
+                'title': 'Produtos',
+                'value': [
+                    {'title': 'Celulares', 'description': 'Smartphones e acessórios'},
+                    {'title': 'Notebooks', 'description': 'Computadores portáteis'}
+                ]
+            },
+            {
+                'title': 'Serviços',
+                'value': [
+                    {'title': 'Suporte Técnico', 'description': 'Atendimento 24h'},
+                    {'title': 'Instalação', 'description': 'Configuração completa'}
+                ]
+            }
+        ]
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5581999999999',
+    'message' => 'Confira nossos serviços disponíveis:',
+    'header_title' => 'Menu de Serviços',
+    'footer_text' => 'Selecione para saber mais',
+    'button_text' => 'Ver Opções',
+    'section' => [
+        [
+            'title' => 'Produtos',
+            'value' => [
+                ['title' => 'Celulares', 'description' => 'Smartphones e acessórios'],
+                ['title' => 'Notebooks', 'description' => 'Computadores portáteis']
+            ]
+        ],
+        [
+            'title' => 'Serviços',
+            'value' => [
+                ['title' => 'Suporte Técnico', 'description' => 'Atendimento 24h'],
+                ['title' => 'Instalação', 'description' => 'Configuração completa']
+            ]
+        ]
+    ]
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Lista enviada com sucesso."
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

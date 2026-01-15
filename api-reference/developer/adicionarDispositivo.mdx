@@ -1,6 +1,6 @@
 ---
 title: 'Adicionar Dispositivo (QR CODE)'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,17 +9,91 @@ Este endpoint permite adicionar um novo dispositivo ao sistema utilizando um QR 
 
 ### Parâmetros
 
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Nome do dispositivo a ser registrado.  
-\* `conecteQR`: Deve ser "true" para indicar que a autenticação será feita via QR Code.  
-\* `webhook`: (Opcional) URL do webhook para notificações do dispositivo.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="message" type="string" required>
+  Nome do dispositivo a ser registrado.
+</ParamField>
 
-```json
+<ParamField body="conecteQR" type="string" required>
+  Deve ser "true" para indicar que a autenticação será feita via QR Code.
+</ParamField>
+
+<ParamField body="webhook" type="string">
+  URL do webhook para notificações do dispositivo.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "Nome do Dispositivo",
+    "conecteQR": "true",
+    "webhook": "https://exemplo.com/webhook"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'Nome do Dispositivo',
+    conecteQR: 'true',
+    webhook: 'https://exemplo.com/webhook'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'Nome do Dispositivo',
+        'conecteQR': 'true',
+        'webhook': 'https://exemplo.com/webhook'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'Nome do Dispositivo',
+    'conecteQR' => 'true',
+    'webhook' => 'https://exemplo.com/webhook'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "Nome do Dispositivo",
-  "conecteQR": "true",
-  "webhook": "https://exemplo.com/webhook"
+  "status": 200,
+  "message": "Dispositivo adicionado com sucesso.",
+  "qrcode": "data:image/png;base64,..."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Erro
+{
+  "status": 404,
+  "message": "Erro ao adicionar dispositivo."
+}
+```
+</ResponseExample>

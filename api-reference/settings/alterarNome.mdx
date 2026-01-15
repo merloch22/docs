@@ -1,6 +1,6 @@
 ---
 title: 'Alterar Nome'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,17 +9,90 @@ Este endpoint permite alterar o nome associado a um fluxo ou configuração do c
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Novo nome a ser atribuído.  
-\* `altereNome`: Deve ser `"true"` para confirmar a alteração do nome.
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Novo nome a ser atribuído.
+</ParamField>
+
+<ParamField body="altereNome" type="string" required>
+  Deve ser `"true"` para confirmar a alteração do nome.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "Novo nome aqui",
+    "altereNome": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'Novo nome aqui',
+    altereNome: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'Novo nome aqui',
+        'altereNome': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'Novo nome aqui',
+    'altereNome' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "Novo nome aqui",
-  "altereNome": "true"
+  "status": 200,
+  "message": "Nome alterado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

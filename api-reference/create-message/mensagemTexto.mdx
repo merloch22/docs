@@ -1,29 +1,98 @@
 ---
-title: 'Enviar Mensagem'
-openapi: 'POST /api/create-message'
+title: 'Enviar Mensagem de Texto'
+api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
 
 ## Descrição
 
-Este endpoint permite enviar uma mensagem para um número ou grupo de forma simples.
+Este endpoint permite enviar uma mensagem de texto para um número ou grupo de forma simples.
 
 ### Parâmetros
 
-* `appkey`: Chave de aplicação.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-* `authkey`: Chave de autenticação do usuário.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-* `to`: Número de telefone ou ID do grupo.
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
 
-* `message`: Conteúdo da mensagem.
+<ParamField body="message" type="string" required>
+  Conteúdo da mensagem de texto a ser enviada.
+</ParamField>
 
-### Exemplo de requisição:
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5511999999999",
+    "message": "Olá, esta é uma mensagem!"
+  }'
+```
 
-```json
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5511999999999',
+    message: 'Olá, esta é uma mensagem!'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5511999999999',
+        'message': 'Olá, esta é uma mensagem!'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5511999999999',
+    'message' => 'Olá, esta é uma mensagem!'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "+5511999999999",
-  "message": "Olá, esta é uma mensagem!"
+  "status": 200,
+  "message": "Mensagem enviada com sucesso."
 }
 ```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

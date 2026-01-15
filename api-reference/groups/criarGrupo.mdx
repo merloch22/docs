@@ -1,6 +1,6 @@
 ---
 title: 'Criar Grupos'
-openapi: 'POST /api/groups'
+api: 'POST https://chatbot.menuia.com/api/groups'
 ---
 
 ## Descrição
@@ -9,19 +9,99 @@ Este endpoint permite criar um novo grupo, especificando o nome do grupo e a lis
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Nome do grupo que será criado.  
-\* `usuarios`: Lista de usuários para adicionar ao grupo, separados por hífen (`-`).  
-\* `criarGrupo`: Deve ser "true" para criar o grupo.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Nome do grupo que será criado.
+</ParamField>
+
+<ParamField body="usuarios" type="string" required>
+  Lista de usuários para adicionar ao grupo, separados por hífen (`-`).
+</ParamField>
+
+<ParamField body="criarGrupo" type="string" required>
+  Deve ser "true" para criar o grupo.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/groups \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "Nome do Grupo",
+    "usuarios": "5581989769960-55819988775522",
+    "criarGrupo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/groups', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'Nome do Grupo',
+    usuarios: '5581989769960-55819988775522',
+    criarGrupo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/groups',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'Nome do Grupo',
+        'usuarios': '5581989769960-55819988775522',
+        'criarGrupo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/groups', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'Nome do Grupo',
+    'usuarios' => '5581989769960-55819988775522',
+    'criarGrupo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "Nome do Grupo",
-  "usuarios": "5581989769960-55819988775522",
-  "criarGrupo": "true"
+  "status": 200,
+  "message": "Grupo criado com sucesso.",
+  "grupoId": "123456789@g.us"
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

@@ -1,6 +1,6 @@
 ---
 title: 'Verificar Status do Dispositivo'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,15 +9,88 @@ Este endpoint permite verificar o status de um dispositivo, incluindo informaç�
 
 ### Parâmetros
 
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: ID ou nome do dispositivo que será verificado.  
-\* `checkDispositivo`: Deve ser "true" para verificar o status do dispositivo.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="message" type="string" required>
+  ID ou nome do dispositivo que será verificado.
+</ParamField>
 
-```json
+<ParamField body="checkDispositivo" type="string" required>
+  Deve ser "true" para verificar o status do dispositivo.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "ID ou Nome do Dispositivo",
+    "checkDispositivo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'ID ou Nome do Dispositivo',
+    checkDispositivo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'ID ou Nome do Dispositivo',
+        'checkDispositivo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'ID ou Nome do Dispositivo',
+    'checkDispositivo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "ID ou Nome do Dispositivo",
-  "checkDispositivo": "true"
+  "status": 200,
+  "dispositivo": {
+    "id": "123",
+    "nome": "Dispositivo 1",
+    "telefone": "+5511999999999",
+    "webhook": "https://exemplo.com/webhook",
+    "conectado": true
+  }
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

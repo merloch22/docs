@@ -1,0 +1,195 @@
+---
+title: 'Enviar Template Botão'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar uma mensagem com botões interativos. Suporta três tipos de botões: resposta rápida, link URL e chamada telefônica.
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto principal da mensagem.
+</ParamField>
+
+<ParamField body="header_title" type="string">
+  Título do cabeçalho da mensagem.
+</ParamField>
+
+<ParamField body="footer_text" type="string">
+  Texto do rodapé da mensagem.
+</ParamField>
+
+<ParamField body="buttons" type="array" required>
+  Array de botões. Cada botão possui:
+  - `type`: Tipo do botão (`replyButton`, `urlButton` ou `callButton`)
+  - `displaytext`: Texto exibido no botão
+  - `action`: URL ou número de telefone (obrigatório para `urlButton` e `callButton`)
+</ParamField>
+
+### Tipos de Botões
+
+<Info>
+**replyButton**: Botão de resposta rápida. Quando clicado, envia o texto do botão como resposta.
+
+**urlButton**: Botão que abre um link externo. Requer o parâmetro `action` com a URL.
+
+**callButton**: Botão que inicia uma chamada telefônica. Requer o parâmetro `action` com o número de telefone.
+</Info>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5581999999999",
+    "message": "Olá! Como posso ajudar?",
+    "header_title": "Atendimento",
+    "footer_text": "Escolha uma opção",
+    "buttons": [
+      {
+        "type": "replyButton",
+        "displaytext": "Ver Produtos"
+      },
+      {
+        "type": "urlButton",
+        "displaytext": "Acessar Site",
+        "action": "https://seusite.com"
+      },
+      {
+        "type": "callButton",
+        "displaytext": "Ligar Agora",
+        "action": "5581999999999"
+      }
+    ]
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5581999999999',
+    message: 'Olá! Como posso ajudar?',
+    header_title: 'Atendimento',
+    footer_text: 'Escolha uma opção',
+    buttons: [
+      {
+        type: 'replyButton',
+        displaytext: 'Ver Produtos'
+      },
+      {
+        type: 'urlButton',
+        displaytext: 'Acessar Site',
+        action: 'https://seusite.com'
+      },
+      {
+        type: 'callButton',
+        displaytext: 'Ligar Agora',
+        action: '5581999999999'
+      }
+    ]
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5581999999999',
+        'message': 'Olá! Como posso ajudar?',
+        'header_title': 'Atendimento',
+        'footer_text': 'Escolha uma opção',
+        'buttons': [
+            {
+                'type': 'replyButton',
+                'displaytext': 'Ver Produtos'
+            },
+            {
+                'type': 'urlButton',
+                'displaytext': 'Acessar Site',
+                'action': 'https://seusite.com'
+            },
+            {
+                'type': 'callButton',
+                'displaytext': 'Ligar Agora',
+                'action': '5581999999999'
+            }
+        ]
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5581999999999',
+    'message' => 'Olá! Como posso ajudar?',
+    'header_title' => 'Atendimento',
+    'footer_text' => 'Escolha uma opção',
+    'buttons' => [
+        [
+            'type' => 'replyButton',
+            'displaytext' => 'Ver Produtos'
+        ],
+        [
+            'type' => 'urlButton',
+            'displaytext' => 'Acessar Site',
+            'action' => 'https://seusite.com'
+        ],
+        [
+            'type' => 'callButton',
+            'displaytext' => 'Ligar Agora',
+            'action' => '5581999999999'
+        ]
+    ]
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Mensagem com botões enviada com sucesso."
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

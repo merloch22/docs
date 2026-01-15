@@ -1,6 +1,6 @@
 ---
 title: 'Alterar Título do Grupo'
-openapi: 'POST /api/groups'
+api: 'POST https://chatbot.menuia.com/api/groups'
 ---
 
 ## Descrição
@@ -9,19 +9,98 @@ Este endpoint permite alterar o título de um grupo existente, especificando o n
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Novo título do grupo.  
-\* `to`: ID do grupo cujo título será alterado.  
-\* `tituloGrupo`: Deve ser "true" para ativar a alteração de título.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Novo título do grupo.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  ID do grupo cujo título será alterado.
+</ParamField>
+
+<ParamField body="tituloGrupo" type="string" required>
+  Deve ser "true" para ativar a alteração de título.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/groups \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "Novo Título do Grupo",
+    "to": "ID_DO_GRUPO",
+    "tituloGrupo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/groups', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'Novo Título do Grupo',
+    to: 'ID_DO_GRUPO',
+    tituloGrupo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/groups',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'Novo Título do Grupo',
+        'to': 'ID_DO_GRUPO',
+        'tituloGrupo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/groups', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'Novo Título do Grupo',
+    'to' => 'ID_DO_GRUPO',
+    'tituloGrupo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "Novo Título do Grupo",
-  "to": "ID_DO_GRUPO",
-  "tituloGrupo": "true"
+  "status": 200,
+  "message": "Título do grupo alterado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Grupo não encontrado
+{
+  "status": 404,
+  "message": "Grupo não encontrado."
+}
+```
+</ResponseExample>

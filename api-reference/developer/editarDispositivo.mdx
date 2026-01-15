@@ -1,6 +1,6 @@
 ---
 title: 'Editar Dispositivo'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,19 +9,98 @@ Este endpoint permite editar as informações de um dispositivo, como o nome e o
 
 ### Parâmetros
 
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: ID ou nome do dispositivo a ser editado.  
-\* `webhook`: (Opcional) Novo URL do webhook a ser associado ao dispositivo.  
-\* `nome`: (Opcional) Novo nome do dispositivo.  
-\* `editeDispositivo`: Deve ser "true" para indicar que o dispositivo será editado.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="message" type="string" required>
+  ID ou nome do dispositivo a ser editado.
+</ParamField>
 
-```json
+<ParamField body="webhook" type="string">
+  Novo URL do webhook a ser associado ao dispositivo.
+</ParamField>
+
+<ParamField body="nome" type="string">
+  Novo nome do dispositivo.
+</ParamField>
+
+<ParamField body="editeDispositivo" type="string" required>
+  Deve ser "true" para indicar que o dispositivo será editado.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "ID ou Nome do Dispositivo",
+    "webhook": "https://exemplo.com/novo_webhook",
+    "nome": "Novo Nome do Dispositivo",
+    "editeDispositivo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'ID ou Nome do Dispositivo',
+    webhook: 'https://exemplo.com/novo_webhook',
+    nome: 'Novo Nome do Dispositivo',
+    editeDispositivo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'ID ou Nome do Dispositivo',
+        'webhook': 'https://exemplo.com/novo_webhook',
+        'nome': 'Novo Nome do Dispositivo',
+        'editeDispositivo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'ID ou Nome do Dispositivo',
+    'webhook' => 'https://exemplo.com/novo_webhook',
+    'nome' => 'Novo Nome do Dispositivo',
+    'editeDispositivo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "ID ou Nome do Dispositivo",
-  "webhook": "https://exemplo.com/novo_webhook",
-  "nome": "Novo Nome do Dispositivo",
-  "editeDispositivo": "true"
+  "status": 200,
+  "message": "Dispositivo editado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

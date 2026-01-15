@@ -1,6 +1,6 @@
 ---
 title: 'Apagar Dispositivo'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,15 +9,82 @@ Este endpoint permite apagar um dispositivo do sistema, fornecendo o ID ou nome 
 
 ### Parâmetros
 
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: ID ou nome do dispositivo a ser apagado.  
-\* `apagarDispositivo`: Deve ser "true" para indicar que o dispositivo será apagado.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="message" type="string" required>
+  ID ou nome do dispositivo a ser apagado.
+</ParamField>
 
-```json
+<ParamField body="apagarDispositivo" type="string" required>
+  Deve ser "true" para indicar que o dispositivo será apagado.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "ID ou Nome do Dispositivo",
+    "apagarDispositivo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'ID ou Nome do Dispositivo',
+    apagarDispositivo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'ID ou Nome do Dispositivo',
+        'apagarDispositivo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'ID ou Nome do Dispositivo',
+    'apagarDispositivo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "ID ou Nome do Dispositivo",
-  "apagarDispositivo": "true"
+  "status": 200,
+  "message": "Dispositivo apagado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

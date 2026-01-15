@@ -1,6 +1,6 @@
 ---
 title: 'Desativar e Ativar Webhooks'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,21 +9,98 @@ Este endpoint permite ativar ou desativar webhooks para chats ou grupos no siste
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `type`: Define o tipo de webhook, sendo `"chat"` ou `"grupo"`.  
-\* `message`: ID do dispositivo relacionado ao webhook.  
-\* `statusWebhook`: Deve ser `"true"` para ativar ou `"false"` para desativar o webhook.
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-#### Ativar um webhook:
+<ParamField body="type" type="string" required>
+  Define o tipo de webhook, sendo `"chat"` ou `"grupo"`.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  ID do dispositivo relacionado ao webhook.
+</ParamField>
+
+<ParamField body="statusWebhook" type="string" required>
+  Deve ser `"true"` para ativar ou `"false"` para desativar o webhook.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "type": "chat",
+    "message": "ID_DISPOSITIVO_AQUI",
+    "statusWebhook": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    type: 'chat',
+    message: 'ID_DISPOSITIVO_AQUI',
+    statusWebhook: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'type': 'chat',
+        'message': 'ID_DISPOSITIVO_AQUI',
+        'statusWebhook': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'type' => 'chat',
+    'message' => 'ID_DISPOSITIVO_AQUI',
+    'statusWebhook' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "type": "chat",
-  "message": "ID_DISPOSITIVO_AQUI",
-  "statusWebhook": "true"
+  "status": 200,
+  "message": "Webhook ativado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

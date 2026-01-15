@@ -1,6 +1,6 @@
 ---
 title: 'Permissões do Grupo'
-openapi: 'POST /api/groups'
+api: 'POST https://chatbot.menuia.com/api/groups'
 ---
 
 ## Descrição
@@ -9,23 +9,109 @@ Este endpoint permite definir permissões para um grupo, controlando quem pode e
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Tipo de permissão a ser configurada. As opções incluem:
-  - `not_announcement`: Todos podem enviar mensagens.  
-  - `announcement`: Apenas administradores podem enviar mensagens.  
-  - `unlocked`: Todos podem alterar a imagem do grupo.  
-  - `locked`: Apenas administradores podem alterar a imagem do grupo.  
-\* `to`: ID do grupo cuja permissão será alterada.  
-\* `permissaoGrupo`: Deve ser "true" para ativar a alteração das permissões.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Tipo de permissão a ser configurada. As opções incluem:
+  - `not_announcement`: Todos podem enviar mensagens.
+  - `announcement`: Apenas administradores podem enviar mensagens.
+  - `unlocked`: Todos podem alterar a imagem do grupo.
+  - `locked`: Apenas administradores podem alterar a imagem do grupo.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  ID do grupo cuja permissão será alterada.
+</ParamField>
+
+<ParamField body="permissaoGrupo" type="string" required>
+  Deve ser "true" para ativar a alteração das permissões.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/groups \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "not_announcement",
+    "to": "ID_DO_GRUPO",
+    "permissaoGrupo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/groups', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'not_announcement',
+    to: 'ID_DO_GRUPO',
+    permissaoGrupo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/groups',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'not_announcement',
+        'to': 'ID_DO_GRUPO',
+        'permissaoGrupo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/groups', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'not_announcement',
+    'to' => 'ID_DO_GRUPO',
+    'permissaoGrupo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "not_announcement",
-  "to": "ID_DO_GRUPO",
-  "permissaoGrupo": "true"
+  "status": 200,
+  "message": "Permissões do grupo alteradas com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 403 - Sem permissão
+{
+  "status": 403,
+  "message": "Você não tem permissão para alterar as configurações deste grupo."
+}
+```
+
+```json 404 - Grupo não encontrado
+{
+  "status": 404,
+  "message": "Grupo não encontrado."
+}
+```
+</ResponseExample>

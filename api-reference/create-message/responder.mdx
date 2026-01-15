@@ -1,61 +1,142 @@
 ---
 title: 'Responder Mensagens'
-openapi: 'POST /api/create-message'
+api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
 
 ## Descrição
 
 Este endpoint permite responder a mensagem de texto, multimídia, contato ou enquete, diretamente para um número ou grupo.
 
-## Parâmetros
+### Parâmetros Comuns
 
-### Comuns
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-* **`appkey`**: Chave de aplicação.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-* **`authkey`**: Chave de autenticação do usuário.
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
 
-* **`to`**: Número de telefone ou ID do grupo.
+<ParamField body="message" type="string" required>
+  Texto que será utilizado como resposta.
+</ParamField>
 
-* **`message`**: Texto que será utilizado como resposta.
+<ParamField body="tipoMensagem" type="string" required>
+  Tipo de mensagem enviada. Valores possíveis:
+  - `"extendedTextMessage"`: Resposta com texto estendido
+  - `"imageMessage"`: Resposta com imagem
+  - `"conversation"`: Resposta com texto simples
+  - `"videoMessage"`: Resposta com vídeo
+  - `"pollCreationUpdate"`: Resposta com enquete
+  - `"documentMessage"`: Resposta com arquivo/documento
+</ParamField>
 
-* **`tipoMensagem`**: Tipo de mensagem enviada. Os valores possíveis incluem:
+<ParamField body="tipo" type="string" required>
+  Define o remetente. Valores: `"me"` ou `"chat"`.
+</ParamField>
 
-  * `"extendedTextMessage"`: Resposta com texto estendido.
+<ParamField body="idMensagem" type="string" required>
+  ID da mensagem recebida que está sendo respondida.
+</ParamField>
 
-  * `"imageMessage"`: Resposta com imagem.
+### Parâmetros Específicos
 
-  * `"conversation"`: Resposta com texto simples.
+<ParamField body="respostaMensagem" type="string">
+  Conteúdo de texto para respostas do tipo texto (necessário para mostrar o texto que foi respondido).
+</ParamField>
 
-  * `"videoMessage"`: Resposta com vídeo.
+<ParamField body="thumbnail" type="string">
+  Conteúdo de imagem para respostas do tipo localização (URL ou BASE64).
+</ParamField>
 
-  * `"pollCreationUpdate"`: Resposta com enquete.
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+558189769960",
+    "message": "Que bom que você está bem",
+    "tipoMensagem": "extendedTextMessage",
+    "tipo": "chat",
+    "respostaMensagem": "Tudo bem",
+    "idMensagem": "F8B848F533D8805D321D5E1A6EBED388"
+  }'
+```
 
-  * `"documentMessage"`: Resposta com arquivo/documento.
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+558189769960',
+    message: 'Que bom que você está bem',
+    tipoMensagem: 'extendedTextMessage',
+    tipo: 'chat',
+    respostaMensagem: 'Tudo bem',
+    idMensagem: 'F8B848F533D8805D321D5E1A6EBED388'
+  })
+});
+```
 
-* **`tipo`**: Definir o remetente (ex.: `"me"` ou `"chat"`).
+```python Python
+import requests
 
-* **`idMensagem`**: ID da mensagem recebida que está sendo respondida.
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+558189769960',
+        'message': 'Que bom que você está bem',
+        'tipoMensagem': 'extendedTextMessage',
+        'tipo': 'chat',
+        'respostaMensagem': 'Tudo bem',
+        'idMensagem': 'F8B848F533D8805D321D5E1A6EBED388'
+    }
+)
+```
 
-### Específicos
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+558189769960',
+    'message' => 'Que bom que você está bem',
+    'tipoMensagem' => 'extendedTextMessage',
+    'tipo' => 'chat',
+    'respostaMensagem' => 'Tudo bem',
+    'idMensagem' => 'F8B848F533D8805D321D5E1A6EBED388'
+]);
+```
+</RequestExample>
 
-* **`respostaMensagem`** Conteúdo de texto para respostas do tipo texto (Necessario para mostrar o texto que foi respondido).
-
-* **`thumbnail`** Conteúdo de imagem para respostas do tipo localização (URL ou BASE64).
-
-***
-
-## Exemplos de Requisição
-
-```json
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "+558189769960",
-  "message": "Que bom que você está bem",
-  "tipoMensagem": "extendedTextMessage",
-  "tipo": "chat",
-  "respostaMensagem": "Tudo bem",
-  "idMensagem": "F8B848F533D8805D321D5E1A6EBED388"
+  "status": 200,
+  "message": "Resposta enviada com sucesso."
 }
 ```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

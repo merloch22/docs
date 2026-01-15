@@ -1,6 +1,6 @@
 ---
 title: 'Verificar se o Contato Está no WhatsApp'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,17 +9,99 @@ Este endpoint permite verificar se um número de telefone está registrado no Wh
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Deve ser `"false"` para realizar a operação.  
-\* `checkDevice`: Número de telefone a ser verificado (exemplo: `5581989769960`).
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Deve ser `"false"` para realizar a operação.
+</ParamField>
+
+<ParamField body="checkDevice" type="string" required>
+  Número de telefone a ser verificado (exemplo: `5581989769960`).
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "false",
+    "checkDevice": "5581989769960"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'false',
+    checkDevice: '5581989769960'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'false',
+        'checkDevice': '5581989769960'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'false',
+    'checkDevice' => '5581989769960'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso (Usuário existe)
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "false",
-  "checkDevice": "5581989769960"
+  "status": 200,
+  "message": "Usuário encontrado no WhatsApp.",
+  "exists": true
 }
+```
+
+```json 200 - Sucesso (Usuário não existe)
+{
+  "status": 200,
+  "message": "Usuário não encontrado no WhatsApp.",
+  "exists": false
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

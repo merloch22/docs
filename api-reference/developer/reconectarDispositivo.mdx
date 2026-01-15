@@ -1,6 +1,6 @@
 ---
 title: 'Reconectar Dispositivo via Link de Compartilhamento de QRcode'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,19 +9,99 @@ Este endpoint permite reconectar um dispositivo usando o link de compartilhament
 
 ### Parâmetros
 
-\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Nome para o link que será usado para reconectar o dispositivo.  
-\* `to`: Nome ou ID do dispositivo a ser reconectado.  
-\* `GerenciarLinks`: Deve ser "reconectar" para realizar a reconexão via link de QRcode.
+<ParamField body="appkey" type="string" required>
+  O `appkey` ou nome do dispositivo associado ao QRcode.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Nome para o link que será usado para reconectar o dispositivo.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Nome ou ID do dispositivo a ser reconectado.
+</ParamField>
+
+<ParamField body="GerenciarLinks" type="string" required>
+  Deve ser "reconectar" para realizar a reconexão via link de QRcode.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "nome para link",
+    "to": "Nome ou id do dispositivo",
+    "GerenciarLinks": "reconectar"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'nome para link',
+    to: 'Nome ou id do dispositivo',
+    GerenciarLinks: 'reconectar'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'nome para link',
+        'to': 'Nome ou id do dispositivo',
+        'GerenciarLinks': 'reconectar'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'nome para link',
+    'to' => 'Nome ou id do dispositivo',
+    'GerenciarLinks' => 'reconectar'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "nome para link",
-  "to": "Nome ou id do dispositivo",
-  "GerenciarLinks": "reconectar"
+  "status": 200,
+  "message": "Dispositivo reconectado com sucesso.",
+  "link": "https://chatbot.menuia.com/qr/..."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

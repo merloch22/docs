@@ -1,6 +1,6 @@
 ---
 title: 'Obter Status de Usuários'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,19 +9,99 @@ Este endpoint permite obter o status de um usuário específico no sistema do ch
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `to`: Número de telefone do usuário para quem o status será obtido (exemplo: `5581989769960`).  
-\* `message`: Deve ser `"false"` para realizar a operação.  
-\* `obterStatus`: Deve ser `"true"` para solicitar o status do usuário.
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="to" type="string" required>
+  Número de telefone do usuário para quem o status será obtido (exemplo: `5581989769960`).
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Deve ser `"false"` para realizar a operação.
+</ParamField>
+
+<ParamField body="obterStatus" type="string" required>
+  Deve ser `"true"` para solicitar o status do usuário.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5581989769960",
+    "message": "false",
+    "obterStatus": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5581989769960',
+    message: 'false',
+    obterStatus: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5581989769960',
+        'message': 'false',
+        'obterStatus': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5581989769960',
+    'message' => 'false',
+    'obterStatus' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "+5581989769960",
-  "message": "false",
-  "obterStatus": "true"
+  "status": 200,
+  "message": "Status obtido com sucesso.",
+  "userStatus": "Online"
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

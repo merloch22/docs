@@ -1,6 +1,6 @@
 ---
 title: 'Obter Lista de Grupos'
-openapi: 'POST /api/groups'
+api: 'POST https://chatbot.menuia.com/api/groups'
 ---
 
 ## Descrição
@@ -9,17 +9,100 @@ Este endpoint permite obter uma lista de grupos cadastrados, retornando o nome e
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Deve ser "listagrupo" para listar os grupos.  
-\* `grupo`: Deve ser "true" para ativar a listagem de grupos.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Deve ser "listagrupo" para listar os grupos.
+</ParamField>
+
+<ParamField body="grupo" type="string" required>
+  Deve ser "true" para ativar a listagem de grupos.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/groups \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "listagrupo",
+    "grupo": "true"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/groups', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'listagrupo',
+    grupo: 'true'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/groups',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'listagrupo',
+        'grupo': 'true'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/groups', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'listagrupo',
+    'grupo' => 'true'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "listagrupo",
-  "grupo": "true"
+  "status": 200,
+  "message": "Lista de grupos obtida com sucesso.",
+  "grupos": [
+    {
+      "id": "123456789@g.us",
+      "nome": "Grupo 1"
+    },
+    {
+      "id": "987654321@g.us",
+      "nome": "Grupo 2"
+    }
+  ]
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

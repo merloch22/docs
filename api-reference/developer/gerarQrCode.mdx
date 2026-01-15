@@ -1,0 +1,158 @@
+---
+title: 'Gerar QR Code / Código de Pareamento'
+api: 'POST https://chatbot.menuia.com/api/v2/qrcode'
+---
+
+## Descrição
+
+Este endpoint permite gerar um QR Code ou código de pareamento para conectar um dispositivo WhatsApp. Se o parâmetro `phone` for enviado, será gerado um código de pareamento; caso contrário, será gerado um QR Code tradicional.
+
+### Parâmetros
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="setAppkey" type="string">
+  Nome para criar uma appkey automaticamente. Se não informado, será gerada uma appkey aleatória.
+</ParamField>
+
+<ParamField body="phone" type="string">
+  Número de telefone para gerar código de pareamento. Se não informado, será gerado QR Code.
+</ParamField>
+
+<ParamField body="webhook" type="string">
+  URL do webhook para receber notificações (opcional).
+</ParamField>
+
+<Info>
+**Código de Pareamento vs QR Code:**
+- Se `phone` for enviado: Gera um código de 8 dígitos para parear via WhatsApp
+- Se `phone` não for enviado: Gera um QR Code para escanear com o WhatsApp
+</Info>
+
+<RequestExample>
+```bash cURL (QR Code)
+curl -X POST https://chatbot.menuia.com/api/v2/qrcode \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "setAppkey": "meu-dispositivo",
+    "webhook": "https://meusite.com/webhook"
+  }'
+```
+
+```bash cURL (Código de Pareamento)
+curl -X POST https://chatbot.menuia.com/api/v2/qrcode \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "setAppkey": "meu-dispositivo",
+    "phone": "5581999999999",
+    "webhook": "https://meusite.com/webhook"
+  }'
+```
+
+```javascript Node.js (QR Code)
+const response = await fetch('https://chatbot.menuia.com/api/v2/qrcode', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    setAppkey: 'meu-dispositivo',
+    webhook: 'https://meusite.com/webhook'
+  })
+});
+```
+
+```javascript Node.js (Código de Pareamento)
+const response = await fetch('https://chatbot.menuia.com/api/v2/qrcode', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    setAppkey: 'meu-dispositivo',
+    phone: '5581999999999',
+    webhook: 'https://meusite.com/webhook'
+  })
+});
+```
+
+```python Python (QR Code)
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/v2/qrcode',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'setAppkey': 'meu-dispositivo',
+        'webhook': 'https://meusite.com/webhook'
+    }
+)
+```
+
+```python Python (Código de Pareamento)
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/v2/qrcode',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'setAppkey': 'meu-dispositivo',
+        'phone': '5581999999999',
+        'webhook': 'https://meusite.com/webhook'
+    }
+)
+```
+
+```php PHP (QR Code)
+$response = Http::post('https://chatbot.menuia.com/api/v2/qrcode', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'setAppkey' => 'meu-dispositivo',
+    'webhook' => 'https://meusite.com/webhook'
+]);
+```
+
+```php PHP (Código de Pareamento)
+$response = Http::post('https://chatbot.menuia.com/api/v2/qrcode', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'setAppkey' => 'meu-dispositivo',
+    'phone' => '5581999999999',
+    'webhook' => 'https://meusite.com/webhook'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - QR Code gerado
+{
+  "status": 200,
+  "message": "QR Code gerado com sucesso.",
+  "qrcode": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA...",
+  "appkey": "meu-dispositivo"
+}
+```
+
+```json 200 - Código de Pareamento gerado
+{
+  "status": 200,
+  "message": "Código de pareamento gerado com sucesso.",
+  "code": "12345678",
+  "appkey": "meu-dispositivo"
+}
+```
+
+```json 401 - Erro de autenticação
+{
+  "status": 401,
+  "message": "Authkey inválida ou não encontrada."
+}
+```
+
+```json 400 - Erro de validação
+{
+  "status": 400,
+  "message": "Parâmetros inválidos."
+}
+```
+</ResponseExample>

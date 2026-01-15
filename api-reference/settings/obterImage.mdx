@@ -1,6 +1,6 @@
 ---
 title: 'Obter Imagem (Usuários ou Grupo)'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,19 +9,99 @@ Este endpoint permite obter a imagem de um usuário ou grupo no sistema do chatb
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `to`: Número do usuário (ex: `5581989769960`) ou ID do grupo (ex: `120363180117806010@g.us`).  
-\* `obterImagem`: Deve ser `"true"` para solicitar a imagem.  
-\* `message`: Deve ser `"false"` para realizar a operação.  
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="to" type="string" required>
+  Número do usuário (ex: `5581989769960`) ou ID do grupo (ex: `120363180117806010@g.us`).
+</ParamField>
+
+<ParamField body="obterImagem" type="string" required>
+  Deve ser `"true"` para solicitar a imagem.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Deve ser `"false"` para realizar a operação.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "5581989769960",
+    "obterImagem": "true",
+    "message": "false"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '5581989769960',
+    obterImagem: 'true',
+    message: 'false'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '5581989769960',
+        'obterImagem': 'true',
+        'message': 'false'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '5581989769960',
+    'obterImagem' => 'true',
+    'message' => 'false'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "5581989769960 ou 120363180117806010@g.us",
-  "obterImagem": "true",
-  "message": "false"
+  "status": 200,
+  "message": "Imagem obtida com sucesso.",
+  "image": "https://exemplo.com/imagem.jpg"
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

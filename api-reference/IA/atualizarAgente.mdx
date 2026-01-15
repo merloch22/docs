@@ -1,8 +1,118 @@
 ---
 title: 'Atualizar Agente de IA'
-openapi: 'PUT /api/v2/ia/{id}'
+api: 'PUT https://chatbot.menuia.com/api/v2/ia/{id}'
 ---
 
 ## Descrição
 
 Este endpoint permite atualizar as informações de um agente de IA existente, incluindo nome, dispositivo, webhook, voz, dias de trabalho, sistema e outras configurações.
+
+### Parâmetros
+
+<ParamField path="id" type="string" required>
+  ID do agente de IA que será atualizado.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação da conta.
+</ParamField>
+
+<ParamField body="agent_name" type="string">
+  Nome do agente de IA.
+</ParamField>
+
+<ParamField body="device" type="string">
+  APPKEY ou nome da chave do dispositivo.
+</ParamField>
+
+<ParamField body="webhook" type="string">
+  URL do webhook para receber notificações.
+</ParamField>
+
+<ParamField body="voice" type="string">
+  Configuração de voz do agente.
+</ParamField>
+
+<ParamField body="work_days" type="array">
+  Dias de trabalho do agente.
+</ParamField>
+
+<ParamField body="system" type="string">
+  Configuração do sistema/prompt do agente.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X PUT https://chatbot.menuia.com/api/v2/ia/123 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "agent_name": "Novo Nome do Agente",
+    "device": "SUA_APPKEY_AQUI",
+    "webhook": "https://seu-webhook.com/endpoint",
+    "system": "Você é um assistente prestativo."
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/v2/ia/123', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    agent_name: 'Novo Nome do Agente',
+    device: 'SUA_APPKEY_AQUI',
+    webhook: 'https://seu-webhook.com/endpoint',
+    system: 'Você é um assistente prestativo.'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.put(
+    'https://chatbot.menuia.com/api/v2/ia/123',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'agent_name': 'Novo Nome do Agente',
+        'device': 'SUA_APPKEY_AQUI',
+        'webhook': 'https://seu-webhook.com/endpoint',
+        'system': 'Você é um assistente prestativo.'
+    }
+)
+```
+
+```php PHP
+$response = Http::put('https://chatbot.menuia.com/api/v2/ia/123', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'agent_name' => 'Novo Nome do Agente',
+    'device' => 'SUA_APPKEY_AQUI',
+    'webhook' => 'https://seu-webhook.com/endpoint',
+    'system' => 'Você é um assistente prestativo.'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Agente de IA atualizado com sucesso."
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Agente não encontrado
+{
+  "status": 404,
+  "message": "Agente de IA não encontrado."
+}
+```
+</ResponseExample>

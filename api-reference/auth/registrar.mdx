@@ -1,29 +1,122 @@
 ---
-title: 'Registrar e Obter Informações de Usuário'
-openapi: 'POST /api/auth'
+title: 'Registrar e Obter Informacoes de Usuario'
+api: 'POST https://chatbot.menuia.com/api/auth'
 ---
 
-## Descrição
+## Descricao
 
-Este endpoint permite registrar um novo usuário e obter informações como nome, e-mail, telefone, `authkey`, data de expiração e o plano do usuário.
+Este endpoint permite registrar um novo usuario e obter informacoes como nome, e-mail, telefone, `authkey`, data de expiracao e o plano do usuario.
 
-### Parâmetros
+### Parametros
 
-* `email`: O e-mail do usuário para registro.
-* `senha`: A senha do usuário para registro.
-* `nome`: Nome completo do usuário.
-* `telefone`: Número de telefone do usuário (incluindo código do país).
-* `plano`: ID do plano do usuário.
-* `auth`: Identificador da requisição, deve ser "registrar" para registrar um novo usuário.
+<ParamField body="email" type="string" required>
+  O e-mail do usuario para registro.
+</ParamField>
 
-### Exemplo de Requisição:
+<ParamField body="senha" type="string" required>
+  A senha do usuario para registro.
+</ParamField>
 
-```json
+<ParamField body="nome" type="string" required>
+  Nome completo do usuario.
+</ParamField>
+
+<ParamField body="telefone" type="string" required>
+  Numero de telefone do usuario (incluindo codigo do pais).
+</ParamField>
+
+<ParamField body="plano" type="string" required>
+  ID do plano do usuario.
+</ParamField>
+
+<ParamField body="auth" type="string" required>
+  Identificador da requisicao, deve ser "registrar" para registrar um novo usuario.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/auth \
+  -H "Content-Type: application/json" \
+  -d '{
+    "email": "exemplo@exemplo.com",
+    "senha": "SuaSenhaAqui",
+    "nome": "Joao",
+    "telefone": "+558198976996",
+    "plano": "ID_DO_PLANO",
+    "auth": "registrar"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/auth', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    email: 'exemplo@exemplo.com',
+    senha: 'SuaSenhaAqui',
+    nome: 'Joao',
+    telefone: '+558198976996',
+    plano: 'ID_DO_PLANO',
+    auth: 'registrar'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/auth',
+    json={
+        'email': 'exemplo@exemplo.com',
+        'senha': 'SuaSenhaAqui',
+        'nome': 'Joao',
+        'telefone': '+558198976996',
+        'plano': 'ID_DO_PLANO',
+        'auth': 'registrar'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/auth', [
+    'email' => 'exemplo@exemplo.com',
+    'senha' => 'SuaSenhaAqui',
+    'nome' => 'Joao',
+    'telefone' => '+558198976996',
+    'plano' => 'ID_DO_PLANO',
+    'auth' => 'registrar'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "email": "exemplo@exemplo.com",
-  "senha": "Sua senha aqui",
-  "nome": "João",
-  "telefone": "+558198976996",
-  "plano": "ID do plano",
-  "auth": "registrar"
+  "status": 200,
+  "message": "Usuario registrado com sucesso.",
+  "data": {
+    "nome": "Joao",
+    "email": "exemplo@exemplo.com",
+    "telefone": "+558198976996",
+    "authkey": "A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+    "expiracao": "2025-12-31",
+    "plano": "premium"
+  }
 }
+```
+
+```json 401 - Erro de validacao
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 409 - Usuario ja existe
+{
+  "status": 409,
+  "message": "Usuario ja registrado com este e-mail."
+}
+```
+</ResponseExample>

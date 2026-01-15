@@ -1,23 +1,91 @@
 ---
 title: 'Criar Agente de IA'
-openapi: 'POST /api/v2/ia'
+api: 'POST https://chatbot.menuia.com/api/v2/ia'
 ---
 
-## Descrição
+## Descricao
 
-Este endpoint permite criar um novo agente de IA associado à sua conta, informando o nome do agente e o dispositivo que o hospeda.
+Este endpoint permite criar um novo agente de IA associado a sua conta, informando o nome do agente e o dispositivo que o hospeda.
 
-### Parâmetros
+### Parametros
 
-* `authkey`: Chave de autenticação da conta.
-* `device`: Dispositivo que irá hospedar o agente (ex: "servidor").
-* `agent_name`: Nome do agente que será criado.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticacao da conta.
+</ParamField>
 
-### Exemplo de Requisição:
+<ParamField body="device" type="string" required>
+  Dispositivo que ira hospedar o agente (ex: "servidor").
+</ParamField>
 
-```json
+<ParamField body="agent_name" type="string" required>
+  Nome do agente que sera criado.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/v2/ia \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+    "device": "servidor",
+    "agent_name": "AGENTE 2"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/v2/ia', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+    device: 'servidor',
+    agent_name: 'AGENTE 2'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/v2/ia',
+    json={
+        'authkey': 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+        'device': 'servidor',
+        'agent_name': 'AGENTE 2'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/v2/ia', [
+    'authkey' => 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+    'device' => 'servidor',
+    'agent_name' => 'AGENTE 2'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
-  "device": "servidor",
-  "agent_name": "AGENTE 2"
+  "status": 200,
+  "message": "Agente criado com sucesso.",
+  "agent_id": "ag_123456789"
 }
+```
+
+```json 401 - Erro de autenticacao
+{
+  "status": 401,
+  "message": "Authkey invalida ou expirada."
+}
+```
+
+```json 400 - Erro de validacao
+{
+  "status": 400,
+  "message": "validation.required"
+}
+```
+</ResponseExample>

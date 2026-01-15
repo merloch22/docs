@@ -14,7 +14,7 @@ Este webhook é acionado quando uma mensagem é deletada. Ele fornece informaç�
 - **`data`**: A data em que a mensagem foi deletada.
 - **`horario`**: A hora exata em que a mensagem foi deletada, no formato `HH:MM:SS`.
 - **`tipoMensagem`**: Tipo da mensagem. Para mensagens deletadas, o valor será `"protocolMessage"`.
-- **`idMessagemInteragida`**: O identificador único da mensagem que foi deletada. Esse campo serve para identificar qual mensagem foi excluída.
+- **`idMensagemInteragida`**: O identificador único da mensagem que foi deletada. Esse campo serve para identificar qual mensagem foi excluída.
 - **`evento`**: Descrição do evento disparado. No caso de uma mensagem deletada, será `"deletada"`.
 
 ## Exemplo de Corpo do Webhook
@@ -29,6 +29,6 @@ Este webhook é acionado quando uma mensagem é deletada. Ele fornece informaç�
   "data": "18/11/2024",
   "horario": "18:00:00",
   "tipoMensagem": "protocolMessage",
-  "idMessagemInteragida": "3FDFC846DFAB35BA8488",
+  "idMensagemInteragida": "3FDFC846DFAB35BA8488",
   "evento": "deletada"
 }

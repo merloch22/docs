@@ -1,6 +1,6 @@
 ---
 title: 'Gerenciar Grupo'
-openapi: 'POST /api/groups'
+api: 'POST https://chatbot.menuia.com/api/groups'
 ---
 
 ## Descrição
@@ -9,23 +9,109 @@ Este endpoint permite gerenciar membros de um grupo existente. As ações dispon
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Ação a ser realizada no grupo. Valores possíveis:  
-  - `add`: Adicionar usuários.  
-  - `remove`: Remover usuários.  
-  - `promote`: Promover usuários a administradores.  
-  - `demote`: Rebaixar administradores a membros.  
-\* `usuarios`: Lista de usuários a serem gerenciados, separados por hífen (`-`).  
-\* `gerenciarGrupo`: ID do grupo a ser gerenciado.
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Ação a ser realizada no grupo. Valores possíveis:
+  - `add`: Adicionar usuários.
+  - `remove`: Remover usuários.
+  - `promote`: Promover usuários a administradores.
+  - `demote`: Rebaixar administradores a membros.
+</ParamField>
+
+<ParamField body="usuarios" type="string" required>
+  Lista de usuários a serem gerenciados, separados por hífen (`-`).
+</ParamField>
+
+<ParamField body="gerenciarGrupo" type="string" required>
+  ID do grupo a ser gerenciado.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/groups \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "add",
+    "usuarios": "5581989769960-55819988775522",
+    "gerenciarGrupo": "ID_DO_GRUPO"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/groups', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'add',
+    usuarios: '5581989769960-55819988775522',
+    gerenciarGrupo: 'ID_DO_GRUPO'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/groups',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'add',
+        'usuarios': '5581989769960-55819988775522',
+        'gerenciarGrupo': 'ID_DO_GRUPO'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/groups', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'add',
+    'usuarios' => '5581989769960-55819988775522',
+    'gerenciarGrupo' => 'ID_DO_GRUPO'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "add",
-  "usuarios": "5581989769960-55819988775522",
-  "gerenciarGrupo": "ID_DO_GRUPO"
+  "status": 200,
+  "message": "Ação realizada com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 403 - Sem permissão
+{
+  "status": 403,
+  "message": "Você não tem permissão para gerenciar este grupo."
+}
+```
+
+```json 404 - Grupo não encontrado
+{
+  "status": 404,
+  "message": "Grupo não encontrado."
+}
+```
+</ResponseExample>

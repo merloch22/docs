@@ -1,6 +1,6 @@
 ---
 title: 'Obter Informações de Um Agente de IA'
-openapi: 'GET /api/v2/ia/{id}'
+api: 'GET https://chatbot.menuia.com/api/v2/ia/{id}'
 ---
 
 ## Descrição
@@ -9,5 +9,74 @@ Este endpoint permite obter informações detalhadas de um agente de IA específ
 
 ### Parâmetros
 
-* `id`: ID do agente de IA que será consultado (informado na URL do endpoint).
-* `authkey`: Chave de autenticação da conta.
+<ParamField path="id" type="string" required>
+  ID do agente de IA que será consultado.
+</ParamField>
+
+<ParamField query="authkey" type="string" required>
+  Chave de autenticação da conta.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X GET "https://chatbot.menuia.com/api/v2/ia/123?authkey=SUA_AUTHKEY_AQUI" \
+  -H "Content-Type: application/json"
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/v2/ia/123?authkey=SUA_AUTHKEY_AQUI', {
+  method: 'GET',
+  headers: { 'Content-Type': 'application/json' }
+});
+```
+
+```python Python
+import requests
+
+response = requests.get(
+    'https://chatbot.menuia.com/api/v2/ia/123',
+    params={
+        'authkey': 'SUA_AUTHKEY_AQUI'
+    }
+)
+```
+
+```php PHP
+$response = Http::get('https://chatbot.menuia.com/api/v2/ia/123', [
+    'authkey' => 'SUA_AUTHKEY_AQUI'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "data": {
+    "id": 123,
+    "agent_name": "Meu Agente de IA",
+    "device": "SUA_APPKEY_AQUI",
+    "webhook": "https://seu-webhook.com/endpoint",
+    "voice": "default",
+    "work_days": ["monday", "tuesday", "wednesday", "thursday", "friday"],
+    "system": "Você é um assistente prestativo.",
+    "created_at": "2024-01-15T10:30:00Z",
+    "updated_at": "2024-01-15T10:30:00Z"
+  }
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Agente não encontrado
+{
+  "status": 404,
+  "message": "Agente de IA não encontrado."
+}
+```
+</ResponseExample>

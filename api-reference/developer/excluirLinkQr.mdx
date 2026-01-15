@@ -1,6 +1,6 @@
 ---
 title: 'Excluir Link de Compartilhamento de QRcode'
-openapi: 'POST /api/developer'
+api: 'POST https://chatbot.menuia.com/api/developer'
 ---
 
 ## Descrição
@@ -9,19 +9,98 @@ Este endpoint permite excluir um link de compartilhamento de QRcode de um dispos
 
 ### Parâmetros
 
-\* `appkey`: O `appkey` ou nome do dispositivo associado ao QRcode.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `message`: Deve ser "false" para indicar que o objetivo é excluir o link de QRcode.  
-\* `to`: Nome ou ID do dispositivo cujo link de QRcode será excluído.  
-\* `GerenciarLinks`: Deve ser "excluir" para excluir o link de compartilhamento de QRcode.
+<ParamField body="appkey" type="string" required>
+  O `appkey` ou nome do dispositivo associado ao QRcode.
+</ParamField>
 
-### Exemplo de Requisição
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="message" type="string" required>
+  Deve ser "false" para indicar que o objetivo é excluir o link de QRcode.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Nome ou ID do dispositivo cujo link de QRcode será excluído.
+</ParamField>
+
+<ParamField body="GerenciarLinks" type="string" required>
+  Deve ser "excluir" para excluir o link de compartilhamento de QRcode.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "message": "false",
+    "to": "Nome ou id do dispositivo",
+    "GerenciarLinks": "excluir"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    message: 'false',
+    to: 'Nome ou id do dispositivo',
+    GerenciarLinks: 'excluir'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'message': 'false',
+        'to': 'Nome ou id do dispositivo',
+        'GerenciarLinks': 'excluir'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'message' => 'false',
+    'to' => 'Nome ou id do dispositivo',
+    'GerenciarLinks' => 'excluir'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "message": "false",
-  "to": "Nome ou id do dispositivo",
-  "GerenciarLinks": "excluir"
+  "status": 200,
+  "message": "Link de compartilhamento excluído com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

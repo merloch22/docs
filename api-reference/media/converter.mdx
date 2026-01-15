@@ -1,25 +1,98 @@
 ---
 title: 'Conversor Imagem/PDF para Texto'
-openapi: 'POST /api/media'
+api: 'POST https://textscan.menuia.com/api/media'
 ---
 
-## Descrição
+## Descricao
 
-Este endpoint permite converter arquivos de imagem ou PDF para texto. O arquivo pode ser enviado como URL ou como base64, e a API retornará o texto extraído.
+Este endpoint permite converter arquivos de imagem ou PDF para texto. O arquivo pode ser enviado como URL ou como base64, e a API retornara o texto extraido.
 
-### Parâmetros
+### Parametros
 
-\* `authkey`: Chave de autenticação da API.
+<ParamField body="authkey" type="string" required>
+  Chave de autenticacao da API.
+</ParamField>
 
-\* `file`: O arquivo a ser processado, que pode ser enviado como URL ou em formato base64.
+<ParamField body="file" type="string" required>
+  O arquivo a ser processado, que pode ser enviado como URL ou em formato base64.
+</ParamField>
 
-\* `format`: O formato do arquivo, que pode ser `image` ou `pdf`.
+<ParamField body="format" type="string" required>
+  O formato do arquivo, que pode ser "image", "pdf", "JPG", "PNG", etc.
+</ParamField>
 
-### Exemplo de requisição:
+<RequestExample>
+```bash cURL
+curl -X POST https://textscan.menuia.com/api/media \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "file": "https://exemplo.com/documento.pdf",
+    "format": "pdf"
+  }'
+```
 
-```json
+```javascript Node.js
+const response = await fetch('https://textscan.menuia.com/api/media', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    file: 'https://exemplo.com/documento.pdf',
+    format: 'pdf'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://textscan.menuia.com/api/media',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'file': 'https://exemplo.com/documento.pdf',
+        'format': 'pdf'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://textscan.menuia.com/api/media', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'file' => 'https://exemplo.com/documento.pdf',
+    'format' => 'pdf'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "file": "URL ou base64 do arquivo",
-  "format": "pdf"  // ou "JPG", "PNG"...
+  "status": 200,
+  "message": "Arquivo processado com sucesso.",
+  "text": "Conteudo extraido do arquivo PDF ou imagem aparece aqui..."
 }
+```
+
+```json 401 - Erro de autenticacao
+{
+  "status": 401,
+  "message": "Authkey invalida ou expirada."
+}
+```
+
+```json 400 - Erro de validacao
+{
+  "status": 400,
+  "message": "Formato de arquivo nao suportado."
+}
+```
+
+```json 422 - Erro de processamento
+{
+  "status": 422,
+  "message": "Nao foi possivel extrair texto do arquivo."
+}
+```
+</ResponseExample>

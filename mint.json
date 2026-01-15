@@ -141,6 +141,8 @@
         "api-reference/create-message/contato",
         "api-reference/create-message/mensagemTexto",
         "api-reference/create-message/enviarMultimidia",
+        "api-reference/create-message/enviarListaBotao",
+        "api-reference/create-message/enviarTemplateBotao",
         "api-reference/create-message/enviarTemplate",
         "api-reference/create-message/fixarChats",
         "api-reference/create-message/listarMensagensAgendadas",
@@ -190,6 +192,7 @@
     {
       "group": "Revenda",
       "pages": [
+        "api-reference/developer/gerarQrCode",
         "api-reference/developer/adicionarDispositivo",
         "api-reference/developer/apagarDispositivo",
         "api-reference/developer/criarAplicativo",
@@ -201,7 +204,6 @@
         "api-reference/developer/infoDevices",
         "api-reference/developer/reconectarDispositivo",
         "api-reference/developer/statusDispositivo"
-
       ]
     },
     {

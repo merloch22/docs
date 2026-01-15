@@ -1,6 +1,6 @@
 ---
 title: 'Pausar ou Iniciar Conversa Chatbot (Fluxo)'
-openapi: 'POST /api/settings'
+api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
 ## Descrição
@@ -9,19 +9,98 @@ Este endpoint permite pausar ou iniciar fluxos de conversa no chatbot, com base 
 
 ### Parâmetros
 
-\* `appkey`: Chave da aplicação.  
-\* `authkey`: Chave de autenticação do usuário.  
-\* `to`: Número de telefone do destinatário.  
-\* `message`: Valor obrigatório para indicar o conteúdo da mensagem. Para essa operação, deve ser `"false"`.  
-\* `statusFluxo`: Define o status do fluxo. Use `"Ativar"` para iniciar o fluxo ou `"Desativar"` para pausá-lo.
+<ParamField body="appkey" type="string" required>
+  Chave da aplicação.
+</ParamField>
 
-### Exemplo de requisição:
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
 
-```json
+<ParamField body="to" type="string" required>
+  Número de telefone do destinatário.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Valor obrigatório para indicar o conteúdo da mensagem. Para essa operação, deve ser `"false"`.
+</ParamField>
+
+<ParamField body="statusFluxo" type="string" required>
+  Define o status do fluxo. Use `"Ativar"` para iniciar o fluxo ou `"Desativar"` para pausá-lo.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/settings \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5581989769960",
+    "message": "false",
+    "statusFluxo": "Ativar"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/settings', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5581989769960',
+    message: 'false',
+    statusFluxo: 'Ativar'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/settings',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5581989769960',
+        'message': 'false',
+        'statusFluxo': 'Ativar'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/settings', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5581989769960',
+    'message' => 'false',
+    'statusFluxo' => 'Ativar'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
 {
-  "appkey": "SUA_APPKEY_AQUI",
-  "authkey": "SUA_AUTHKEY_AQUI",
-  "to": "+5581989769960",
-  "message": "false",
-  "statusFluxo": "Ativar"
+  "status": 200,
+  "message": "Status do fluxo alterado com sucesso."
 }
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>
