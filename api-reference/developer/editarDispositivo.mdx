@@ -29,29 +29,78 @@ Este endpoint permite editar as informações de um dispositivo, como o nome e o
   Deve ser "true" para indicar que o dispositivo será editado.
 </ParamField>
 
+<ParamField body="self_events" type="boolean">
+  Ativa eventos do próprio número (webhook_me).
+</ParamField>
+
+<ParamField body="chat_enabled" type="boolean">
+  Ativa o webhook para conversas privadas.
+</ParamField>
+
+<ParamField body="chat_text" type="boolean">
+  Filtro para mensagens de texto em chats.
+</ParamField>
+
+<ParamField body="chat_media" type="boolean">
+  Filtro para mídias em chats.
+</ParamField>
+
+<ParamField body="chat_contact" type="boolean">
+  Filtro para contatos em chats.
+</ParamField>
+
+<ParamField body="group_enabled" type="boolean">
+  Ativa o webhook para grupos.
+</ParamField>
+
+<ParamField body="group_text" type="boolean">
+  Filtro para mensagens de texto em grupos.
+</ParamField>
+
+<ParamField body="group_media" type="boolean">
+  Filtro para mídias em grupos.
+</ParamField>
+
+<ParamField body="group_contact" type="boolean">
+  Filtro para contatos em grupos.
+</ParamField>
+
 <RequestExample>
 ```bash cURL
-curl -X POST https://chatbot.menuia.com/api/developer \
+curl -X POST [https://chatbot.menuia.com/api/developer](https://chatbot.menuia.com/api/developer) \
   -H "Content-Type: application/json" \
   -d '{
     "authkey": "SUA_AUTHKEY_AQUI",
     "message": "ID ou Nome do Dispositivo",
-    "webhook": "https://exemplo.com/novo_webhook",
+    "webhook": "[https://exemplo.com/novo_webhook](https://exemplo.com/novo_webhook)",
     "nome": "Novo Nome do Dispositivo",
-    "editeDispositivo": "true"
+    "editeDispositivo": "true",
+    "self_events": true,
+    "chat_enabled": true,
+    "chat_text": true,
+    "group_enabled": true
   }'
 ```
 
 ```javascript Node.js
-const response = await fetch('https://chatbot.menuia.com/api/developer', {
+const response = await fetch('[https://chatbot.menuia.com/api/developer](https://chatbot.menuia.com/api/developer)', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
     authkey: 'SUA_AUTHKEY_AQUI',
     message: 'ID ou Nome do Dispositivo',
-    webhook: 'https://exemplo.com/novo_webhook',
+    webhook: '[https://exemplo.com/novo_webhook](https://exemplo.com/novo_webhook)',
     nome: 'Novo Nome do Dispositivo',
-    editeDispositivo: 'true'
+    editeDispositivo: 'true',
+    self_events: true,
+    chat_enabled: true,
+    chat_text: true,
+    chat_media: true,
+    chat_contact: true,
+    group_enabled: true,
+    group_text: true,
+    group_media: true,
+    group_contact: true
   })
 });
 ```
@@ -60,24 +109,42 @@ const response = await fetch('https://chatbot.menuia.com/api/developer', {
 import requests
 
 response = requests.post(
-    'https://chatbot.menuia.com/api/developer',
+    '[https://chatbot.menuia.com/api/developer](https://chatbot.menuia.com/api/developer)',
     json={
         'authkey': 'SUA_AUTHKEY_AQUI',
         'message': 'ID ou Nome do Dispositivo',
-        'webhook': 'https://exemplo.com/novo_webhook',
+        'webhook': '[https://exemplo.com/novo_webhook](https://exemplo.com/novo_webhook)',
         'nome': 'Novo Nome do Dispositivo',
-        'editeDispositivo': 'true'
+        'editeDispositivo': 'true',
+        'self_events': True,
+        'chat_enabled': True,
+        'chat_text': True,
+        'chat_media': True,
+        'chat_contact': True,
+        'group_enabled': True,
+        'group_text': True,
+        'group_media': True,
+        'group_contact': True
     }
 )
 ```
 
 ```php PHP
-$response = Http::post('https://chatbot.menuia.com/api/developer', [
+$response = Http::post('[https://chatbot.menuia.com/api/developer](https://chatbot.menuia.com/api/developer)', [
     'authkey' => 'SUA_AUTHKEY_AQUI',
     'message' => 'ID ou Nome do Dispositivo',
-    'webhook' => 'https://exemplo.com/novo_webhook',
+    'webhook' => '[https://exemplo.com/novo_webhook](https://exemplo.com/novo_webhook)',
     'nome' => 'Novo Nome do Dispositivo',
-    'editeDispositivo' => 'true'
+    'editeDispositivo' => 'true',
+    'self_events' => true,
+    'chat_enabled' => true,
+    'chat_text' => true,
+    'chat_media' => true,
+    'chat_contact' => true,
+    'group_enabled' => true,
+    'group_text' => true,
+    'group_media' => true,
+    'group_contact' => true
 ]);
 ```
 </RequestExample>
