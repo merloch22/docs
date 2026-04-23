@@ -1,0 +1,217 @@
+---
+title: 'Enviar Carrossel'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Este endpoint permite enviar uma mensagem em formato de carrossel com múltiplos cards. Cada card pode conter imagem, título, subtítulo, descrição e botões interativos (resposta rápida, link URL ou chamada telefônica).
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  Texto do topo do carrossel, exibido antes dos cards.
+</ParamField>
+
+<ParamField body="footer_text" type="string">
+  Texto do rodapé exibido abaixo do carrossel.
+</ParamField>
+
+<ParamField body="cards" type="array" required>
+  Array de cards que compõem o carrossel. Cada card possui:
+  - `image_url`: URL da imagem do card
+  - `title`: Título do card
+  - `subtitle`: Subtítulo do card
+  - `description`: Descrição ou legenda do card
+  - `buttons`: Array de botões do card (ver tipos abaixo)
+</ParamField>
+
+### Tipos de Botões
+
+<Info>
+**quickReplyButton**: Botão de resposta rápida. Quando clicado, envia o texto do botão como resposta. Requer `displaytext` e `id`.
+
+**urlButton**: Botão que abre um link externo. Requer `displaytext` e `action` com a URL.
+
+**callButton**: Botão que inicia uma chamada telefônica. Requer `displaytext` e `action` com o número de telefone.
+</Info>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "558189769960",
+    "message": "Confira nossas ofertas exclusivas:",
+    "footer_text": "Promoções válidas por tempo limitado",
+    "cards": [
+      {
+        "image_url": "https://exemplo.com/produto1.jpg",
+        "title": "Smartphone Premium",
+        "subtitle": "Modelo 2026",
+        "description": "Tela OLED, câmera de 200MP e bateria de longa duração.",
+        "buttons": [
+          {"type": "quickReplyButton", "displaytext": "Tenho interesse", "id": "opt-1"},
+          {"type": "urlButton", "displaytext": "Abrir", "action": "https://exemplo.com/produto1"},
+          {"type": "callButton", "displaytext": "Ligar", "action": "+5511999999999"}
+        ]
+      },
+      {
+        "image_url": "https://exemplo.com/produto2.jpg",
+        "title": "Notebook Pro",
+        "subtitle": "Edição Especial",
+        "description": "Processador de última geração, ideal para trabalho e jogos.",
+        "buttons": [
+          {"type": "quickReplyButton", "displaytext": "Quero saber mais", "id": "opt-2"},
+          {"type": "urlButton", "displaytext": "Ver detalhes", "action": "https://exemplo.com/produto2"}
+        ]
+      }
+    ]
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '558189769960',
+    message: 'Confira nossas ofertas exclusivas:',
+    footer_text: 'Promoções válidas por tempo limitado',
+    cards: [
+      {
+        image_url: 'https://exemplo.com/produto1.jpg',
+        title: 'Smartphone Premium',
+        subtitle: 'Modelo 2026',
+        description: 'Tela OLED, câmera de 200MP e bateria de longa duração.',
+        buttons: [
+          { type: 'quickReplyButton', displaytext: 'Tenho interesse', id: 'opt-1' },
+          { type: 'urlButton', displaytext: 'Abrir', action: 'https://exemplo.com/produto1' },
+          { type: 'callButton', displaytext: 'Ligar', action: '+5511999999999' }
+        ]
+      },
+      {
+        image_url: 'https://exemplo.com/produto2.jpg',
+        title: 'Notebook Pro',
+        subtitle: 'Edição Especial',
+        description: 'Processador de última geração, ideal para trabalho e jogos.',
+        buttons: [
+          { type: 'quickReplyButton', displaytext: 'Quero saber mais', id: 'opt-2' },
+          { type: 'urlButton', displaytext: 'Ver detalhes', action: 'https://exemplo.com/produto2' }
+        ]
+      }
+    ]
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '558189769960',
+        'message': 'Confira nossas ofertas exclusivas:',
+        'footer_text': 'Promoções válidas por tempo limitado',
+        'cards': [
+            {
+                'image_url': 'https://exemplo.com/produto1.jpg',
+                'title': 'Smartphone Premium',
+                'subtitle': 'Modelo 2026',
+                'description': 'Tela OLED, câmera de 200MP e bateria de longa duração.',
+                'buttons': [
+                    {'type': 'quickReplyButton', 'displaytext': 'Tenho interesse', 'id': 'opt-1'},
+                    {'type': 'urlButton', 'displaytext': 'Abrir', 'action': 'https://exemplo.com/produto1'},
+                    {'type': 'callButton', 'displaytext': 'Ligar', 'action': '+5511999999999'}
+                ]
+            },
+            {
+                'image_url': 'https://exemplo.com/produto2.jpg',
+                'title': 'Notebook Pro',
+                'subtitle': 'Edição Especial',
+                'description': 'Processador de última geração, ideal para trabalho e jogos.',
+                'buttons': [
+                    {'type': 'quickReplyButton', 'displaytext': 'Quero saber mais', 'id': 'opt-2'},
+                    {'type': 'urlButton', 'displaytext': 'Ver detalhes', 'action': 'https://exemplo.com/produto2'}
+                ]
+            }
+        ]
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '558189769960',
+    'message' => 'Confira nossas ofertas exclusivas:',
+    'footer_text' => 'Promoções válidas por tempo limitado',
+    'cards' => [
+        [
+            'image_url' => 'https://exemplo.com/produto1.jpg',
+            'title' => 'Smartphone Premium',
+            'subtitle' => 'Modelo 2026',
+            'description' => 'Tela OLED, câmera de 200MP e bateria de longa duração.',
+            'buttons' => [
+                ['type' => 'quickReplyButton', 'displaytext' => 'Tenho interesse', 'id' => 'opt-1'],
+                ['type' => 'urlButton', 'displaytext' => 'Abrir', 'action' => 'https://exemplo.com/produto1'],
+                ['type' => 'callButton', 'displaytext' => 'Ligar', 'action' => '+5511999999999']
+            ]
+        ],
+        [
+            'image_url' => 'https://exemplo.com/produto2.jpg',
+            'title' => 'Notebook Pro',
+            'subtitle' => 'Edição Especial',
+            'description' => 'Processador de última geração, ideal para trabalho e jogos.',
+            'buttons' => [
+                ['type' => 'quickReplyButton', 'displaytext' => 'Quero saber mais', 'id' => 'opt-2'],
+                ['type' => 'urlButton', 'displaytext' => 'Ver detalhes', 'action' => 'https://exemplo.com/produto2']
+            ]
+        ]
+    ]
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Carrossel enviado com sucesso."
+}
+```
+
+```json 401 - Erro de validação
+{
+  "status": 401,
+  "message": "validation.required"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo encontrado."
+}
+```
+</ResponseExample>

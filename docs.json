@@ -1,0 +1,269 @@
+{
+  "$schema": "https://mintlify.com/docs.json",
+  "theme": "mint",
+  "name": "Menuia",
+  "colors": {
+    "primary": "#580662",
+    "light": "#c204ef",
+    "dark": "#580662"
+  },
+  "favicon": "/favicon.png",
+  "navigation": {
+    "tabs": [
+      {
+        "tab": "Documentation",
+        "groups": [
+          {
+            "group": "API",
+            "pages": [
+              "pages/introducao",
+              {
+                "group": "Endpoints e Tokens",
+                "pages": [
+                  "pages/endpoints/introducao",
+                  "pages/endpoints/authkey",
+                  "pages/endpoints/appkey"
+                ]
+              },
+              {
+                "group": "Parâmetros",
+                "pages": [
+                  "pages/parametros/introducao",
+                  "pages/parametros/destinatarios",
+                  "pages/parametros/agendamento",
+                  "pages/parametros/multimidia",
+                  "pages/parametros/localizacao",
+                  "pages/parametros/booleanos",
+                  "pages/parametros/block",
+                  "pages/parametros/permissoes",
+                  "pages/parametros/webhook"
+                ]
+              },
+              {
+                "group": "API de Configurações",
+                "pages": [
+                  "pages/configuracoes/introducao",
+                  "pages/configuracoes/consumindo"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Chatbot Fluxo",
+            "pages": [
+              "pages/fluxo/criandoFluxo",
+              "pages/fluxo/configurandoFluxo",
+              "pages/fluxo/publicando",
+              "pages/fluxo/bubble",
+              "pages/fluxo/inputs",
+              {
+                "group": "Condicionais",
+                "pages": [
+                  "pages/fluxo/condicionais/variaveis",
+                  "pages/fluxo/condicionais/variaveisGlobais",
+                  "pages/fluxo/condicionais/condicoes",
+                  "pages/fluxo/condicionais/espera",
+                  "pages/fluxo/condicionais/pular"
+                ]
+              }
+            ]
+          },
+          {
+            "group": "Plugin Wordpress",
+            "pages": [
+              {
+                "group": "Instalação Passo a Passo",
+                "pages": [
+                  "pages/wordpress/instalacao/introducao",
+                  "pages/wordpress/instalacao/instalacao",
+                  "pages/wordpress/instalacao/obtendoAuthkey",
+                  "pages/wordpress/instalacao/authkey"
+                ]
+              },
+              "pages/wordpress/addWhatsapp",
+              {
+                "group": "Introdução à Recuperação de Pagamentos e Carrinhos Abandonados via WhatsApp",
+                "pages": [
+                  "pages/wordpress/recuperacao/introducao",
+                  "pages/wordpress/recuperacao/carrinho",
+                  "pages/wordpress/recuperacao/pagamentos"
+                ]
+              },
+              {
+                "group": "Shortcodes",
+                "pages": [
+                  "pages/wordpress/shortcodes/introducao",
+                  "pages/wordpress/shortcodes/info",
+                  "pages/wordpress/shortcodes/carrinho",
+                  "pages/wordpress/shortcodes/envios",
+                  "pages/wordpress/shortcodes/loja",
+                  "pages/wordpress/shortcodes/pedidos"
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Referência da API",
+        "groups": [
+          {
+            "group": "Whatsapp (Globais)",
+            "pages": [
+              "api-reference/create-message/enviarMensagemAgendada",
+              "api-reference/create-message/apagarChat",
+              "api-reference/create-message/apagar",
+              "api-reference/create-message/arquivarChat",
+              "api-reference/create-message/cancelarMensagemAgendada",
+              "api-reference/create-message/textoParaAudio",
+              "api-reference/create-message/criarOTP",
+              "api-reference/create-message/editMensagem",
+              "api-reference/create-message/contato",
+              "api-reference/create-message/mensagemTexto",
+              "api-reference/create-message/enviarMultimidia",
+              "api-reference/create-message/enviarListaBotao",
+              "api-reference/create-message/enviarCarrossel",
+              "api-reference/create-message/enviarTemplateBotao",
+              "api-reference/create-message/enviarTemplate",
+              "api-reference/create-message/fixarChats",
+              "api-reference/create-message/listarMensagensAgendadas",
+              "api-reference/create-message/localizacao",
+              "api-reference/create-message/notificacaoChat",
+              "api-reference/create-message/reagir",
+              "api-reference/create-message/responder",
+              "api-reference/create-message/verificarOTP"
+            ]
+          },
+          {
+            "group": "Agente IA",
+            "pages": [
+              "api-reference/IA/apagarAgente",
+              "api-reference/IA/atualizarAgente",
+              "api-reference/IA/criarAgente",
+              "api-reference/IA/informacoesAgente"
+            ]
+          },
+          {
+            "group": "Grupo",
+            "pages": [
+              "api-reference/groups/descricaoGrupo",
+              "api-reference/groups/tituloGrupo",
+              "api-reference/groups/criarGrupo",
+              "api-reference/groups/entrarGrupo",
+              "api-reference/groups/infoGrupo",
+              "api-reference/groups/gerenciarGrupo",
+              "api-reference/groups/conviteGrupo",
+              "api-reference/groups/obterGrupos",
+              "api-reference/groups/permissoesGrupo",
+              "api-reference/groups/sairGrupo"
+            ]
+          },
+          {
+            "group": "Voz",
+            "pages": [
+              "api-reference/voice/converter"
+            ]
+          },
+          {
+            "group": "Media",
+            "pages": [
+              "api-reference/media/converter"
+            ]
+          },
+          {
+            "group": "Revenda",
+            "pages": [
+              "api-reference/developer/gerarQrCode",
+              "api-reference/developer/adicionarDispositivo",
+              "api-reference/developer/apagarDispositivo",
+              "api-reference/developer/criarAplicativo",
+              "api-reference/developer/criarLinkQr",
+              "api-reference/developer/desconectarDispositivo",
+              "api-reference/developer/editarDispositivo",
+              "api-reference/developer/excluirLinkQr",
+              "api-reference/developer/listarLinkQr",
+              "api-reference/developer/infoDevices",
+              "api-reference/developer/reconectarDispositivo",
+              "api-reference/developer/statusDispositivo"
+            ]
+          },
+          {
+            "group": "Informações da Conta",
+            "pages": [
+              "api-reference/auth/logar",
+              "api-reference/auth/registrar"
+            ]
+          },
+          {
+            "group": "Informações do Sistema",
+            "pages": [
+              "api-reference/info/obterLista"
+            ]
+          },
+          {
+            "group": "Configurações",
+            "pages": [
+              "api-reference/settings/alterarNome",
+              "api-reference/settings/bloqueioUsuario",
+              "api-reference/settings/deletarFluxo",
+              "api-reference/settings/webhook",
+              "api-reference/settings/editarStatus",
+              "api-reference/settings/obterChats",
+              "api-reference/settings/obterImage",
+              "api-reference/settings/obterStatus",
+              "api-reference/settings/pausarFluxo",
+              "api-reference/settings/verificarUsuario"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Eventos do Webhook",
+        "groups": [
+          {
+            "group": "Eventos",
+            "pages": [
+              "webhook-reference/events/audio",
+              "webhook-reference/events/contato",
+              "webhook-reference/events/deletado",
+              "webhook-reference/events/documento",
+              "webhook-reference/events/editado",
+              "webhook-reference/events/enquete",
+              "webhook-reference/events/imagem",
+              "webhook-reference/events/localizacao",
+              "webhook-reference/events/reacao",
+              "webhook-reference/events/responder",
+              "webhook-reference/events/sticker",
+              "webhook-reference/events/texto",
+              "webhook-reference/events/video"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "logo": {
+    "light": "/logo/light.png",
+    "dark": "/logo/dark.png"
+  },
+  "navbar": {
+    "links": [
+      {
+        "label": "Whatsapp",
+        "href": "https://wa.me/558189769960"
+      }
+    ],
+    "primary": {
+      "type": "button",
+      "label": "Acessar Dashboard",
+      "href": "https://chatbot.menuia.com/login"
+    }
+  },
+  "footer": {
+    "socials": {
+      "youtube": "https://youtube.com/@menuia",
+      "facebook": "https://www.facebook.com/menuiabrasil",
+      "instagram": "https://www.instagram.com/menuiabrasil"
+    }
+  }
+}

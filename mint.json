@@ -142,6 +142,7 @@
         "api-reference/create-message/mensagemTexto",
         "api-reference/create-message/enviarMultimidia",
         "api-reference/create-message/enviarListaBotao",
+        "api-reference/create-message/enviarCarrossel",
         "api-reference/create-message/enviarTemplateBotao",
         "api-reference/create-message/enviarTemplate",
         "api-reference/create-message/fixarChats",
