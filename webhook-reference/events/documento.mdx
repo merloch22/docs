@@ -1,36 +1,48 @@
 ---
 title: 'Documento'
+description: 'Documento (PDF, DOCX, etc.).'
 ---
 
-Este webhook é acionado quando um documento é enviado ou recebido. Ele fornece informações detalhadas sobre o documento, incluindo dados sobre o remetente, destinatário, tipo de mídia, formato e conteúdo do arquivo.
+Disparado quando um **documento** é enviado ou recebido.
 
-### Parâmetros
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`.
+</Info>
 
-- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
-- **`nome`**: Nome do remetente da mensagem que contém o documento.
-- **`destinatario`**: Número de telefone do destinatário da mensagem, ou seja, para quem o documento foi enviado.
-- **`remetente`**: Número de telefone do remetente da mensagem, ou seja, de quem o documento foi enviado.
-- **`idMessagem`**: Identificador único da mensagem que contém o documento.
-- **`data`**: A data em que a mensagem foi enviada ou recebida.
-- **`horario`**: A hora exata em que a mensagem foi enviada ou recebida, no formato `HH:MM:SS`.
-- **`tipoMensagem`**: Tipo da mensagem. Para mensagens de documentos, o valor será `"documentMessage"`.
-- **`evento`**: Descrição do evento disparado. No caso de uma mensagem de documento, será `"multimidia"`.
-- **`formato`**: O formato do documento enviado. Para este exemplo, será `"application/pdf"`, mas pode variar dependendo do tipo de documento.
-- **`arquivo`**: O conteúdo do arquivo de documento, codificado em **BASE64**. Este campo contém o conteúdo do arquivo como uma string de caracteres codificados.
+## Campos deste evento
 
-## Exemplo de Corpo do Webhook
+<ResponseField name="tipoMensagem" type="string">
+  `documentMessage`
+</ResponseField>
+<ResponseField name="mensagem" type="string">
+  Legenda do documento, se houver.
+</ResponseField>
+<ResponseField name="formato" type="string">
+  MIME type, ex.: `application/pdf`.
+</ResponseField>
+<ResponseField name="arquivo" type="string">
+  Conteúdo do arquivo em **base64**.
+</ResponseField>
+<ResponseField name="filename" type="string">
+  Nome original do arquivo.
+</ResponseField>
+
+## Exemplo de payload
 
 ```json
 {
   "tipo": "Chat",
   "nome": "Diogo Silva",
-  "destinatario": "558189769960",
-  "remetente": "559999999999",
+  "remetente": "5581999999999",
+  "destinatario": "5511999999999",
   "idMessagem": "3F53E99E6E00E915EF8C",
-  "data": "18/11/2024",
+  "data": "10/07/2026",
   "horario": "18:00:00",
   "tipoMensagem": "documentMessage",
+  "mensagem": "",
   "evento": "multimidia",
   "formato": "application/pdf",
-  "arquivo": "BASE64"
+  "arquivo": "JVBERi0xLjcKJ... (base64)",
+  "filename": "contrato.pdf"
 }
+```

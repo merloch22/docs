@@ -1,5 +1,5 @@
 ---
-title: 'Deletar Conversa Chatbot (Fluxo)'
+title: 'Apagar Conversa (Fluxo)'
 api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
@@ -36,7 +36,7 @@ curl -X POST https://chatbot.menuia.com/api/settings \
   -d '{
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
-    "to": "+5581989769960",
+    "to": "+5511999999999",
     "message": "false",
     "deleteConversaFluxo": "true"
   }'
@@ -49,7 +49,7 @@ const response = await fetch('https://chatbot.menuia.com/api/settings', {
   body: JSON.stringify({
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
-    to: '+5581989769960',
+    to: '+5511999999999',
     message: 'false',
     deleteConversaFluxo: 'true'
   })
@@ -64,7 +64,7 @@ response = requests.post(
     json={
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
-        'to': '+5581989769960',
+        'to': '+5511999999999',
         'message': 'false',
         'deleteConversaFluxo': 'true'
     }
@@ -75,7 +75,7 @@ response = requests.post(
 $response = Http::post('https://chatbot.menuia.com/api/settings', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
-    'to' => '+5581989769960',
+    'to' => '+5511999999999',
     'message' => 'false',
     'deleteConversaFluxo' => 'true'
 ]);

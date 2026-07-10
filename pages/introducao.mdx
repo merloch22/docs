@@ -1,14 +1,100 @@
 ---
-title: "Introdução as API"
-description: "Transformando sua Interação com o WhatsApp"
+title: "API da Menuia"
+description: "Integre o WhatsApp ao seu sistema: envie mensagens, botões, mídia e listas, crie chatbots e receba tudo em tempo real via webhooks."
 ---
 
-Bem-vindo à API da Menuia, sua porta de entrada para uma experiência revolucionária de integração com o WhatsApp. Se você busca automatizar processos, ampliar a eficiência de seus projetos e aprimorar a comunicação com seus clientes, você está no lugar certo.
+Bem-vindo à documentação da **API da Menuia**. Com poucas linhas de código você conecta o WhatsApp ao seu sistema — automatize envios, atenda clientes 24/7, monte fluxos com botões e receba cada mensagem em tempo real.
 
-Nossa API foi cuidadosamente desenvolvida para capacitar seu projeto, permitindo que você aproveite ao máximo o potencial do WhatsApp como uma ferramenta de comunicação e interação em tempo real. Seja qual for o seu objetivo - desde fornecer suporte ao cliente 24/7 até criar experiências interativas e envolventes - a API da Menuia está aqui para ajudar.
+## Primeiros passos
 
-Imagine automatizar o envio de mensagens, receber notificações em tempo real, coletar dados valiosos e personalizar a experiência do usuário de acordo com suas necessidades. Com a API da Menuia, tudo isso se torna possível. Ela oferece flexibilidade, escalabilidade e simplicidade, tornando a integração com o WhatsApp uma tarefa acessível para qualquer desenvolvedor.
+<CardGroup cols={2}>
+  <Card title="Endpoints e Tokens" icon="plug" href="/pages/endpoints/introducao">
+    Entenda a estrutura da API e onde encontrar suas chaves.
+  </Card>
+  <Card title="Autenticação" icon="key" href="/pages/endpoints/authkey">
+    Como usar sua `authkey` e `appkey` nas requisições.
+  </Card>
+  <Card title="Enviar uma mensagem" icon="paper-plane" href="/api-reference/create-message/mensagemTexto">
+    Dispare seu primeiro texto em segundos.
+  </Card>
+  <Card title="Webhooks" icon="bolt" href="/webhook-reference/introducao">
+    Receba mensagens e interações em tempo real.
+  </Card>
+</CardGroup>
 
-Nesta documentação, você encontrará todas as informações necessárias para começar sua jornada de integração com a API da Menuia. Desde os conceitos básicos até as funcionalidades avançadas, estamos aqui para guiá-lo em cada passo do processo. Abrace a oportunidade de simplificar seus processos, conectar-se de maneira mais eficiente com seu público e elevar a qualidade de suas interações no WhatsApp.
+## O que você pode fazer
 
-Estamos empolgados para ver como você utilizará a API da Menuia para transformar seus projetos e alcançar novos patamares de sucesso. Vamos começar a explorar o potencial infinito de comunicação e automação que ela oferece. Seja bem-vindo à revolução da integração com o WhatsApp.
+<CardGroup cols={3}>
+  <Card title="Mensagens" icon="comment" href="/api-reference/create-message/mensagemTexto">
+    Texto, mídia, localização, contato e enquete.
+  </Card>
+  <Card title="Interativos" icon="hand-pointer" href="/api-reference/create-message/enviarTemplateBotao">
+    Botões, listas e carrossel de produtos.
+  </Card>
+  <Card title="Grupos" icon="users" href="/api-reference/groups/criarGrupo">
+    Crie e gerencie grupos pela API.
+  </Card>
+  <Card title="Chatbot / Fluxo" icon="diagram-project" href="/pages/fluxo/criandoFluxo">
+    Monte atendimentos automáticos sem código.
+  </Card>
+  <Card title="Agente IA" icon="robot" href="/api-reference/IA/criarAgente">
+    Respostas inteligentes com IA.
+  </Card>
+  <Card title="Revenda" icon="briefcase" href="/api-reference/developer/gerarQrCode">
+    Gerencie dispositivos dos seus clientes.
+  </Card>
+</CardGroup>
+
+## Envie em segundos
+
+Já tem sua `appkey` e `authkey`? Este é um envio de texto completo:
+
+<CodeGroup>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5581999999999",
+    "message": "Olá! 👋 Mensagem enviada pela API da Menuia."
+  }'
+```
+
+```javascript Node.js
+await fetch("https://chatbot.menuia.com/api/create-message", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    appkey: "SEU_APPKEY",
+    authkey: "SUA_AUTHKEY",
+    to: "5581999999999",
+    message: "Olá! 👋 Mensagem enviada pela API da Menuia."
+  })
+});
+```
+
+```python Python
+import requests
+
+requests.post("https://chatbot.menuia.com/api/create-message", json={
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5581999999999",
+    "message": "Olá! 👋 Mensagem enviada pela API da Menuia."
+})
+```
+
+```php PHP
+Http::post("https://chatbot.menuia.com/api/create-message", [
+    "appkey"  => "SEU_APPKEY",
+    "authkey" => "SUA_AUTHKEY",
+    "to"      => "5581999999999",
+    "message" => "Olá! 👋 Mensagem enviada pela API da Menuia.",
+]);
+```
+</CodeGroup>
+
+<Note>
+Não tem as chaves ainda? Veja [Endpoints e Tokens](/pages/endpoints/introducao) para gerar sua `authkey` e `appkey`.
+</Note>

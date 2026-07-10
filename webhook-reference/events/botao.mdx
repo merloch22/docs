@@ -1,0 +1,47 @@
+---
+title: 'Botão / Lista'
+description: 'Clique em botão, lista ou menu interativo.'
+---
+
+Disparado quando o contato **clica em um botão** (quick reply), seleciona um item de **lista** ou responde um **menu interativo**.
+
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`.
+</Info>
+
+## Campos deste evento
+
+<ResponseField name="tipoMensagem" type="string">
+  `buttonsResponseMessage`, `listResponseMessage` ou `interactiveResponseMessage`
+</ResponseField>
+<ResponseField name="mensagem" type="string">
+  Texto do botão/opção selecionado.
+</ResponseField>
+<ResponseField name="buttonResponse" type="object">
+  Detalhes da resposta: `type`, `id` e `text` do botão clicado.
+</ResponseField>
+<ResponseField name="evento" type="string">
+  Sempre `botao`.
+</ResponseField>
+
+## Exemplo de payload
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Diogo Silva",
+  "remetente": "5581999999999",
+  "destinatario": "5511999999999",
+  "idMessagem": "3F53E99E6E00E915EF8C",
+  "data": "10/07/2026",
+  "horario": "18:00:00",
+  "tipoMensagem": "interactiveResponseMessage",
+  "mensagem": "Quero o 1",
+  "evento": "botao",
+  "buttonResponse": {
+    "type": "quick_reply",
+    "id": "card1-quero",
+    "text": "Quero o 1"
+  }
+}
+```

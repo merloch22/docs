@@ -1,0 +1,89 @@
+---
+title: 'Introdução aos Webhooks'
+description: 'Receba em tempo real cada mensagem e interação dos seus dispositivos.'
+---
+
+Os **webhooks** da Menuia enviam uma requisição `POST` (JSON) para a URL que você configurar sempre que o dispositivo **recebe** ou **envia** uma mensagem ou interação. Assim seu sistema reage na hora, sem precisar ficar consultando a API.
+
+## Como configurar (pelo painel)
+
+<Steps>
+  <Step title="Abra 'Gerenciar Webhook'">
+    No painel, vá em **Dispositivos**, localize o dispositivo e clique em **Gerenciar Webhook**.
+  </Step>
+  <Step title="Informe a URL">
+    Preencha a **URL do Webhook** com o endereço que vai receber os eventos. (Deixe em branco para remover.)
+  </Step>
+  <Step title="Habilite os eventos — passo essencial">
+    Ligue o que deseja receber:
+
+    - **Chat** → mensagens **recebidas** dos seus contatos.
+    - **Me** → mensagens **enviadas** pelo próprio dispositivo.
+
+    <Warning>
+    Sem habilitar pelo menos um desses, **nenhum evento é disparado** — mesmo com a URL preenchida. Esse é o erro mais comum.
+    </Warning>
+  </Step>
+  <Step title="Salve e responda com 200">
+    Salve as configurações. Seu endpoint deve responder rápido com `200 OK` — deixe o processamento pesado para depois (de forma assíncrona).
+  </Step>
+</Steps>
+
+<Tip>
+Prefere automatizar? A URL e o liga/desliga dos webhooks também podem ser definidos pela API, em [Editar Dispositivo](/api-reference/developer/editarDispositivo) e [Ativar/Desativar Webhook](/api-reference/settings/webhook).
+</Tip>
+
+## Campos comuns
+
+Todo webhook — independente do evento — inclui estes campos base:
+
+<ResponseField name="tipo" type="string">
+  `Chat` = mensagem **recebida** pelo dispositivo · `Me` = mensagem **enviada** pelo próprio dispositivo.
+</ResponseField>
+<ResponseField name="nome" type="string">
+  Nome de exibição do remetente.
+</ResponseField>
+<ResponseField name="remetente" type="string">
+  Número de quem enviou a mensagem.
+</ResponseField>
+<ResponseField name="destinatario" type="string">
+  Número de quem recebeu a mensagem.
+</ResponseField>
+<ResponseField name="idMessagem" type="string">
+  Identificador único da mensagem — útil para responder, reagir ou apagar depois.
+</ResponseField>
+<ResponseField name="data" type="string">
+  Data do evento, no formato `DD/MM/AAAA`.
+</ResponseField>
+<ResponseField name="horario" type="string">
+  Horário do evento, no formato `HH:MM:SS`.
+</ResponseField>
+<ResponseField name="tipoMensagem" type="string">
+  Tipo técnico do WhatsApp (ex.: `conversation`, `imageMessage`, `interactiveResponseMessage`).
+</ResponseField>
+<ResponseField name="evento" type="string">
+  Tipo amigável do evento (ex.: `texto`, `multimidia`, `localizacao`, `reagida`, `botao`).
+</ResponseField>
+
+<Note>
+Arquivos de mídia (imagem, vídeo, áudio, documento, sticker) chegam no campo `arquivo` em **base64**, com o `formato` (MIME type) e, quando disponível, o `filename`.
+</Note>
+
+## Eventos disponíveis
+
+<CardGroup cols={2}>
+  <Card title="Texto" icon="comment" href="/webhook-reference/events/texto">Mensagem de texto.</Card>
+  <Card title="Imagem" icon="image" href="/webhook-reference/events/imagem">Foto com legenda opcional.</Card>
+  <Card title="Vídeo" icon="video" href="/webhook-reference/events/video">Vídeo com legenda opcional.</Card>
+  <Card title="Áudio" icon="microphone" href="/webhook-reference/events/audio">Áudio ou mensagem de voz.</Card>
+  <Card title="Documento" icon="file" href="/webhook-reference/events/documento">PDF, DOCX e outros.</Card>
+  <Card title="Sticker" icon="face-smile" href="/webhook-reference/events/sticker">Figurinha.</Card>
+  <Card title="Localização" icon="location-dot" href="/webhook-reference/events/localizacao">Coordenadas + link do mapa.</Card>
+  <Card title="Contato" icon="address-card" href="/webhook-reference/events/contato">Cartão de contato (vCard).</Card>
+  <Card title="Enquete" icon="square-poll-vertical" href="/webhook-reference/events/enquete">Enquete criada.</Card>
+  <Card title="Botão / Lista" icon="hand-pointer" href="/webhook-reference/events/botao">Clique em botão ou menu.</Card>
+  <Card title="Responder" icon="reply" href="/webhook-reference/events/responder">Resposta citando uma mensagem.</Card>
+  <Card title="Reação" icon="heart" href="/webhook-reference/events/reacao">Reação com emoji.</Card>
+  <Card title="Editada" icon="pen" href="/webhook-reference/events/editado">Mensagem editada.</Card>
+  <Card title="Deletada" icon="trash" href="/webhook-reference/events/deletado">Mensagem apagada para todos.</Card>
+</CardGroup>

@@ -3,6 +3,10 @@ title: 'Apagar Mensagem'
 api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
 
+<Card title="Webhook relacionado: Deletada" icon="bolt" href="/webhook-reference/events/deletado" horizontal>
+  Apagar para todos dispara o evento **Deletada** no seu webhook.
+</Card>
+
 ## Descrição
 
 Este endpoint permite apagar uma mensagem específica, utilizando o ID da mensagem a ser apagada.
@@ -37,7 +41,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
     "message": "false",
-    "to": "+558189769960",
+    "to": "+5511999999999",
     "deleteID": "3F49AC7097B295B8FC09"
   }'
 ```
@@ -50,7 +54,7 @@ const response = await fetch('https://chatbot.menuia.com/api/create-message', {
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
     message: 'false',
-    to: '+558189769960',
+    to: '+5511999999999',
     deleteID: '3F49AC7097B295B8FC09'
   })
 });
@@ -65,7 +69,7 @@ response = requests.post(
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
         'message': 'false',
-        'to': '+558189769960',
+        'to': '+5511999999999',
         'deleteID': '3F49AC7097B295B8FC09'
     }
 )
@@ -76,7 +80,7 @@ $response = Http::post('https://chatbot.menuia.com/api/create-message', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
     'message' => 'false',
-    'to' => '+558189769960',
+    'to' => '+5511999999999',
     'deleteID' => '3F49AC7097B295B8FC09'
 ]);
 ```

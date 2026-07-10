@@ -108,111 +108,125 @@
         "tab": "Referência da API",
         "groups": [
           {
-            "group": "Whatsapp (Globais)",
+            "group": "Enviar Mensagens",
             "pages": [
-              "api-reference/create-message/enviarMensagemAgendada",
-              "api-reference/create-message/apagarChat",
-              "api-reference/create-message/apagar",
-              "api-reference/create-message/arquivarChat",
-              "api-reference/create-message/cancelarMensagemAgendada",
-              "api-reference/create-message/textoParaAudio",
-              "api-reference/create-message/criarOTP",
-              "api-reference/create-message/editMensagem",
-              "api-reference/create-message/contato",
               "api-reference/create-message/mensagemTexto",
               "api-reference/create-message/enviarMultimidia",
+              "api-reference/create-message/localizacao",
+              "api-reference/create-message/contato",
+              "api-reference/create-message/responder",
+              "api-reference/create-message/reagir",
+              "api-reference/create-message/editMensagem",
+              "api-reference/create-message/apagar"
+            ]
+          },
+          {
+            "group": "Mensagens Interativas",
+            "pages": [
               "api-reference/create-message/enviarListaBotao",
-              "api-reference/create-message/enviarCarrossel",
               "api-reference/create-message/enviarTemplateBotao",
               "api-reference/create-message/enviarTemplate",
+              "api-reference/create-message/enviarCarrossel"
+            ]
+          },
+          {
+            "group": "Gerenciar Conversas",
+            "pages": [
               "api-reference/create-message/fixarChats",
-              "api-reference/create-message/listarMensagensAgendadas",
-              "api-reference/create-message/localizacao",
+              "api-reference/create-message/arquivarChat",
               "api-reference/create-message/notificacaoChat",
-              "api-reference/create-message/reagir",
-              "api-reference/create-message/responder",
+              "api-reference/create-message/apagarChat"
+            ]
+          },
+          {
+            "group": "Agendamento",
+            "pages": [
+              "api-reference/create-message/enviarMensagemAgendada",
+              "api-reference/create-message/listarMensagensAgendadas",
+              "api-reference/create-message/cancelarMensagemAgendada"
+            ]
+          },
+          {
+            "group": "OTP",
+            "pages": [
+              "api-reference/create-message/criarOTP",
               "api-reference/create-message/verificarOTP"
-            ]
-          },
-          {
-            "group": "Agente IA",
-            "pages": [
-              "api-reference/IA/apagarAgente",
-              "api-reference/IA/atualizarAgente",
-              "api-reference/IA/criarAgente",
-              "api-reference/IA/informacoesAgente"
-            ]
-          },
-          {
-            "group": "Grupo",
-            "pages": [
-              "api-reference/groups/descricaoGrupo",
-              "api-reference/groups/tituloGrupo",
-              "api-reference/groups/criarGrupo",
-              "api-reference/groups/entrarGrupo",
-              "api-reference/groups/infoGrupo",
-              "api-reference/groups/gerenciarGrupo",
-              "api-reference/groups/conviteGrupo",
-              "api-reference/groups/obterGrupos",
-              "api-reference/groups/permissoesGrupo",
-              "api-reference/groups/sairGrupo"
-            ]
-          },
-          {
-            "group": "Voz",
-            "pages": [
-              "api-reference/voice/converter"
-            ]
-          },
-          {
-            "group": "Media",
-            "pages": [
-              "api-reference/media/converter"
-            ]
-          },
-          {
-            "group": "Revenda",
-            "pages": [
-              "api-reference/developer/gerarQrCode",
-              "api-reference/developer/adicionarDispositivo",
-              "api-reference/developer/apagarDispositivo",
-              "api-reference/developer/criarAplicativo",
-              "api-reference/developer/criarLinkQr",
-              "api-reference/developer/desconectarDispositivo",
-              "api-reference/developer/editarDispositivo",
-              "api-reference/developer/excluirLinkQr",
-              "api-reference/developer/listarLinkQr",
-              "api-reference/developer/infoDevices",
-              "api-reference/developer/reconectarDispositivo",
-              "api-reference/developer/statusDispositivo"
-            ]
-          },
-          {
-            "group": "Informações da Conta",
-            "pages": [
-              "api-reference/auth/logar",
-              "api-reference/auth/registrar"
-            ]
-          },
-          {
-            "group": "Informações do Sistema",
-            "pages": [
-              "api-reference/info/obterLista"
             ]
           },
           {
             "group": "Configurações",
             "pages": [
               "api-reference/settings/alterarNome",
-              "api-reference/settings/bloqueioUsuario",
-              "api-reference/settings/deletarFluxo",
-              "api-reference/settings/webhook",
               "api-reference/settings/editarStatus",
-              "api-reference/settings/obterChats",
-              "api-reference/settings/obterImage",
               "api-reference/settings/obterStatus",
-              "api-reference/settings/pausarFluxo",
-              "api-reference/settings/verificarUsuario"
+              "api-reference/settings/obterImage",
+              "api-reference/settings/verificarUsuario",
+              "api-reference/settings/bloqueioUsuario",
+              "api-reference/settings/webhook",
+              "api-reference/settings/deletarFluxo",
+              "api-reference/settings/pausarFluxo"
+            ]
+          },
+          {
+            "group": "Grupos",
+            "pages": [
+              "api-reference/groups/criarGrupo",
+              "api-reference/groups/obterGrupos",
+              "api-reference/groups/infoGrupo",
+              "api-reference/groups/tituloGrupo",
+              "api-reference/groups/descricaoGrupo",
+              "api-reference/groups/permissoesGrupo",
+              "api-reference/groups/gerenciarGrupo",
+              "api-reference/groups/conviteGrupo",
+              "api-reference/groups/entrarGrupo",
+              "api-reference/groups/sairGrupo"
+            ]
+          },
+          {
+            "group": "Dispositivos",
+            "pages": [
+              "api-reference/developer/apagarDispositivo"
+            ]
+          },
+          {
+            "group": "Dispositivos",
+            "tag": "Revenda",
+            "pages": [
+              "api-reference/developer/gerarQrCode",
+              "api-reference/developer/adicionarDispositivo",
+              "api-reference/developer/statusDispositivo",
+              "api-reference/developer/infoDevices",
+              "api-reference/developer/editarDispositivo",
+              "api-reference/developer/reconectarDispositivo",
+              "api-reference/developer/desconectarDispositivo",
+              "api-reference/developer/criarAplicativo",
+              "api-reference/developer/criarLinkQr",
+              "api-reference/developer/listarLinkQr",
+              "api-reference/developer/excluirLinkQr"
+            ]
+          },
+          {
+            "group": "Agente IA",
+            "pages": [
+              "api-reference/IA/criarAgente",
+              "api-reference/IA/informacoesAgente",
+              "api-reference/IA/atualizarAgente",
+              "api-reference/IA/apagarAgente"
+            ]
+          },
+          {
+            "group": "Conta e Sistema",
+            "pages": [
+              "api-reference/auth/registrar",
+              "api-reference/auth/logar",
+              "api-reference/info/obterLista"
+            ]
+          },
+          {
+            "group": "Conversores",
+            "pages": [
+              "api-reference/media/converter",
+              "api-reference/voice/converter"
             ]
           }
         ]
@@ -221,21 +235,33 @@
         "tab": "Eventos do Webhook",
         "groups": [
           {
-            "group": "Eventos",
+            "group": "Começando",
             "pages": [
-              "webhook-reference/events/audio",
-              "webhook-reference/events/contato",
-              "webhook-reference/events/deletado",
-              "webhook-reference/events/documento",
-              "webhook-reference/events/editado",
-              "webhook-reference/events/enquete",
-              "webhook-reference/events/imagem",
-              "webhook-reference/events/localizacao",
-              "webhook-reference/events/reacao",
-              "webhook-reference/events/responder",
-              "webhook-reference/events/sticker",
+              "webhook-reference/introducao"
+            ]
+          },
+          {
+            "group": "Mensagens Recebidas",
+            "pages": [
               "webhook-reference/events/texto",
-              "webhook-reference/events/video"
+              "webhook-reference/events/imagem",
+              "webhook-reference/events/video",
+              "webhook-reference/events/audio",
+              "webhook-reference/events/documento",
+              "webhook-reference/events/sticker",
+              "webhook-reference/events/localizacao",
+              "webhook-reference/events/contato",
+              "webhook-reference/events/enquete"
+            ]
+          },
+          {
+            "group": "Interações",
+            "pages": [
+              "webhook-reference/events/botao",
+              "webhook-reference/events/responder",
+              "webhook-reference/events/reacao",
+              "webhook-reference/events/editado",
+              "webhook-reference/events/deletado"
             ]
           }
         ]

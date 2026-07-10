@@ -1,7 +1,11 @@
 ---
-title: "Enviar Multimídia"
+title: 'Enviar Mídia'
 api: "POST https://chatbot.menuia.com/api/create-message"
 ---
+
+<Card title="Webhook relacionado: Mídia" icon="bolt" href="/webhook-reference/events/imagem" horizontal>
+  Mídia recebida dispara os eventos **Imagem**, **Vídeo**, **Áudio** ou **Documento** no webhook.
+</Card>
 
 ## Descrição
 
@@ -44,7 +48,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
   -d '{
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
-    "to": "+5581989769960",
+    "to": "+5511999999999",
     "message": "Nome do arquivo",
     "descricao": "Descrição opcional",
     "file": "https://example.com/file.mp3",
@@ -59,7 +63,7 @@ const response = await fetch('https://chatbot.menuia.com/api/create-message', {
   body: JSON.stringify({
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
-    to: '+5581989769960',
+    to: '+5511999999999',
     message: 'Nome do arquivo',
     descricao: 'Descrição opcional',
     file: 'https://example.com/file.mp3',
@@ -76,7 +80,7 @@ response = requests.post(
     json={
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
-        'to': '+5581989769960',
+        'to': '+5511999999999',
         'message': 'Nome do arquivo',
         'descricao': 'Descrição opcional',
         'file': 'https://example.com/file.mp3',
@@ -89,7 +93,7 @@ response = requests.post(
 $response = Http::post('https://chatbot.menuia.com/api/create-message', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
-    'to' => '+5581989769960',
+    'to' => '+5511999999999',
     'message' => 'Nome do arquivo',
     'descricao' => 'Descrição opcional',
     'file' => 'https://example.com/file.mp3',

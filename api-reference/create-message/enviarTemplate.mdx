@@ -1,7 +1,11 @@
 ---
-title: 'Envio de Template'
+title: 'Enviar Template'
 api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
+
+<Card title="Webhook relacionado: Botão / Lista" icon="bolt" href="/webhook-reference/events/botao" horizontal>
+  Respostas aos botões do template disparam o evento **Botão / Lista**.
+</Card>
 
 ## Descrição
 
@@ -36,7 +40,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
   -d '{
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
-    "to": "+5581989769960",
+    "to": "+5511999999999",
     "template_id": "TEMPLATE_ID",
     "variables": {
       "variableKey1": "jhone",
@@ -52,7 +56,7 @@ const response = await fetch('https://chatbot.menuia.com/api/create-message', {
   body: JSON.stringify({
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
-    to: '+5581989769960',
+    to: '+5511999999999',
     template_id: 'TEMPLATE_ID',
     variables: {
       variableKey1: 'jhone',
@@ -70,7 +74,7 @@ response = requests.post(
     json={
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
-        'to': '+5581989769960',
+        'to': '+5511999999999',
         'template_id': 'TEMPLATE_ID',
         'variables': {
             'variableKey1': 'jhone',
@@ -84,7 +88,7 @@ response = requests.post(
 $response = Http::post('https://chatbot.menuia.com/api/create-message', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
-    'to' => '+5581989769960',
+    'to' => '+5511999999999',
     'template_id' => 'TEMPLATE_ID',
     'variables' => [
         'variableKey1' => 'jhone',

@@ -3,6 +3,10 @@ title: 'Enviar Contato'
 api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
 
+<Card title="Webhook relacionado: Contato" icon="bolt" href="/webhook-reference/events/contato" horizontal>
+  Um contato compartilhado dispara o evento **Contato** no seu webhook.
+</Card>
+
 ## Descrição
 
 Este endpoint permite enviar um contato, incluindo o nome e número de telefone, para um número ou grupo.
@@ -36,7 +40,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
   -d '{
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
-    "to": "+5581989769960",
+    "to": "+5511999999999",
     "message": "+5581999999999",
     "contact": "Nome do Contato"
   }'
@@ -49,7 +53,7 @@ const response = await fetch('https://chatbot.menuia.com/api/create-message', {
   body: JSON.stringify({
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
-    to: '+5581989769960',
+    to: '+5511999999999',
     message: '+5581999999999',
     contact: 'Nome do Contato'
   })
@@ -64,7 +68,7 @@ response = requests.post(
     json={
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
-        'to': '+5581989769960',
+        'to': '+5511999999999',
         'message': '+5581999999999',
         'contact': 'Nome do Contato'
     }
@@ -75,7 +79,7 @@ response = requests.post(
 $response = Http::post('https://chatbot.menuia.com/api/create-message', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
-    'to' => '+5581989769960',
+    'to' => '+5511999999999',
     'message' => '+5581999999999',
     'contact' => 'Nome do Contato'
 ]);

@@ -1,36 +1,41 @@
 ---
-title: 'Audio'
+title: 'Áudio'
+description: 'Áudio ou mensagem de voz.'
 ---
 
-Este webhook é acionado quando uma mensagem de áudio é enviada ou recebida. Ele fornece informações detalhadas sobre a mensagem, incluindo dados sobre o remetente, destinatário, tipo de mídia e formato do áudio.
+Disparado quando um **áudio** (ou mensagem de voz) é enviado ou recebido.
 
-### Parâmetros
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`.
+</Info>
 
-- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
-- **`nome`**: Nome do remetente.
-- **`destinatario`**: Número de telefone do destinatário da mensagem, ou seja, para quem o áudio foi enviado.
-- **`remetente`**: Número de telefone do remetente da mensagem, ou seja, de quem o áudio foi enviado.
-- **`idMessagem`**: Identificador único da mensagem.
-- **`data`**: A data em que a mensagem foi enviada ou recebida.
-- **`horario`**: A hora exata em que a mensagem foi enviada ou recebida, no formato `HH:MM:SS`.
-- **`tipoMensagem`**: Tipo da mensagem. Para mensagens de áudio, o valor será `"audioMessage"`.
-- **`evento`**: Descrição do evento disparado. No caso de uma mensagem de mídia, será `"multimidia"`.
-- **`formato`**: O formato do áudio, incluindo o tipo MIME e os codecs utilizados.
-- **`arquivo`**: O conteúdo do arquivo de áudio, codificado em BASE64.
+## Campos deste evento
 
-## Exemplo de Corpo do Webhook
+<ResponseField name="tipoMensagem" type="string">
+  `audioMessage`
+</ResponseField>
+<ResponseField name="formato" type="string">
+  MIME type, ex.: `audio/ogg; codecs=opus`.
+</ResponseField>
+<ResponseField name="arquivo" type="string">
+  Conteúdo do áudio em **base64**.
+</ResponseField>
+
+## Exemplo de payload
 
 ```json
 {
   "tipo": "Chat",
   "nome": "Diogo Silva",
-  "destinatario": "558189769960",
   "remetente": "5581999999999",
+  "destinatario": "5511999999999",
   "idMessagem": "3F53E99E6E00E915EF8C",
-  "data": "18/11/2024",
+  "data": "10/07/2026",
   "horario": "18:00:00",
   "tipoMensagem": "audioMessage",
   "evento": "multimidia",
   "formato": "audio/ogg; codecs=opus",
-  "arquivo": "BASE64"
+  "arquivo": "T2dnUwACAAAAAAAA... (base64)",
+  "filename": ""
 }
+```

@@ -26,7 +26,7 @@ Este endpoint permite criar um novo agente de IA associado a sua conta, informan
 curl -X POST https://chatbot.menuia.com/api/v2/ia \
   -H "Content-Type: application/json" \
   -d '{
-    "authkey": "A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz",
+    "authkey": "SUA_AUTHKEY_AQUI",
     "device": "servidor",
     "agent_name": "AGENTE 2"
   }'
@@ -37,7 +37,7 @@ const response = await fetch('https://chatbot.menuia.com/api/v2/ia', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    authkey: 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+    authkey: 'SUA_AUTHKEY_AQUI',
     device: 'servidor',
     agent_name: 'AGENTE 2'
   })
@@ -50,7 +50,7 @@ import requests
 response = requests.post(
     'https://chatbot.menuia.com/api/v2/ia',
     json={
-        'authkey': 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+        'authkey': 'SUA_AUTHKEY_AQUI',
         'device': 'servidor',
         'agent_name': 'AGENTE 2'
     }
@@ -59,7 +59,7 @@ response = requests.post(
 
 ```php PHP
 $response = Http::post('https://chatbot.menuia.com/api/v2/ia', [
-    'authkey' => 'A29gzpIJyLWvxg2opJaq70AscJ08PWGLfydphRmjAJtY9IQLoz',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
     'device' => 'servidor',
     'agent_name' => 'AGENTE 2'
 ]);

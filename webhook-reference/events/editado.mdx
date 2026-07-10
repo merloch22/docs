@@ -1,36 +1,43 @@
 ---
-title: 'Editado'
+title: 'Editada'
+description: 'Mensagem editada.'
 ---
 
-Este webhook é acionado quando uma mensagem é editada. Ele fornece informações detalhadas sobre a mensagem que foi modificada, incluindo dados sobre o remetente, destinatário, o conteúdo da mensagem editada e outros detalhes relevantes.
+Disparado quando uma mensagem já enviada é **editada**.
 
-### Parâmetros
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`.
+</Info>
 
-- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
-- **`nome`**: Nome do remetente da mensagem original antes da edição.
-- **`destinatario`**: Número de telefone do destinatário da mensagem, ou seja, para quem a mensagem foi enviada antes de ser editada.
-- **`remetente`**: Número de telefone do remetente da mensagem original, ou seja, de quem a mensagem foi enviada antes da edição.
-- **`idMessagem`**: Identificador único da mensagem editada.
-- **`data`**: A data em que a mensagem foi editada.
-- **`horario`**: A hora exata em que a mensagem foi editada, no formato `HH:MM:SS`.
-- **`tipoMensagem`**: Tipo da mensagem. Para mensagens editadas, o valor será `"editedMessage"`.
-- **`mensagem`**: O novo conteúdo da mensagem após a edição.
-- **`evento`**: Descrição do evento disparado. No caso de uma mensagem editada, será `"editada"`.
-- **`idMessagemInteragida`**: O identificador único da mensagem que foi editada. Esse campo serve para identificar qual mensagem foi modificada.
+## Campos deste evento
 
-## Exemplo de Corpo do Webhook
+<ResponseField name="tipoMensagem" type="string">
+  `editedMessage`
+</ResponseField>
+<ResponseField name="mensagem" type="string">
+  Novo conteúdo (após a edição).
+</ResponseField>
+<ResponseField name="idMessagemInteragida" type="string">
+  ID da mensagem que foi editada.
+</ResponseField>
+<ResponseField name="evento" type="string">
+  Sempre `editada`.
+</ResponseField>
+
+## Exemplo de payload
 
 ```json
 {
   "tipo": "Chat",
   "nome": "Diogo Silva",
-  "destinatario": "558189769960",
-  "remetente": "559999999999",
+  "remetente": "5581999999999",
+  "destinatario": "5511999999999",
   "idMessagem": "3F53E99E6E00E915EF8C",
-  "data": "18/11/2024",
+  "data": "10/07/2026",
   "horario": "18:00:00",
   "tipoMensagem": "editedMessage",
-  "mensagem": "Olá, como vai?",
+  "mensagem": "Texto corrigido",
   "evento": "editada",
-  "idMessagemInteragida": "3FD77B7201CD9D63675C"
+  "idMessagemInteragida": "3EB0C87FA16F99040DD839"
 }
+```

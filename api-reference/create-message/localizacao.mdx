@@ -3,6 +3,10 @@ title: 'Enviar Localização'
 api: 'POST https://chatbot.menuia.com/api/create-message'
 ---
 
+<Card title="Webhook relacionado: Localização" icon="bolt" href="/webhook-reference/events/localizacao" horizontal>
+  Uma localização dispara o evento **Localização** (com coordenadas e link do mapa).
+</Card>
+
 ## Descrição
 
 Este endpoint permite enviar uma localização fixa (latitude e longitude) para um número ou grupo. A localização pode ser compartilhada para facilitar o envio de coordenadas geográficas.
@@ -40,7 +44,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
   -d '{
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
-    "to": "+5581989769960",
+    "to": "+5511999999999",
     "message": "Aqui está a localização fixa:",
     "longitude": "25.14",
     "latitude": "52.41"
@@ -54,7 +58,7 @@ const response = await fetch('https://chatbot.menuia.com/api/create-message', {
   body: JSON.stringify({
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
-    to: '+5581989769960',
+    to: '+5511999999999',
     message: 'Aqui está a localização fixa:',
     longitude: '25.14',
     latitude: '52.41'
@@ -70,7 +74,7 @@ response = requests.post(
     json={
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
-        'to': '+5581989769960',
+        'to': '+5511999999999',
         'message': 'Aqui está a localização fixa:',
         'longitude': '25.14',
         'latitude': '52.41'
@@ -82,7 +86,7 @@ response = requests.post(
 $response = Http::post('https://chatbot.menuia.com/api/create-message', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
-    'to' => '+5581989769960',
+    'to' => '+5511999999999',
     'message' => 'Aqui está a localização fixa:',
     'longitude' => '25.14',
     'latitude' => '52.41'

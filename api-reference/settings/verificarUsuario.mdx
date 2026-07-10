@@ -1,5 +1,5 @@
 ---
-title: 'Verificar se o Contato Está no WhatsApp'
+title: 'Verificar Contato'
 api: 'POST https://chatbot.menuia.com/api/settings'
 ---
 
@@ -22,7 +22,7 @@ Este endpoint permite verificar se um número de telefone está registrado no Wh
 </ParamField>
 
 <ParamField body="checkDevice" type="string" required>
-  Número de telefone a ser verificado (exemplo: `5581989769960`).
+  Número de telefone a ser verificado (exemplo: `5511999999999`).
 </ParamField>
 
 <RequestExample>
@@ -33,7 +33,7 @@ curl -X POST https://chatbot.menuia.com/api/settings \
     "appkey": "SUA_APPKEY_AQUI",
     "authkey": "SUA_AUTHKEY_AQUI",
     "message": "false",
-    "checkDevice": "5581989769960"
+    "checkDevice": "5511999999999"
   }'
 ```
 
@@ -45,7 +45,7 @@ const response = await fetch('https://chatbot.menuia.com/api/settings', {
     appkey: 'SUA_APPKEY_AQUI',
     authkey: 'SUA_AUTHKEY_AQUI',
     message: 'false',
-    checkDevice: '5581989769960'
+    checkDevice: '5511999999999'
   })
 });
 ```
@@ -59,7 +59,7 @@ response = requests.post(
         'appkey': 'SUA_APPKEY_AQUI',
         'authkey': 'SUA_AUTHKEY_AQUI',
         'message': 'false',
-        'checkDevice': '5581989769960'
+        'checkDevice': '5511999999999'
     }
 )
 ```
@@ -69,7 +69,7 @@ $response = Http::post('https://chatbot.menuia.com/api/settings', [
     'appkey' => 'SUA_APPKEY_AQUI',
     'authkey' => 'SUA_AUTHKEY_AQUI',
     'message' => 'false',
-    'checkDevice' => '5581989769960'
+    'checkDevice' => '5511999999999'
 ]);
 ```
 </RequestExample>

@@ -1,36 +1,43 @@
 ---
 title: 'Responder'
+description: 'Resposta citando outra mensagem.'
 ---
 
-Este webhook é acionado quando uma mensagem é respondida. Ele fornece informações detalhadas sobre a resposta, incluindo dados sobre o remetente, destinatário, o conteúdo da resposta e a mensagem original que foi respondida.
+Disparado quando uma mensagem é enviada **respondendo (citando)** outra.
 
-### Parâmetros
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`.
+</Info>
 
-- **`tipo`**: Se o evento foi disparado pelo dispositivo configurado (ou seja, se o dispositivo é o remetente), o valor será `"Me"`. Se o evento estiver sendo recebido pelo dispositivo configurado (ou seja, se o dispositivo é o destinatário), o valor será `"Chat"`.
-- **`nome`**: Nome do remetente da resposta.
-- **`destinatario`**: Número de telefone do destinatário da mensagem.
-- **`remetente`**: Número de telefone do remetente da resposta.
-- **`idMessagem`**: Identificador único da mensagem de resposta.
-- **`data`**: A data em que a resposta foi enviada.
-- **`horario`**: A hora exata em que a resposta foi enviada, no formato `HH:MM:SS`.
-- **`tipoMensagem`**: Tipo da mensagem. Para respostas, o valor será `"extendedTextMessage"`.
-- **`mensagem`**: O conteúdo da resposta enviada.
-- **`evento`**: Descrição do evento disparado. No caso de uma resposta, será `"respondida"`.
-- **`idMessagemInteragida`**: Identificador único da mensagem original que foi respondida.
+## Campos deste evento
 
-## Exemplo de Corpo do Webhook
+<ResponseField name="tipoMensagem" type="string">
+  `extendedTextMessage` (ou o tipo da mídia respondida)
+</ResponseField>
+<ResponseField name="mensagem" type="string">
+  Conteúdo da resposta.
+</ResponseField>
+<ResponseField name="idMessagemInteragida" type="string">
+  ID da mensagem original que foi respondida.
+</ResponseField>
+<ResponseField name="evento" type="string">
+  Sempre `respondida`.
+</ResponseField>
+
+## Exemplo de payload
 
 ```json
 {
   "tipo": "Chat",
   "nome": "Diogo Silva",
-  "destinatario": "558189769960",
-  "remetente": "559999999999",
+  "remetente": "5581999999999",
+  "destinatario": "5511999999999",
   "idMessagem": "3F53E99E6E00E915EF8C",
-  "data": "18/11/2024",
+  "data": "10/07/2026",
   "horario": "18:00:00",
   "tipoMensagem": "extendedTextMessage",
   "mensagem": "Sem problemas!",
   "evento": "respondida",
   "idMessagemInteragida": "BAE508EF2263A826"
 }
+```
