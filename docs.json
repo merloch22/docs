@@ -112,6 +112,8 @@
             "pages": [
               "api-reference/create-message/mensagemTexto",
               "api-reference/create-message/enviarMultimidia",
+              "api-reference/create-message/postarStatus",
+              "api-reference/create-message/apagarStatus",
               "api-reference/create-message/localizacao",
               "api-reference/create-message/contato",
               "api-reference/create-message/responder",
@@ -132,6 +134,8 @@
           {
             "group": "Gerenciar Conversas",
             "pages": [
+              "api-reference/create-message/digitando",
+              "api-reference/create-message/marcarLido",
               "api-reference/create-message/fixarChats",
               "api-reference/create-message/arquivarChat",
               "api-reference/create-message/notificacaoChat",

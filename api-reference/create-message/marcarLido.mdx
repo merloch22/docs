@@ -1,0 +1,81 @@
+---
+title: 'Marcar como Lido'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Marca uma mensagem recebida como **lida** (tique azul) para o remetente. Use o `id` da mensagem que você recebeu — o mesmo `idMessagem` que chega no [webhook](/webhook-reference/introducao).
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número do remetente da mensagem, com DDI e DDD.
+</ParamField>
+
+<ParamField body="markRead" type="string" required>
+  ID da mensagem a marcar como lida (o `idMessagem` recebido no webhook).
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5511999999999",
+    "markRead": "3EB0C87FA16F99040DD839"
+  }'
+```
+
+```javascript Node.js
+await fetch("https://chatbot.menuia.com/api/create-message", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    appkey: "SEU_APPKEY",
+    authkey: "SUA_AUTHKEY",
+    to: "5511999999999",
+    markRead: "3EB0C87FA16F99040DD839"
+  })
+});
+```
+
+```python Python
+import requests
+
+requests.post("https://chatbot.menuia.com/api/create-message", json={
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5511999999999",
+    "markRead": "3EB0C87FA16F99040DD839"
+})
+```
+
+```php PHP
+Http::post("https://chatbot.menuia.com/api/create-message", [
+    "appkey"   => "SEU_APPKEY",
+    "authkey"  => "SUA_AUTHKEY",
+    "to"       => "5511999999999",
+    "markRead" => "3EB0C87FA16F99040DD839",
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Mensagem(ns) marcada(s) como lida(s)."
+}
+```
+</ResponseExample>

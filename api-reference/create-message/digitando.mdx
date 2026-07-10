@@ -1,0 +1,84 @@
+---
+title: 'Digitando'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Envia o indicador de **"digitando…"** (ou **"gravando áudio…"**) para um contato, deixando o atendimento mais natural e humano. O indicador some sozinho após alguns segundos, ao enviar a próxima mensagem, ou quando você envia o estado `paused`.
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número do destinatário, com DDI e DDD.
+</ParamField>
+
+<ParamField body="presence" type="string" required>
+  Estado a exibir:
+  - `composing` — "digitando…"
+  - `recording` — "gravando áudio…"
+  - `paused` — parar o indicador
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5511999999999",
+    "presence": "composing"
+  }'
+```
+
+```javascript Node.js
+await fetch("https://chatbot.menuia.com/api/create-message", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    appkey: "SEU_APPKEY",
+    authkey: "SUA_AUTHKEY",
+    to: "5511999999999",
+    presence: "composing"
+  })
+});
+```
+
+```python Python
+import requests
+
+requests.post("https://chatbot.menuia.com/api/create-message", json={
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "to": "5511999999999",
+    "presence": "composing"
+})
+```
+
+```php PHP
+Http::post("https://chatbot.menuia.com/api/create-message", [
+    "appkey"   => "SEU_APPKEY",
+    "authkey"  => "SUA_AUTHKEY",
+    "to"       => "5511999999999",
+    "presence" => "composing",
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Presença enviada."
+}
+```
+</ResponseExample>

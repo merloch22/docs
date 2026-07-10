@@ -1,0 +1,69 @@
+---
+title: 'Apagar Status'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Apaga um **Status** (Stories) que você postou. Informe o `id` do status — o mesmo valor retornado em `data.id` no momento da [postagem](/api-reference/create-message/postarStatus).
+
+<Note>
+Guarde o `id` retornado ao postar o status: sem ele não é possível apagar. O status também some sozinho após 24 horas.
+</Note>
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="deleteStatus" type="string" required>
+  `id` do status a apagar (o `data.id` retornado na postagem).
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "deleteStatus": "3EB0D313E1E80C467EFAC3"
+  }'
+```
+
+```javascript Node.js
+await fetch("https://chatbot.menuia.com/api/create-message", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    appkey: "SEU_APPKEY",
+    authkey: "SUA_AUTHKEY",
+    deleteStatus: "3EB0D313E1E80C467EFAC3"
+  })
+});
+```
+
+```python Python
+import requests
+
+requests.post("https://chatbot.menuia.com/api/create-message", json={
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "deleteStatus": "3EB0D313E1E80C467EFAC3"
+})
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Status apagado com sucesso."
+}
+```
+</ResponseExample>

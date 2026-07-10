@@ -1,0 +1,104 @@
+---
+title: 'Postar Status'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Posta um **Status** (Stories) no WhatsApp — de **texto** (com cor de fundo), **imagem** ou **vídeo**. A audiência é definida automaticamente pela **privacidade de status** da conta (quem você permite ver seus status).
+
+<Note>
+Para **status de texto**, envie `message` (e opcionalmente `backgroundColor`). Para **status de mídia**, envie `file` com a URL da imagem ou vídeo — a legenda vai em `message`.
+</Note>
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="story" type="string" required>
+  Deve ser `"true"` para indicar a postagem de status.
+</ParamField>
+
+<ParamField body="message" type="string">
+  Texto do status (status de texto) ou legenda (status de mídia).
+</ParamField>
+
+<ParamField body="file" type="string">
+  URL da imagem ou vídeo. A extensão define o tipo (`.mp4`, `.mov`… = vídeo). Se ausente, é status de texto.
+</ParamField>
+
+<ParamField body="backgroundColor" type="string">
+  Cor de fundo do status de texto, em hexadecimal (ex.: `#25D366`).
+</ParamField>
+
+<Tip>
+  A resposta retorna o `id` do status em `data.id`. Guarde-o para poder **apagar o status depois** — veja [Apagar Status](/api-reference/create-message/apagarStatus).
+</Tip>
+
+<RequestExample>
+```bash Status de texto
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "story": "true",
+    "message": "Promoção só hoje! 🎉",
+    "backgroundColor": "#25D366"
+  }'
+```
+
+```bash Status de imagem/vídeo
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "story": "true",
+    "file": "https://seusite.com/promo.jpg",
+    "message": "Confira nossa oferta!"
+  }'
+```
+
+```javascript Node.js
+await fetch("https://chatbot.menuia.com/api/create-message", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    appkey: "SEU_APPKEY",
+    authkey: "SUA_AUTHKEY",
+    story: "true",
+    message: "Promoção só hoje! 🎉",
+    backgroundColor: "#25D366"
+  })
+});
+```
+
+```python Python
+import requests
+
+requests.post("https://chatbot.menuia.com/api/create-message", json={
+    "appkey": "SEU_APPKEY",
+    "authkey": "SUA_AUTHKEY",
+    "story": "true",
+    "message": "Promoção só hoje! 🎉",
+    "backgroundColor": "#25D366"
+})
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Status postado com sucesso.",
+  "data": { "id": "3EB0D313E1E80C467EFAC3" }
+}
+```
+</ResponseExample>
