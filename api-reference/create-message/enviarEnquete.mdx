@@ -1,0 +1,129 @@
+---
+title: 'Enviar Enquete'
+api: 'POST https://chatbot.menuia.com/api/create-message'
+---
+
+## Descrição
+
+Este endpoint envia uma **enquete** (poll) interativa. O destinatário vê a pergunta e as
+alternativas e pode votar diretamente no chat. Ideal para pesquisas rápidas, votações e
+coleta de preferências.
+
+<Info>
+  O **resultado dos votos** é agregado nativamente pelo WhatsApp e fica visível no aplicativo
+  de quem enviou a enquete. A leitura **programática** dos votos (webhook de voto) ainda não
+  está disponível — os votos chegam criptografados e o recurso de descriptografia está no
+  roadmap.
+</Info>
+
+### Parâmetros
+
+<ParamField body="appkey" type="string" required>
+  Chave de aplicação.
+</ParamField>
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="to" type="string" required>
+  Número de telefone no formato internacional ou ID do grupo.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  A **pergunta** da enquete (o texto que aparece no topo).
+</ParamField>
+
+<ParamField body="opcoes" type="array" required>
+  Array de textos com as alternativas. Mínimo de **2** e máximo de **12** opções. Não pode
+  haver opções repetidas.
+</ParamField>
+
+<ParamField body="multiplaEscolha" type="boolean" default="false">
+  Quando `true`, o destinatário pode marcar **mais de uma** opção. Quando `false` (padrão),
+  a enquete permite apenas **uma** escolha.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/create-message \
+  -H "Content-Type: application/json" \
+  -d '{
+    "appkey": "SUA_APPKEY_AQUI",
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "to": "+5581999999999",
+    "message": "Qual sua cor favorita?",
+    "opcoes": ["Azul", "Verde", "Vermelho"],
+    "multiplaEscolha": false
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/create-message', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    appkey: 'SUA_APPKEY_AQUI',
+    authkey: 'SUA_AUTHKEY_AQUI',
+    to: '+5581999999999',
+    message: 'Qual sua cor favorita?',
+    opcoes: ['Azul', 'Verde', 'Vermelho'],
+    multiplaEscolha: false
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/create-message',
+    json={
+        'appkey': 'SUA_APPKEY_AQUI',
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'to': '+5581999999999',
+        'message': 'Qual sua cor favorita?',
+        'opcoes': ['Azul', 'Verde', 'Vermelho'],
+        'multiplaEscolha': False
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/create-message', [
+    'appkey' => 'SUA_APPKEY_AQUI',
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'to' => '+5581999999999',
+    'message' => 'Qual sua cor favorita?',
+    'opcoes' => ['Azul', 'Verde', 'Vermelho'],
+    'multiplaEscolha' => false,
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Mensagem enviada com sucesso.",
+  "data": {
+    "idMensagem": "3EB03B7749D1CE95272DC4",
+    "dataEnvio": "2026-07-27 13:40:00"
+  }
+}
+```
+
+```json 403 - Enquete inválida
+{
+  "status": 403,
+  "message": "A enquete precisa de pelo menos 2 opcoes"
+}
+```
+
+```json 404 - Dispositivo não encontrado
+{
+  "status": 404,
+  "message": "Nenhum dispositivo conectado encontrado"
+}
+```
+</ResponseExample>
