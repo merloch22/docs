@@ -1,0 +1,91 @@
+---
+title: 'Voto de Enquete'
+description: 'Um contato votou em uma enquete.'
+---
+
+Disparado quando um contato **vota em uma enquete** (poll) — seja ela enviada pela
+[API](/api-reference/create-message/enviarEnquete) ou criada direto no app do WhatsApp.
+
+O voto chega **descriptografado**: você recebe os **nomes das opções** escolhidas, não os
+hashes. Ele reaproveita o canal do evento **Botão / Lista** (`evento: "botao"`), com o
+`buttonResponse.type` igual a `poll_vote` — por isso já funciona em fluxos e no seu webhook
+sem configuração extra.
+
+<Info>
+Todo webhook também inclui os [campos comuns](/webhook-reference/introducao) — `tipo`, `nome`, `remetente`, `destinatario`, `idMessagem`, `data` e `horario`. Aqui, `remetente` é quem **votou**.
+</Info>
+
+## Campos deste evento
+
+<ResponseField name="evento" type="string">
+  Sempre `botao`.
+</ResponseField>
+<ResponseField name="mensagem" type="string">
+  Opção(ões) escolhida(s), já em texto. Em múltipla escolha, vêm juntas separadas por vírgula.
+</ResponseField>
+<ResponseField name="buttonResponse" type="object">
+  Detalhes do voto:
+  - `type`: sempre `poll_vote` (use isso para diferenciar de um clique de botão).
+  - `id`: ID da enquete votada.
+  - `text`: opção(ões) escolhida(s).
+  - `params.pollId`: ID da enquete.
+  - `params.question`: a pergunta da enquete.
+  - `params.selectedOptions`: array com os nomes das opções escolhidas.
+  - `params.selectedCount`: quantas opções foram marcadas.
+  - `params.resolved`: `true` quando os nomes foram resolvidos. `false` (raro) quando a enquete não pôde ser mapeada — nesse caso `selectedOptions` vem vazio.
+</ResponseField>
+
+<Warning>
+  Cada voto traz a **seleção atual completa** do contato, não um incremento. Se ele **troca** o
+  voto, chega um novo evento com a nova seleção; se **retira** o voto, chega com `selectedOptions`
+  vazio. Trate cada evento como o estado atual daquele votante.
+</Warning>
+
+## Exemplo de payload
+
+```json
+{
+  "tipo": "Chat",
+  "nome": "Maria Souza",
+  "remetente": "5581999999999",
+  "destinatario": "5511999999999",
+  "idMessagem": "3EB0047127E24837E7E928",
+  "data": "27/07/2026",
+  "horario": "14:03:08",
+  "evento": "botao",
+  "mensagem": "Manga",
+  "buttonResponse": {
+    "type": "poll_vote",
+    "id": "3EB0DA83C7CBCA5294FF6D",
+    "text": "Manga",
+    "params": {
+      "pollId": "3EB0DA83C7CBCA5294FF6D",
+      "question": "Qual sua fruta favorita?",
+      "selectedOptions": ["Manga"],
+      "selectedCount": 1,
+      "resolved": true
+    }
+  }
+}
+```
+
+### Múltipla escolha
+
+```json
+{
+  "evento": "botao",
+  "mensagem": "PHP, Go",
+  "buttonResponse": {
+    "type": "poll_vote",
+    "id": "3EB0DA83C7CBCA5294FF6D",
+    "text": "PHP, Go",
+    "params": {
+      "pollId": "3EB0DA83C7CBCA5294FF6D",
+      "question": "Quais linguagens você usa?",
+      "selectedOptions": ["PHP", "Go"],
+      "selectedCount": 2,
+      "resolved": true
+    }
+  }
+}
+```

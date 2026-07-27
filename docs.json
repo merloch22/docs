@@ -256,7 +256,8 @@
               "webhook-reference/events/sticker",
               "webhook-reference/events/localizacao",
               "webhook-reference/events/contato",
-              "webhook-reference/events/enquete"
+              "webhook-reference/events/enquete",
+              "webhook-reference/events/voto"
             ]
           },
           {
