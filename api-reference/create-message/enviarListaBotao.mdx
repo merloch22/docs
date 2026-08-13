@@ -11,6 +11,14 @@ api: 'POST https://chatbot.menuia.com/api/create-message'
 
 Este endpoint permite enviar uma mensagem interativa com lista de opções organizadas em seções. Ideal para menus de serviços, catálogos de produtos ou qualquer situação que necessite de múltiplas escolhas organizadas.
 
+<Info>
+  **Compatibilidade:** a lista é exibida no **iPhone (iOS)** e no **Android**. Ela aparece como um card com imagem no topo e um botão que abre as opções. No **WhatsApp Web** mensagens interativas não são renderizadas.
+</Info>
+
+<Note>
+  **Resposta da seleção:** quando o usuário escolhe uma opção, o webhook **Botão / Lista** recebe a escolha normalmente (id e texto), e o painel exibe a opção selecionada. Por uma limitação do próprio WhatsApp, a *bolha* dessa resposta pode não ser exibida para quem acompanha a conversa pelo **aplicativo** do WhatsApp (o outro aparelho vê "atualize o WhatsApp"). Isso é apenas visual e **não afeta** o recebimento pelo webhook nem o acompanhamento pelo painel.
+</Note>
+
 ### Parâmetros
 
 <ParamField body="appkey" type="string" required>
@@ -30,11 +38,15 @@ Este endpoint permite enviar uma mensagem interativa com lista de opções organ
 </ParamField>
 
 <ParamField body="header_title" type="string">
-  Título do cabeçalho da lista.
+  Título exibido no card da lista. Se omitido, é usado "Menu". *(opcional — personalização)*
+</ParamField>
+
+<ParamField body="header_image" type="string">
+  URL de uma imagem para o topo do card da lista. Se omitido, é usada uma imagem padrão. *(opcional — personalização)*
 </ParamField>
 
 <ParamField body="footer_text" type="string">
-  Texto do rodapé da lista.
+  Texto do rodapé da lista. *(opcional — personalização)*
 </ParamField>
 
 <ParamField body="button_text" type="string" required>
@@ -44,7 +56,9 @@ Este endpoint permite enviar uma mensagem interativa com lista de opções organ
 <ParamField body="section" type="array" required>
   Array de seções contendo as opções da lista. Cada seção possui:
   - `title`: Título da seção
-  - `value`: Array de itens com `title` e `description`
+  - `value`: Array de itens com `title` e `description` (a `description` é opcional)
+
+  Suporta várias seções e um número alto de opções (testado com 24 renderizando normalmente). Para uma boa experiência, mantenha a quantidade de opções razoável.
 </ParamField>
 
 <RequestExample>
@@ -57,6 +71,7 @@ curl -X POST https://chatbot.menuia.com/api/create-message \
     "to": "+5581999999999",
     "message": "Confira nossos serviços disponíveis:",
     "header_title": "Menu de Serviços",
+    "header_image": "https://seusite.com/banner.png",
     "footer_text": "Selecione para saber mais",
     "button_text": "Ver Opções",
     "section": [
