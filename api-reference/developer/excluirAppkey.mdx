@@ -1,0 +1,101 @@
+---
+title: 'Excluir Appkey'
+api: 'POST https://chatbot.menuia.com/api/developer'
+---
+
+## Descrição
+
+Este endpoint permite excluir uma appkey (aplicativo) da sua conta, informando a própria appkey ou o título do aplicativo. Disponível para qualquer conta (não exige plano revenda) — basta uma authkey válida e a appkey pertencer à conta.
+
+<Tip>
+  Para apagar um dispositivo **e** a appkey vinculada a ele de uma só vez, use o parâmetro `apagarAppkey` no endpoint [Apagar Dispositivo](/api-reference/developer/apagarDispositivo).
+</Tip>
+
+### Parâmetros
+
+<ParamField body="authkey" type="string" required>
+  Chave de autenticação do usuário.
+</ParamField>
+
+<ParamField body="excluirAppkey" type="string" required>
+  Deve ser "true" para indicar que a appkey será excluída.
+</ParamField>
+
+<ParamField body="message" type="string" required>
+  A appkey (key) ou o título do aplicativo a ser excluído.
+</ParamField>
+
+<RequestExample>
+```bash cURL
+curl -X POST https://chatbot.menuia.com/api/developer \
+  -H "Content-Type: application/json" \
+  -d '{
+    "authkey": "SUA_AUTHKEY_AQUI",
+    "excluirAppkey": "true",
+    "message": "APPKEY_A_EXCLUIR"
+  }'
+```
+
+```javascript Node.js
+const response = await fetch('https://chatbot.menuia.com/api/developer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    authkey: 'SUA_AUTHKEY_AQUI',
+    excluirAppkey: 'true',
+    message: 'APPKEY_A_EXCLUIR'
+  })
+});
+```
+
+```python Python
+import requests
+
+response = requests.post(
+    'https://chatbot.menuia.com/api/developer',
+    json={
+        'authkey': 'SUA_AUTHKEY_AQUI',
+        'excluirAppkey': 'true',
+        'message': 'APPKEY_A_EXCLUIR'
+    }
+)
+```
+
+```php PHP
+$response = Http::post('https://chatbot.menuia.com/api/developer', [
+    'authkey' => 'SUA_AUTHKEY_AQUI',
+    'excluirAppkey' => 'true',
+    'message' => 'APPKEY_A_EXCLUIR'
+]);
+```
+</RequestExample>
+
+<ResponseExample>
+```json 200 - Sucesso
+{
+  "status": 200,
+  "message": "Appkey excluida com sucesso!"
+}
+```
+
+```json 401 - Authkey inválida
+{
+  "status": 401,
+  "message": "Authkey Invalida"
+}
+```
+
+```json 404 - Appkey não encontrada
+{
+  "status": 404,
+  "message": "Appkey nao encontrada."
+}
+```
+
+```json 500 - Erro ao excluir
+{
+  "status": 500,
+  "message": "Ocorreu um erro ao excluir a appkey."
+}
+```
+</ResponseExample>

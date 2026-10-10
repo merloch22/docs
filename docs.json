@@ -190,7 +190,8 @@
           {
             "group": "Dispositivos",
             "pages": [
-              "api-reference/developer/apagarDispositivo"
+              "api-reference/developer/apagarDispositivo",
+              "api-reference/developer/excluirAppkey"
             ]
           },
           {
